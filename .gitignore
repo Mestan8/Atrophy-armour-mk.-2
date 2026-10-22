@@ -1,0 +1,35 @@
+# Python environments and packaging
+.venv/
+venv/
+env/
+__pycache__/
+*.py[cod]
+*$py.class
+build/
+dist/
+*.egg-info/
+
+# Test and tool caches
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Local configuration, credentials, and generated data
+.env
+.env.*
+!.env.example
+.streamlit/secrets.toml
+secrets.toml
+*.db
+*.sqlite
+*.sqlite3
+*.db-journal
+*.log
+
+# Editor and operating-system artifacts
+.idea/
+.DS_Store
+Thumbs.db
+Desktop.ini

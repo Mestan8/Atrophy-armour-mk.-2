@@ -1,0 +1,6 @@
+streamlit>=1.50
+pandas>=2.3.3
+numpy>=2.3.3
+plotly>=6.3
+pytest>=8.4.2
+pymupdf>=1.26
