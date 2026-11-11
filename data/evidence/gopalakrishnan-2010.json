@@ -1,0 +1,60 @@
+{
+  "study_id": "gopalakrishnan-2010",
+  "defaults": {
+    "measure_kind": "percent_change",
+    "unit": "%",
+    "statistic_type": "range (as printed in the abstract)",
+    "value": null,
+    "dispersion_type": "range",
+    "n": 4,
+    "n_counts": "crew members",
+    "cohort_id": "all",
+    "cohort": "Four male ISS crew members",
+    "subgroup": "all",
+    "sex": "4 men",
+    "countermeasure_id": "iss_exercise_abstract",
+    "countermeasure": "ISS exercise countermeasures (running, cycling and resistance exercise; hardware not named in the abstract)",
+    "mission_duration": {
+      "value": 181, "unit": "days", "dispersion_type": "not stated (printed as +/-)", "dispersion": [15], "range": null,
+      "wording": "before and after long-duration spaceflight (181 +/- 15 d)", "pdf_page": 1
+    },
+    "baseline_timepoint": "Preflight (day not reported in the abstract)",
+    "timepoint": "Postflight (day not reported in the abstract)",
+    "timepoint_kind": "postflight",
+    "recovery_day": null,
+    "pdf_page": 1, "table_or_figure": "Abstract, Results",
+    "value_type": "reported",
+    "verification_status": "rendered_page_checked",
+    "notes": "Abstract-level value: the local file is a one-page abstract and the full article could not be obtained from a legitimate open source. The abstract does not say whether a range spans crew members, muscles or test conditions, and gives no mean, so only the printed range is stored."
+  },
+  "blocks": [
+    {
+      "fields": ["outcome_category", "outcome_id", "outcome_name", "region", "muscle_or_joint", "biological_level", "dispersion", "source_wording"],
+      "rows": [
+        ["muscle_size", "thigh_volume", "Thigh muscle volume", "thigh_knee", "thigh", "whole muscle (volume; method not named in the abstract)", [-4, -7], "Muscle volume change was greater in the calf (-10 to 16%) than the thigh (-4% to -7%)"],
+        ["muscle_size", "upper_arm_volume", "Upper arm muscle volume", "upper_body", "upper arm", "whole muscle (volume; method not named in the abstract)", [0.4, -0.8], "but there was no change in the upper arm (+0.4 to -0.8%)"],
+        ["strength", "knee_strength", "Knee isometric and isokinetic strength", "thigh_knee", "knee", "whole joint (isometric and isokinetic)", [-10.4, -24.1], "Isometric and isokinetic strength changes at the knee (range -10.4 to -24.1%)"],
+        ["strength", "ankle_strength", "Ankle isometric and isokinetic strength", "calf_ankle", "ankle", "whole joint (isometric and isokinetic)", [-4, -22.3], "ankle (range -4 to -22.3%)"],
+        ["strength", "elbow_strength", "Elbow isometric and isokinetic strength", "upper_body", "elbow", "whole joint (isometric and isokinetic)", [-7.5, -16.7], "and elbow (range -7.5 to -16.7%) were observed"]
+      ]
+    },
+    {
+      "defaults": {
+        "exclude_from_charts": "The printed range '-10 to 16%' is ambiguous: the second number has no sign. The NASA evidence report (external source E1, p. 38) describes the same study's calf loss as '10-18%', which supports reading it as a loss but gives a different upper bound. The range is shown as printed and is not plotted."
+      },
+      "fields": ["outcome_category", "outcome_id", "outcome_name", "region", "muscle_or_joint", "biological_level", "dispersion", "source_wording"],
+      "rows": [
+        ["muscle_size", "calf_volume", "Calf muscle volume", "calf_ankle", "calf", "whole muscle (volume; method not named in the abstract)", [-10, 16], "Muscle volume change was greater in the calf (-10 to 16%) than the thigh (-4% to -7%)"]
+      ]
+    },
+    {
+      "defaults": {
+        "statistic_type": "not stated", "dispersion_type": "none", "dispersion": []
+      },
+      "fields": ["outcome_category", "outcome_id", "outcome_name", "region", "muscle_or_joint", "biological_level", "value", "source_wording"],
+      "rows": [
+        ["endurance", "endurance_total_work", "Total work during the endurance test", "not_reported", "joint not named in the abstract", "whole joint (endurance test)", -14, "Although there was an overall postflight decline in total work (-14%) during the endurance test, an increase in postflight resistance to fatigue was observed."]
+      ]
+    }
+  ]
+}

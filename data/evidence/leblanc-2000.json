@@ -1,0 +1,119 @@
+{
+  "study_id": "leblanc-2000",
+  "defaults": {
+    "statistic_type": "mean",
+    "dispersion_type": "SD",
+    "n_counts": "crew members",
+    "subgroup": "all",
+    "value_type": "reported",
+    "verification_status": "rendered_page_checked",
+    "baseline_timepoint": "Average of preflight MRI measurements"
+  },
+  "blocks": [
+    {
+      "defaults": {
+        "outcome_category": "muscle_size", "biological_level": "whole muscle (MRI volume)",
+        "measure_kind": "percent_change", "unit": "%", "pdf_page": 4, "table_or_figure": "Table 1",
+        "n": 4, "cohort_id": "spacelab", "cohort": "Spacelab (LMS) shuttle crew, 17-day mission", "sex": "4 men",
+        "countermeasure_id": "shuttle_17d",
+        "countermeasure": "17-day Spacelab shuttle flight; no in-flight exercise programme is described for this crew in this article",
+        "mission_duration": {"value": 17, "unit": "days", "dispersion_type": "none", "dispersion": [], "range": null, "wording": "the mission duration was 17 days", "pdf_page": 2},
+        "timepoint_kind": "postflight",
+        "notes": "Shuttle crew, not ISS. Values are means ± SD of percent change (Table 1 footnote). The text layer of this PDF drops minus and ± signs; signs were read from the rendered page."
+      },
+      "fields": ["outcome_id", "outcome_name", "region", "muscle_or_joint", "timepoint", "recovery_day", "value", "dispersion", "source_wording"],
+      "rows": [
+        ["anterior_leg_volume", "Anterior leg muscle volume", "calf_ankle", "anterior leg (leg minus soleus and gastrocnemius)", "R+0 (landing day)", 0, -3.3, [2.9], "17-Day Spacelab Flight, Landing day, Anterior Leg: −3.3 ± 2.9"],
+        ["gastrocnemius_volume", "Gastrocnemius muscle volume", "calf_ankle", "gastrocnemius", "R+0 (landing day)", 0, -12.4, [3.6], "17-Day Spacelab Flight, Landing day, Gastrocnemius: −12.4 ± 3.6"],
+        ["soleus_volume", "Soleus muscle volume", "calf_ankle", "soleus", "R+0 (landing day)", 0, -9.8, [3.7], "17-Day Spacelab Flight, Landing day, Soleus: −9.8 ± 3.7"],
+        ["quadriceps_volume", "Quadriceps muscle volume", "thigh_knee", "quadriceps", "R+0 (landing day)", 0, -7.4, [5.0], "17-Day Spacelab Flight, Landing day, Quadriceps: −7.4 ± 5.0"],
+        ["hamstrings_volume", "Hamstrings muscle volume", "thigh_knee", "hamstrings", "R+0 (landing day)", 0, -2.8, [5.5], "17-Day Spacelab Flight, Landing day, Hamstrings: −2.8 ± 5.5"],
+        ["intrinsic_back_volume", "Intrinsic lower back muscle volume", "trunk", "intrinsic lower back muscles", "R+0 (landing day)", 0, -10.0, [5.6], "17-Day Spacelab Flight, Landing day, Intrinsic Back: −10.0 ± 5.6"],
+        ["psoas_volume", "Psoas muscle volume", "trunk", "psoas", "R+0 (landing day)", 0, -5.0, [2.1], "17-Day Spacelab Flight, Landing day, Psoas: −5.0 ± 2.1"],
+        ["anterior_leg_volume", "Anterior leg muscle volume", "calf_ankle", "anterior leg (leg minus soleus and gastrocnemius)", "R+2", 2, -2.4, [2.2], "17-Day Spacelab Flight, Two days after landing, Anterior Leg: −2.4 ± 2.2"],
+        ["gastrocnemius_volume", "Gastrocnemius muscle volume", "calf_ankle", "gastrocnemius", "R+2", 2, -2.5, [4.6], "17-Day Spacelab Flight, Two days after landing, Gastrocnemius: −2.5 ± 4.6"],
+        ["soleus_volume", "Soleus muscle volume", "calf_ankle", "soleus", "R+2", 2, -7.1, [2.5], "17-Day Spacelab Flight, Two days after landing, Soleus: −7.1 ± 2.5"],
+        ["quadriceps_volume", "Quadriceps muscle volume", "thigh_knee", "quadriceps", "R+2", 2, -4.1, [4.3], "17-Day Spacelab Flight, Two days after landing, Quadriceps: −4.1 ± 4.3"],
+        ["hamstrings_volume", "Hamstrings muscle volume", "thigh_knee", "hamstrings", "R+2", 2, -4.2, [3.7], "17-Day Spacelab Flight, Two days after landing, Hamstrings: −4.2 ± 3.7"],
+        ["intrinsic_back_volume", "Intrinsic lower back muscle volume", "trunk", "intrinsic lower back muscles", "R+2", 2, -7.9, [1.2], "17-Day Spacelab Flight, Two days after landing, Intrinsic Back: −7.9 ± 1.2"],
+        ["psoas_volume", "Psoas muscle volume", "trunk", "psoas", "R+2", 2, 0.6, [3.5], "17-Day Spacelab Flight, Two days after landing, Psoas: 0.6 ± 3.5"]
+      ]
+    },
+    {
+      "defaults": {
+        "outcome_category": "muscle_size", "biological_level": "whole muscle (MRI volume)",
+        "measure_kind": "percent_change", "unit": "%", "pdf_page": 4, "table_or_figure": "Table 1",
+        "n": 6, "cohort_id": "mir_landing_day_subset", "cohort": "Shuttle/Mir crew with landing-day MRI (six of the seven American crew members)", "sex": "not reported for this subset",
+        "countermeasure_id": "mir_exercise_programme",
+        "countermeasure": "Shuttle/Mir long-duration missions with the Mir in-flight exercise programme (compliance varied)",
+        "mission_duration": {"value": null, "unit": "days", "dispersion_type": "none", "dispersion": [], "range": [112, 196], "range_is_approximate": true, "wording": "Shuttle/Mir mission duration, 16–28 wk.", "pdf_page": 4, "note": "Table 1 gives 16–28 weeks for this subset; the day range is calculated as weeks × 7. No mean is reported for the subset."},
+        "timepoint_kind": "postflight",
+        "notes": "Shuttle/Mir crew, not ISS. Landing-day subset only; the larger 16-person cohort was first measured 0–4 days after landing. The source attributes the landing-day to day 2–4 difference to early postflight swelling."
+      },
+      "fields": ["outcome_id", "outcome_name", "region", "muscle_or_joint", "timepoint", "recovery_day", "recovery_window", "value", "dispersion", "source_wording"],
+      "rows": [
+        ["anterior_leg_volume", "Anterior leg muscle volume", "calf_ankle", "anterior leg (leg minus soleus and gastrocnemius)", "R+0 (landing day)", 0, null, -16.0, [1.2], "Shuttle/Mir, Landing day, Anterior Leg: −16.0 ± 1.2"],
+        ["gastrocnemius_volume", "Gastrocnemius muscle volume", "calf_ankle", "gastrocnemius", "R+0 (landing day)", 0, null, -23.8, [4.0], "Shuttle/Mir, Landing day, Gastrocnemius: −23.8 ± 4.0"],
+        ["soleus_volume", "Soleus muscle volume", "calf_ankle", "soleus", "R+0 (landing day)", 0, null, -19.6, [4.7], "Shuttle/Mir, Landing day, Soleus: −19.6 ± 4.7"],
+        ["quadriceps_volume", "Quadriceps muscle volume", "thigh_knee", "quadriceps", "R+0 (landing day)", 0, null, -12.1, [6.7], "Shuttle/Mir, Landing day, Quadriceps: −12.1 ± 6.7"],
+        ["hamstrings_volume", "Hamstrings muscle volume", "thigh_knee", "hamstrings", "R+0 (landing day)", 0, null, -15.7, [3.9], "Shuttle/Mir, Landing day, Hamstrings: −15.7 ± 3.9"],
+        ["intrinsic_back_volume", "Intrinsic lower back muscle volume", "trunk", "intrinsic lower back muscles", "R+0 (landing day)", 0, null, -20.0, [4.5], "Shuttle/Mir, Landing day, Intrinsic Back: −20.0 ± 4.5"],
+        ["psoas_volume", "Psoas muscle volume", "trunk", "psoas", "R+0 (landing day)", 0, null, -10.9, [4.2], "Shuttle/Mir, Landing day, Psoas: −10.9 ± 4.2"],
+        ["anterior_leg_volume", "Anterior leg muscle volume", "calf_ankle", "anterior leg (leg minus soleus and gastrocnemius)", "R+2 to R+4", 3, [2, 4], -11.7, [3.2], "Shuttle/Mir, Two to four days after landing, Anterior Leg: −11.7 ± 3.2"],
+        ["gastrocnemius_volume", "Gastrocnemius muscle volume", "calf_ankle", "gastrocnemius", "R+2 to R+4", 3, [2, 4], -11.7, [3.9], "Shuttle/Mir, Two to four days after landing, Gastrocnemius: −11.7 ± 3.9"],
+        ["soleus_volume", "Soleus muscle volume", "calf_ankle", "soleus", "R+2 to R+4", 3, [2, 4], -14.3, [5.8], "Shuttle/Mir, Two to four days after landing, Soleus: −14.3 ± 5.8"],
+        ["quadriceps_volume", "Quadriceps muscle volume", "thigh_knee", "quadriceps", "R+2 to R+4", 3, [2, 4], -10.0, [5.9], "Shuttle/Mir, Two to four days after landing, Quadriceps: −10.0 ± 5.9"],
+        ["hamstrings_volume", "Hamstrings muscle volume", "thigh_knee", "hamstrings", "R+2 to R+4", 3, [2, 4], -13.8, [3.9], "Shuttle/Mir, Two to four days after landing, Hamstrings: −13.8 ± 3.9"],
+        ["intrinsic_back_volume", "Intrinsic lower back muscle volume", "trunk", "intrinsic lower back muscles", "R+2 to R+4", 3, [2, 4], -17.1, [2.4], "Shuttle/Mir, Two to four days after landing, Intrinsic Back: −17.1 ± 2.4"],
+        ["psoas_volume", "Psoas muscle volume", "trunk", "psoas", "R+2 to R+4", 3, [2, 4], -5.4, [4.1], "Shuttle/Mir, Two to four days after landing, Psoas: −5.4 ± 4.1"]
+      ]
+    },
+    {
+      "defaults": {
+        "outcome_category": "muscle_size", "biological_level": "whole muscle (MRI volume)",
+        "measure_kind": "percent_of_baseline", "unit": "% of mean preflight volume", "pdf_page": 3, "table_or_figure": "Results text, 'Muscle volume'",
+        "n": 16, "cohort_id": "mir_all", "cohort": "Shuttle/Mir crew, American and Russian (16 with pre- and postflight MRI)", "sex": "not reported for the 16 analysed (programme: six American men, one American woman, Russian men)",
+        "countermeasure_id": "mir_exercise_programme",
+        "countermeasure": "Shuttle/Mir long-duration missions with the Mir in-flight exercise programme (compliance varied)",
+        "mission_duration": {"value": 161, "unit": "days", "dispersion_type": "SD", "dispersion": [35], "range": [115, 197], "wording": "These flights ranged from 115 to 197 days in duration. (Methods: 'The mission lengths varied from 16 to 28 wk, with a mean of 23 ± 5 wk.')", "pdf_page": 3, "note": "The 115–197 day range is reported. The mean and SD in days are calculated from the reported 23 ± 5 weeks (× 7)."},
+        "timepoint": "First postflight MRI, R+0 to R+4", "timepoint_kind": "postflight", "recovery_day": 2, "recovery_window": [0, 4],
+        "notes": "Shuttle/Mir crew, not ISS. Printed as a percentage of baseline; the app shows percent change = printed value − 100. Measurement day varied from landing day to R+4 and is plotted at the middle of that window. The source reports that a linear regression of percent loss on flight duration had no significant slope for any region."
+      },
+      "fields": ["outcome_id", "outcome_name", "region", "muscle_or_joint", "value", "dispersion", "source_wording"],
+      "rows": [
+        ["anterior_leg_volume", "Anterior leg muscle volume", "calf_ankle", "anterior leg (leg minus soleus and gastrocnemius)", 85.5, [2.9], "anterior leg, 85.5 ± 2.9%"],
+        ["gastrocnemius_volume", "Gastrocnemius muscle volume", "calf_ankle", "gastrocnemius", 83.1, [4.4], "gastrocnemius, 83.1 ± 4.4%"],
+        ["soleus_volume", "Soleus muscle volume", "calf_ankle", "soleus", 83.2, [4.4], "soleus, 83.2 ± 4.4%"],
+        ["quadriceps_volume", "Quadriceps muscle volume", "thigh_knee", "quadriceps", 89.9, [4.4], "quadriceps, 89.9 ± 4.4%"],
+        ["hamstrings_volume", "Hamstrings muscle volume", "thigh_knee", "hamstrings", 87.3, [3.4], "hamstrings, 87.3 ± 3.4%"],
+        ["intrinsic_back_volume", "Intrinsic lower back muscle volume", "trunk", "intrinsic lower back muscles", 84.1, [5.8], "intrinsic back, 84.1 ± 5.8%"],
+        ["psoas_volume", "Psoas muscle volume", "trunk", "psoas", 95.6, [6.1], "psoas, 95.6 ± 6.1%"],
+        ["neck_volume", "Neck muscle volume", "upper_body", "neck muscles", 100.9, [8.3], "and neck, 100.9 ± 8.3%"]
+      ]
+    },
+    {
+      "defaults": {
+        "outcome_category": "body_composition", "biological_level": "whole body (DXA)", "region": "whole_body", "muscle_or_joint": "whole body",
+        "pdf_page": 5, "table_or_figure": "Table 2",
+        "n": 14, "cohort_id": "mir_dxa", "cohort": "Shuttle/Mir crew with DXA (14 of 16)", "sex": "not reported for this subset",
+        "countermeasure_id": "mir_exercise_programme",
+        "countermeasure": "Shuttle/Mir long-duration missions with the Mir in-flight exercise programme (compliance varied)",
+        "mission_duration": {"value": null, "unit": "days", "dispersion_type": "none", "dispersion": [], "range": [112, 196], "range_is_approximate": true, "wording": "Mission duration, 16–28 weeks (n = 14).", "pdf_page": 5, "note": "Table 2 gives 16–28 weeks; the day range is calculated as weeks × 7. No mean is reported for this subset."},
+        "baseline_timepoint": "Preflight DXA (2 weeks to 4.5 months before launch)",
+        "notes": "Shuttle/Mir crew, not ISS. DXA was done 3–6 days after landing (average 5 days)."
+      },
+      "fields": ["outcome_id", "outcome_name", "measure_kind", "unit", "timepoint", "timepoint_kind", "recovery_day", "recovery_window", "value", "dispersion_type", "dispersion", "source_wording"],
+      "rows": [
+        ["lean_body_mass", "Lean body mass (DXA)", "level", "kg", "Preflight", "preflight", null, null, 59.42, "SD", [5.81], "Lean body mass, kg, Preflight: 59.42 ± 5.81"],
+        ["lean_body_mass", "Lean body mass (DXA)", "level", "kg", "R+3 to R+6 (average R+5)", "postflight", 5, [3, 6], 57.32, "SD", [6.15], "Lean body mass, kg, Postflight: 57.32 ± 6.15"],
+        ["lean_body_mass", "Lean body mass (DXA)", "percent_change", "%", "R+3 to R+6 (average R+5)", "postflight", 5, [3, 6], -3.5, "none", [], "Lean body mass, kg: Δ −2.10, Δ% −3.5, P <0.001"],
+        ["fat_mass", "Fat mass (DXA)", "level", "kg", "Preflight", "preflight", null, null, 15.04, "SD", [6.14], "Fat, kg, Preflight: 15.04 ± 6.14"],
+        ["fat_mass", "Fat mass (DXA)", "level", "kg", "R+3 to R+6 (average R+5)", "postflight", 5, [3, 6], 15.54, "SD", [6.59], "Fat, kg, Postflight: 15.54 ± 6.59"],
+        ["fat_mass", "Fat mass (DXA)", "percent_change", "%", "R+3 to R+6 (average R+5)", "postflight", 5, [3, 6], 3.3, "none", [], "Fat, kg: Δ +0.50, Δ% +3.3, P not significant"],
+        ["total_body_mass", "Total body mass (DXA)", "level", "kg", "Preflight", "preflight", null, null, 77.42, "SD", [5.19], "Total mass, Preflight: 77.42 ± 5.19"],
+        ["total_body_mass", "Total body mass (DXA)", "level", "kg", "R+3 to R+6 (average R+5)", "postflight", 5, [3, 6], 75.11, "SD", [4.80], "Total mass, Postflight: 75.11 ± 4.80"],
+        ["total_body_mass", "Total body mass (DXA)", "percent_change", "%", "R+3 to R+6 (average R+5)", "postflight", 5, [3, 6], -2.2, "none", [], "Total mass: Δ −1.71, Δ% −2.2, P <0.02"]
+      ]
+    }
+  ]
+}

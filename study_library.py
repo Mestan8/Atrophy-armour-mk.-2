@@ -204,8 +204,8 @@ STUDIES = (
             "direct flight measurement. No values are admitted to the engine."
         ),
         "source_availability": "full_text",
-        "extraction_status": "text_accessible",
-        "quantitative_verification_status": "not_assessed",
+        "extraction_status": "full_text_reviewed",
+        "quantitative_verification_status": "source_verified",
     },
     {
         "id": "trappe-2009",
@@ -259,8 +259,8 @@ STUDIES = (
             "values are currently admitted to the engine."
         ),
         "source_availability": "full_text",
-        "extraction_status": "text_accessible",
-        "quantitative_verification_status": "not_assessed",
+        "extraction_status": "full_text_reviewed",
+        "quantitative_verification_status": "source_verified",
     },
     {
         "id": "sprint-2020",
@@ -318,8 +318,8 @@ STUDIES = (
             "to the engine."
         ),
         "source_availability": "full_text",
-        "extraction_status": "text_accessible",
-        "quantitative_verification_status": "not_assessed",
+        "extraction_status": "full_text_reviewed",
+        "quantitative_verification_status": "source_verified",
     },
     {
         "id": "leblanc-2000",
@@ -379,8 +379,8 @@ STUDIES = (
             "are not pooled with ISS evidence and are not engine inputs."
         ),
         "source_availability": "full_text",
-        "extraction_status": "text_accessible",
-        "quantitative_verification_status": "not_assessed",
+        "extraction_status": "full_text_reviewed",
+        "quantitative_verification_status": "source_verified",
     },
     {
         "id": "gopalakrishnan-2010",
@@ -504,8 +504,8 @@ STUDIES = (
             "the engine."
         ),
         "source_availability": "full_text",
-        "extraction_status": "text_accessible",
-        "quantitative_verification_status": "not_assessed",
+        "extraction_status": "full_text_reviewed",
+        "quantitative_verification_status": "source_verified",
     },
 )
 

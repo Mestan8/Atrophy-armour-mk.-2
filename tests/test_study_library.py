@@ -3,7 +3,6 @@ from pathlib import Path
 
 import pytest
 
-from scenario_evidence import seed_abstract_context_measurements
 from study_library import (
     MeasurementInput,
     add_measurement,
@@ -73,29 +72,6 @@ def test_new_studies_match_local_references_and_abstract_is_separately_marked(
     assert abstract["quantitative_verification_status"] == "context_only"
     assert "one-page abstract" in abstract["sample_size_note"]
     assert "ambiguous" in abstract["limitations"]
-
-
-def test_abstract_measurements_preserve_provenance_without_engine_eligibility(
-    connection: sqlite3.Connection,
-) -> None:
-    assert seed_abstract_context_measurements(connection) == 5
-    assert seed_abstract_context_measurements(connection) == 0
-
-    measurements = list_measurements(connection, "gopalakrishnan-2010")
-    assert len(measurements) == 5
-    assert all(item["value_status"] == "reported" for item in measurements)
-    assert all(item["verification_status"] == "source_verified" for item in measurements)
-    assert all(item["source_page"] == "1" for item in measurements)
-    assert all("Abstract" in item["source_location"] for item in measurements)
-    assert all(item["source_wording"] for item in measurements)
-    assert any("-10 to 16%" in item["value"] for item in measurements)
-    assert all(
-        "context only" in item["uncertainty_notes"].lower()
-        or "not a model input" in item["uncertainty_notes"].lower()
-        or "not a countermeasure dose-response estimate"
-        in item["uncertainty_notes"].lower()
-        for item in measurements
-    )
 
 
 def test_study_and_measurement_records_persist_to_sqlite(tmp_path) -> None:

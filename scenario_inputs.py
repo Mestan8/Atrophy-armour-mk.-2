@@ -1,226 +1,281 @@
-"""Scenario input options, units, and study-specific validation."""
+"""The Scenario Explorer's controls: what can be selected, and why not otherwise.
+
+There are five scientific inputs (outcome category, region, countermeasure,
+crew subgroup, postflight recovery day), a study filter, and the duration
+slider. Each option is offered only when the catalog holds matching evidence;
+an option without evidence is still listed, disabled, with the reason.
+"""
 
 from dataclasses import dataclass
 
-from scenario_evidence import (
-    ENGLISH_OUTCOMES,
-    PUBLISHED_OBSERVATIONS,
-    PublishedObservation,
+from evidence_catalog import (
+    CATEGORIES,
+    REGIONS,
+    SUBGROUPS,
+    Series,
+    all_series,
+    format_number,
+    study_label,
 )
+from study_library import STUDIES
 
 
-MISSION_DURATION_MIN_DAYS = 90
-MISSION_DURATION_MAX_DAYS = 240
-MISSION_DURATION_DEFAULT_DAYS = 177
+ALL_STUDIES = "all"
+ANY_COUNTERMEASURE = "any"
+FIRST_TIMEPOINT = "first"
+DAY_NOT_REPORTED = "unreported"
 
-FITTS_OUTCOME_UNITS = {
-    "diameter": ("Fibre diameter", "μm"),
-    "cross_sectional_area": ("Fibre cross-sectional area", "μm²"),
-    "peak_force": ("Peak isometric fibre force", "mN"),
-    "shortening_velocity": ("Maximal unloaded shortening velocity", "FL s⁻¹"),
-    "peak_power": ("Peak fibre power", "mW"),
+STUDY_IDS = tuple(str(study["id"]) for study in STUDIES)
+_ABSTRACT_ONLY = {
+    str(study["id"]) for study in STUDIES if study["source_availability"] == "abstract_only"
 }
-
-_ENGLISH_MEASUREMENT = "Mean percent change from L-60"
-_FITTS_MEASUREMENT_PAIRS = {"Preflight value", "Postflight value"}
 
 
 @dataclass(frozen=True)
-class ScenarioInputs:
-    """The five categorical inputs and one mission-duration context value."""
+class Option:
+    value: str
+    label: str
+    disabled: bool = False
+    reason: str | None = None
 
-    study_id: str
+
+@dataclass(frozen=True)
+class Control:
+    id: str
+    label: str
+    value: str
+    options: tuple[Option, ...]
+    help: str
+
+
+@dataclass(frozen=True)
+class Selection:
+    study: str
+    category: str
     region: str
-    outcome_id: str
-    comparison_group: str
-    timepoint: str
-    mission_duration_days: int
+    countermeasure: str
+    subgroup: str
+    recovery: str
 
 
-def allowed_regions(study_id: str) -> tuple[str, ...]:
-    """Return anatomical targets with complete curated numerical observations."""
-    return tuple(
-        dict.fromkeys(
-            region
-            for region, _ in _available_outcomes(study_id).values()
-        )
-    )
+def recovery_key(day: float | None) -> str:
+    return DAY_NOT_REPORTED if day is None else format_number(day)
 
 
-def allowed_scenario_outcomes(study_id: str) -> dict[str, tuple[str, str]]:
-    """Map supported outcome IDs to their target and readable label."""
-    return _available_outcomes(study_id)
+def recovery_label(key: str) -> str:
+    if key == FIRST_TIMEPOINT:
+        return "First postflight measurement of each study"
+    if key == DAY_NOT_REPORTED:
+        return "Postflight, day not reported"
+    day = float(key)
+    if day >= 365:
+        return f"R+{key} (about {format_number(round(day / 365, 1))} years after landing)"
+    return f"R+{key}"
 
 
-def allowed_outcomes(study_id: str, region: str) -> dict[str, str]:
-    """Map supported outcome IDs to labels for the selected target."""
-    return {
-        outcome_id: label
-        for outcome_id, (outcome_region, label) in _available_outcomes(
-            study_id
-        ).items()
-        if outcome_region == region
-    }
+def _who(study: str) -> str:
+    return "any study" if study == ALL_STUDIES else study_label(study)
 
 
-def allowed_comparison_groups(
-    study_id: str,
+def _not_measured(study: str) -> str:
+    if study in _ABSTRACT_ONLY:
+        return f"Not reported in the abstract of {study_label(study)}"
+    return f"Not measured by {_who(study)}"
+
+
+def _pick(requested: object, options: list[Option]) -> str:
+    enabled = [option.value for option in options if not option.disabled]
+    if requested in enabled:
+        return str(requested)
+    return enabled[0] if enabled else options[0].value
+
+
+def matching_series(
+    study: str | None = None,
+    category: str | None = None,
     region: str | None = None,
-    outcome_id: str | None = None,
-) -> dict[str, str]:
-    """Return only comparisons with complete curated measurements."""
-    labels = {
-        "all": "All participants",
-        "men": "Men",
-        "women": "Women",
-        "ired": "iRED era",
-        "ared": "ARED era",
-        "type_i": "Slow type I fibres",
-        "type_ii": "Fast type II fibres",
-    }
-    groups = {
-        _group_for_observation(observation)
-        for observation in _observations_for(study_id, region, outcome_id)
-        if _has_complete_observation(study_id, observation)
-    }
-    return {
-        group: labels[group]
-        for group in labels
-        if group in groups
-    }
+    countermeasure: str | None = None,
+    subgroup: str | None = None,
+) -> list[Series]:
+    """Series matching every filter that is given."""
+    result = []
+    for series in all_series():
+        first = series.first
+        if study not in (None, ALL_STUDIES) and first.study_id != study:
+            continue
+        if category is not None and first.outcome_category != category:
+            continue
+        if region is not None and first.region != region:
+            continue
+        if countermeasure not in (None, ANY_COUNTERMEASURE) and (
+            first.countermeasure_id != countermeasure
+        ):
+            continue
+        if subgroup is not None and first.subgroup != subgroup:
+            continue
+        result.append(series)
+    return result
 
 
-def allowed_timepoints(
-    study_id: str,
-    region: str,
-    comparison_group: str,
-    outcome_id: str | None = None,
-) -> tuple[str, ...]:
-    """List only timepoints for which the selected comparison is curated."""
-    if study_id == "fitts-2010":
-        matching = [
-            item
-            for item in _observations_for(study_id, region, outcome_id)
-            if _group_for_observation(item) == comparison_group
-        ]
-        return (
-            ("preflight_to_landing",)
-            if matching and _has_complete_observation(study_id, matching[0])
-            else ()
+def _recovery_keys(series_list: list[Series]) -> list[str]:
+    days = {
+        point.recovery_day for series in series_list for point in series.points
+    }
+    ordered = sorted(day for day in days if day is not None)
+    keys = [recovery_key(day) for day in ordered]
+    if None in days:
+        keys.append(DAY_NOT_REPORTED)
+    return keys
+
+
+def resolve_controls(requested: dict[str, object]) -> tuple[Selection, tuple[Control, ...]]:
+    """Resolve a request into a valid selection plus the controls to draw.
+
+    Controls are resolved in order; each one's options depend on those before it.
+    A requested value that has no evidence is replaced by the first that has.
+    """
+    study_options = [Option(ALL_STUDIES, "Compare all studies that report this")] + [
+        Option(study_id, study_label(study_id)) for study_id in STUDY_IDS
+    ]
+    study = _pick(requested.get("study"), study_options)
+
+    category_options = [
+        Option(
+            category,
+            label,
+            disabled=not matching_series(study, category),
+            reason=None if matching_series(study, category) else _not_measured(study),
         )
-    return tuple(
-        dict.fromkeys(
-            item.timepoint
-            for item in _observations_for(study_id, region, outcome_id)
-            if _group_for_observation(item) == comparison_group
-            and _has_complete_observation(study_id, item)
+        for category, label in CATEGORIES.items()
+    ]
+    category = _pick(requested.get("category"), category_options)
+    category_label = CATEGORIES[category].lower()
+
+    used_regions = {series.first.region for series in all_series()}
+    region_options = []
+    for region, label in REGIONS.items():
+        if region not in used_regions:
+            continue
+        available = bool(matching_series(study, category, region))
+        region_options.append(
+            Option(
+                region,
+                label,
+                disabled=not available,
+                reason=None
+                if available
+                else f"No {category_label} data for this region in {_who(study)}",
+            )
         )
+    region = _pick(requested.get("region"), region_options)
+
+    regimens: dict[str, str] = {}
+    for series in matching_series(study, category):
+        regimens.setdefault(series.first.countermeasure_id, series.first.countermeasure)
+    countermeasure_options = [
+        Option(ANY_COUNTERMEASURE, "All reported regimens (shown separately)")
+    ]
+    for regimen_id, label in regimens.items():
+        available = bool(matching_series(study, category, region, regimen_id))
+        owner = study_label(
+            next(
+                series.study_id
+                for series in matching_series(study, category)
+                if series.first.countermeasure_id == regimen_id
+            )
+        )
+        countermeasure_options.append(
+            Option(
+                regimen_id,
+                f"{owner}: {label}" if study == ALL_STUDIES else label,
+                disabled=not available,
+                reason=None
+                if available
+                else f"{owner} reports no {category_label} data for this region under this regimen",
+            )
+        )
+    countermeasure = _pick(requested.get("countermeasure"), countermeasure_options)
+
+    subgroup_options = []
+    for subgroup, label in SUBGROUPS.items():
+        available = bool(
+            matching_series(study, category, region, countermeasure, subgroup)
+        )
+        subgroup_options.append(
+            Option(
+                subgroup,
+                label,
+                disabled=not available,
+                reason=None
+                if available
+                else f"Not reported separately by {_who(study)} for this selection",
+            )
+        )
+    subgroup = _pick(requested.get("subgroup"), subgroup_options)
+
+    selected = matching_series(study, category, region, countermeasure, subgroup)
+    available_keys = set(_recovery_keys(selected))
+    recovery_options = [Option(FIRST_TIMEPOINT, recovery_label(FIRST_TIMEPOINT))]
+    for key in _recovery_keys(matching_series(study, category)):
+        available = key in available_keys
+        recovery_options.append(
+            Option(
+                key,
+                recovery_label(key),
+                disabled=not available,
+                reason=None
+                if available
+                else f"Not a reported timepoint for this selection in {_who(study)}",
+            )
+        )
+    recovery = _pick(requested.get("recovery"), recovery_options)
+
+    selection = Selection(study, category, region, countermeasure, subgroup, recovery)
+    controls = (
+        Control(
+            "study", "Study filter", study, tuple(study_options),
+            "A filter, not a scientific variable. Studies are shown side by side and never averaged.",
+        ),
+        Control(
+            "category", "1. Outcome category", category, tuple(category_options),
+            "The harmonized measurement categories used on the Measurements page.",
+        ),
+        Control(
+            "region", "2. Muscle group / region", region, tuple(region_options),
+            "Only regions with data in the selected category can be chosen.",
+        ),
+        Control(
+            "countermeasure", "3. Countermeasure / exercise regimen", countermeasure,
+            tuple(countermeasure_options),
+            "Regimens are the groups each paper reports. Differences between them are not causal effects.",
+        ),
+        Control(
+            "subgroup", "4. Crew subgroup", subgroup, tuple(subgroup_options),
+            "Men and women are available only where a paper reports them separately.",
+        ),
+        Control(
+            "recovery", "5. Postflight recovery day", recovery, tuple(recovery_options),
+            "Reported test days only; nothing is interpolated between them. R+x is days after landing, separate from mission duration.",
+        ),
+    )
+    return selection, controls
+
+
+def selected_series(selection: Selection) -> list[Series]:
+    return matching_series(
+        selection.study,
+        selection.category,
+        selection.region,
+        selection.countermeasure,
+        selection.subgroup,
     )
 
 
-def _available_outcomes(study_id: str) -> dict[str, tuple[str, str]]:
-    if study_id == "english-2015":
-        supported_ids = {
-            _outcome_for_observation(item)
-            for item in _observations_for(study_id)
-            if item.measurement_name == _ENGLISH_MEASUREMENT
-        }
-        return {
-            outcome_id: details
-            for outcome_id, details in ENGLISH_OUTCOMES.items()
-            if outcome_id in supported_ids
-        }
-    if study_id == "fitts-2010":
-        supported_targets = {
-            _outcome_for_observation(item): _region_for_observation(item)
-            for item in _observations_for(study_id)
-            if _has_complete_observation(study_id, item)
-        }
-        return {
-            outcome_id: (supported_targets[outcome_id], label)
-            for outcome_id, (label, _) in FITTS_OUTCOME_UNITS.items()
-            if outcome_id in supported_targets
-            and supported_targets[outcome_id] is not None
-        }
-    return {}
-
-
-def _observations_for(
-    study_id: str,
-    region: str | None = None,
-    outcome_id: str | None = None,
-) -> tuple[PublishedObservation, ...]:
-    return tuple(
-        observation
-        for observation in PUBLISHED_OBSERVATIONS
-        if observation.study_id == study_id
-        and (region is None or _region_for_observation(observation) == region)
-        and (
-            outcome_id is None
-            or _outcome_for_observation(observation) == outcome_id
-        )
-    )
-
-
-def _region_for_observation(observation: PublishedObservation) -> str | None:
-    if observation.study_id == "english-2015":
-        return observation.record_key.split("::")[1].title()
-    if observation.study_id == "fitts-2010":
-        return observation.record_key.split("::")[1].title()
+def point_at(series: Series, recovery: str):
+    """The series' point at the selected recovery key, or ``None`` if not measured then."""
+    if recovery == FIRST_TIMEPOINT:
+        return series.points[0]
+    for point in series.points:
+        if recovery_key(point.recovery_day) == recovery:
+            return point
     return None
-
-
-def _outcome_for_observation(observation: PublishedObservation) -> str:
-    return observation.record_key.split("::")[2]
-
-
-def _group_for_observation(observation: PublishedObservation) -> str:
-    return observation.record_key.split("::")[3]
-
-
-def _has_complete_observation(
-    study_id: str, observation: PublishedObservation
-) -> bool:
-    if study_id == "english-2015":
-        return observation.measurement_name == _ENGLISH_MEASUREMENT
-    if study_id != "fitts-2010":
-        return False
-    record_key = observation.record_key
-    measurement_names = {
-        item.measurement_name
-        for item in PUBLISHED_OBSERVATIONS
-        if item.study_id == study_id and item.record_key == record_key
-    }
-    return _FITTS_MEASUREMENT_PAIRS.issubset(measurement_names)
-
-
-def validate_scenario(inputs: ScenarioInputs) -> None:
-    """Reject selections that have no compatible study or measurement."""
-    if inputs.study_id not in {"english-2015", "fitts-2010"}:
-        raise ValueError("Select one of the studies in the Study Library.")
-    if inputs.region not in allowed_regions(inputs.study_id):
-        raise ValueError("The selected anatomical region is not in this study.")
-    if inputs.outcome_id not in allowed_outcomes(inputs.study_id, inputs.region):
-        raise ValueError("The selected outcome is not available for this region.")
-    if inputs.comparison_group not in allowed_comparison_groups(
-        inputs.study_id, inputs.region, inputs.outcome_id
-    ):
-        raise ValueError("The selected comparison group is not available.")
-    if inputs.timepoint not in allowed_timepoints(
-        inputs.study_id,
-        inputs.region,
-        inputs.comparison_group,
-        inputs.outcome_id,
-    ):
-        raise ValueError("The selected timepoint is not reported for this comparison.")
-    if (
-        isinstance(inputs.mission_duration_days, bool)
-        or not isinstance(inputs.mission_duration_days, int)
-        or not MISSION_DURATION_MIN_DAYS
-        <= inputs.mission_duration_days
-        <= MISSION_DURATION_MAX_DAYS
-    ):
-        raise ValueError(
-            "Mission duration must be a whole number between "
-            f"{MISSION_DURATION_MIN_DAYS} and {MISSION_DURATION_MAX_DAYS} days."
-        )

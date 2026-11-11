@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Scenario Explorer · Atrophy Armour</title>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="assets/css/site.css">
+</head>
+<body data-page="explorer">
+<a class="skip" href="#scenario">Skip to the scenario</a>
+<header class="site" id="site-header"></header>
+<script src="assets/js/site-header.js"></script>
+
+<main class="wrap">
+  <h2 id="page-title">Scenario Explorer</h2>
+  <div id="version-notice" aria-live="polite"></div>
+  <p class="lede">Choose a scenario, then press Show results. Every number is traced to a study table; options without evidence are greyed out with the reason.</p>
+
+  <!-- Step 1: the scenario. Option availability updates live; results do not. -->
+  <section id="scenario" class="panel step" aria-labelledby="scenario-title">
+    <h3 id="scenario-title">Step 1 · Scenario</h3>
+    <form id="controls" class="controls-grid"></form>
+    <div id="controls-status" class="help" aria-live="polite"></div>
+    <div class="step-actions">
+      <button id="show-results" class="primary" type="button">Show results</button>
+      <button id="reset" type="button">Reset scenario to defaults</button>
+    </div>
+  </section>
+
+  <!-- Step 2: results for the confirmed scenario. Hidden until the button is pressed. -->
+  <section id="results-section" class="step" aria-labelledby="results-title" hidden>
+    <h3 id="results-title" class="step-title" tabindex="-1">Step 2 · Results</h3>
+    <div id="results-status" aria-live="polite"></div>
+    <div id="results-body">
+      <div class="panel">
+        <h4>Results</h4>
+        <div id="summary"></div>
+        <div id="results"></div>
+      </div>
+      <div class="panel" id="slider-field">
+        <h4><label for="duration">Mission duration: <span id="duration-value" class="slider-value"></span> days</label></h4>
+        <input id="duration" type="range" step="1">
+        <p class="help" id="slider-range"></p>
+        <p class="help"><strong>Model:</strong> <span id="model-label"></span></p>
+        <div id="slider-notices"></div>
+        <p class="help" id="slider-supported"></p>
+        <p class="help" id="slider-sources"></p>
+      </div>
+      <div class="panel chart-block">
+        <h4>Outcome against mission duration</h4>
+        <p id="duration-caption" class="caption"></p>
+        <div id="duration-chart" class="chart"></div>
+      </div>
+      <div class="panel chart-block">
+        <h4>Recovery over postflight days</h4>
+        <p id="recovery-caption" class="caption"></p>
+        <div id="recovery-chart" class="chart"></div>
+      </div>
+      <div class="panel chart-block">
+        <h4>Cross-study comparison</h4>
+        <p id="comparison-caption" class="caption"></p>
+        <div id="comparison-chart" class="chart"></div>
+      </div>
+      <details class="panel"><summary>How the duration model works for each result</summary><div id="models"></div></details>
+      <details class="panel"><summary>External supporting evidence used as context</summary><div id="context"></div></details>
+      <details class="panel"><summary>What the value-type labels mean</summary><div id="value-types"></div></details>
+    </div>
+  </section>
+</main>
+
+<dialog id="observation" aria-labelledby="observation-title">
+  <h3 id="observation-title"></h3>
+  <div id="observation-body"></div>
+  <p><button id="observation-close" type="button">Close details</button></p>
+</dialog>
+
+<script src="assets/vendor/plotly.min.js"></script>
+<script src="assets/js/core.js"></script>
+<script src="assets/js/explorer.js"></script>
+</body>
+</html>

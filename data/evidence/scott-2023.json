@@ -1,0 +1,91 @@
+{
+  "study_id": "scott-2023",
+  "defaults": {
+    "measure_kind": "percent_change",
+    "unit": "%",
+    "statistic_type": "mean (mixed-model estimate)",
+    "dispersion_type": "95% CI",
+    "value_rule": "ci_midpoint",
+    "n_counts": "crew members",
+    "cohort_id": "all",
+    "cohort": "ISS astronauts, Increments 26S–50S (April 2011 – September 2017); N = 46 overall",
+    "subgroup": "all",
+    "sex": "37 men, 9 women (whole cohort)",
+    "countermeasure_id": "iss_ared_t2_cevis",
+    "countermeasure": "ISS, ARED era (2011–2017): ARED, T2 treadmill and CEVIS cycle; about 600 min/week of aerobic and resistance exercise",
+    "mission_duration": {
+      "value": 178, "unit": "days", "dispersion_type": "SD", "dispersion": [48], "range": null,
+      "wording": "Forty-six astronauts (37 males, 9 females; ... [mean ± SD]) were assigned to missions of 178 ± 48 d.", "pdf_page": 1
+    },
+    "baseline_timepoint": "Preflight (60–90 days before flight for strength tests; about L-90 for DXA)",
+    "timepoint_kind": "postflight",
+    "pdf_page": 3, "table_or_figure": "Fig. 2 (printed table of estimates)",
+    "value_type": "approximation",
+    "formula": "(lower CI bound + upper CI bound) / 2",
+    "verification_status": "rendered_page_checked",
+    "notes": "Fig. 2 prints 'effect size (a, b)' for each endpoint and its caption calls the bracket a 95% CI. The effect size does not lie inside its bracket, and the bracket matches the percent changes given in the text for three endpoints (VO2peak −7.4% ± 2.0%; BMD −2.1% ± 0.7% and −3.7% ± 0.6%, PDF page 2), so the bracket is read here as the 95% CI of the mean percent change. The CI bounds are reported; the central value is an approximation (the CI midpoint, which assumes a symmetric interval) and agrees with the markers drawn in Fig. 1. To replace it: the per-endpoint means in Supplemental Tables 3–6, which are not in the local PDF."
+  },
+  "blocks": [
+    {
+      "fields": ["outcome_category", "outcome_id", "outcome_name", "region", "muscle_or_joint", "biological_level", "n", "timepoint", "recovery_day", "recovery_window", "dispersion", "source_wording"],
+      "rows": [
+        ["muscle_size", "quadriceps_csa", "Quadriceps cross-sectional area (MRI)", "thigh_knee", "quadriceps", "muscle group (MRI cross-section)", 12, "Postflight (Fig. 2 column 'R+1'; MRI day not stated in Methods)", 1, null, [-8.54, -2.95], "Quadriceps CSA, Change pre-flight to R+1: -2.09 (-8.54, -2.95)"],
+        ["muscle_size", "hamstrings_csa", "Hamstrings cross-sectional area (MRI)", "thigh_knee", "hamstrings", "muscle group (MRI cross-section)", 12, "Postflight (Fig. 2 column 'R+1'; MRI day not stated in Methods)", 1, null, [-7.95, -2.54], "Hamstrings CSA, Change pre-flight to R+1: -2.01 (-7.95, -2.54)"],
+        ["muscle_size", "calf_csa", "Calf cross-sectional area (MRI)", "calf_ankle", "calf", "muscle group (MRI cross-section)", 12, "Postflight (Fig. 2 column 'R+1'; MRI day not stated in Methods)", 1, null, [-15.75, -7.82], "Calf CSA, Change pre-flight to R+1: -3.03 (-15.75, -7.82)"],
+
+        ["strength", "leg_press_isometric_force", "Leg press maximal isometric force", "whole_leg", "leg press (hip and knee extensors)", "multi-joint (instrumented leg press)", 17, "R+1 (Post1: R+1 to R+2)", 1, [1, 2], [-10.70, 2.27], "Leg Press Force, Change pre-flight to R+1: -0.60 (-10.70, 2.27)"],
+        ["strength", "leg_press_isometric_force", "Leg press maximal isometric force", "whole_leg", "leg press (hip and knee extensors)", "multi-joint (instrumented leg press)", 17, "R+7 (Post2: R+6 to R+9)", 7, [6, 9], [-7.57, 4.39], "Leg Press Force, Change pre-flight to R+7: -0.23 (-7.57, 4.39)"],
+        ["strength", "leg_press_isometric_force", "Leg press maximal isometric force", "whole_leg", "leg press (hip and knee extensors)", "multi-joint (instrumented leg press)", 17, "R+30 (Post3: R+25 to R+39)", 30, [25, 39], [-3.99, 7.62], "Leg Press Force, Change pre-flight to R+30: 0.26 (-3.99, 7.62)"],
+        ["strength", "leg_press_power", "Leg press power", "whole_leg", "leg press (hip and knee extensors)", "multi-joint (instrumented leg press)", 17, "R+1 (Post1: R+1 to R+2)", 1, [1, 2], [-16.43, -7.92], "Leg Press Power, Change pre-flight to R+1: -2.36 (-16.43, -7.92)"],
+        ["strength", "leg_press_power", "Leg press power", "whole_leg", "leg press (hip and knee extensors)", "multi-joint (instrumented leg press)", 17, "R+7 (Post2: R+6 to R+9)", 7, [6, 9], [-13.74, -5.81], "Leg Press Power, Change pre-flight to R+7: -1.90 (-13.74,-5.81)"],
+        ["strength", "leg_press_power", "Leg press power", "whole_leg", "leg press (hip and knee extensors)", "multi-joint (instrumented leg press)", 17, "R+30 (Post3: R+25 to R+39)", 30, [25, 39], [-8.82, 0.84], "Leg Press Power, Change pre-flight to R+30: -0.77 (-8.82, 0.84)"],
+        ["strength", "leg_press_1rm", "Leg press one-repetition maximum", "whole_leg", "leg press (hip and knee extensors)", "multi-joint lift (one-repetition maximum)", 38, "First postflight test (Fig. 2 column 'R+1'; Methods say 5 to 7 days after landing)", 6, [5, 7], [-7.23, -0.96], "Leg Press 1-RM, Change pre-flight to R+1: -0.60 (-7.23, -0.96)"],
+        ["strength", "leg_press_1rm", "Leg press one-repetition maximum", "whole_leg", "leg press (hip and knee extensors)", "multi-joint lift (one-repetition maximum)", 38, "Second postflight test (Fig. 2 column 'R+7'; Methods say 30 days after landing)", 30, null, [-2.66, 5.85], "Leg Press 1-RM, Change pre-flight to R+7: 0.23 (-2.66, 5.85)"],
+        ["strength", "bench_press_isometric_force", "Bench press maximal isometric force", "upper_body", "bench press (chest, shoulders, elbow extensors)", "multi-joint (instrumented bench press)", 17, "R+1 (Post1: R+1 to R+2)", 1, [1, 2], [-5.55, 4.46], "Bench Press Force, Change pre-flight to R+1: -0.08 (-5.55, 4.46)"],
+        ["strength", "bench_press_isometric_force", "Bench press maximal isometric force", "upper_body", "bench press (chest, shoulders, elbow extensors)", "multi-joint (instrumented bench press)", 17, "R+7 (Post2: R+6 to R+9)", 7, [6, 9], [-3.39, 6.01], "Bench Press Force, Change pre-flight to R+7: 0.20 (-3.39, 6.01)"],
+        ["strength", "bench_press_isometric_force", "Bench press maximal isometric force", "upper_body", "bench press (chest, shoulders, elbow extensors)", "multi-joint (instrumented bench press)", 17, "R+30 (Post3: R+25 to R+39)", 30, [25, 39], [-5.24, 6.88], "Bench Press Force, Change pre-flight to R+30: 0.12 (-5.24, 6.88)"],
+        ["strength", "bench_press_power", "Bench press power", "upper_body", "bench press (chest, shoulders, elbow extensors)", "multi-joint (instrumented bench press)", 17, "R+1 (Post1: R+1 to R+2)", 1, [1, 2], [-8.19, 4.78], "Bench Press Power, Change pre-flight to R+1: -0.15 (-8.19, 4.78)"],
+        ["strength", "bench_press_power", "Bench press power", "upper_body", "bench press (chest, shoulders, elbow extensors)", "multi-joint (instrumented bench press)", 17, "R+7 (Post2: R+6 to R+9)", 7, [6, 9], [-3.98, 12.03], "Bench Press Power, Change pre-flight to R+7: 0.36 (-3.98, 12.03)"],
+        ["strength", "bench_press_power", "Bench press power", "upper_body", "bench press (chest, shoulders, elbow extensors)", "multi-joint (instrumented bench press)", 17, "R+30 (Post3: R+25 to R+39)", 30, [25, 39], [-5.18, 12.54], "Bench Press Power, Change pre-flight to R+30: 0.33 (-5.18, 12.54)"],
+        ["strength", "bench_press_1rm", "Bench press one-repetition maximum", "upper_body", "bench press (chest, shoulders, elbow extensors)", "multi-joint lift (one-repetition maximum)", 38, "First postflight test (Fig. 2 column 'R+1'; Methods say 5 to 7 days after landing)", 6, [5, 7], [0.32, 6.22], "Bench Press 1-RM, Change pre-flight to R+1: 0.60 (0.32, 6.22)"],
+        ["strength", "bench_press_1rm", "Bench press one-repetition maximum", "upper_body", "bench press (chest, shoulders, elbow extensors)", "multi-joint lift (one-repetition maximum)", 38, "Second postflight test (Fig. 2 column 'R+7'; Methods say 30 days after landing)", 30, null, [5.50, 10.80], "Bench Press 1-RM, Change pre-flight to R+7: 1.50 (5.50, 10.80)"],
+
+        ["endurance", "leg_press_work", "Leg press total work (21 repetitions)", "whole_leg", "leg press (hip and knee extensors)", "multi-joint (instrumented leg press)", 17, "R+1 (Post1: R+1 to R+2)", 1, [1, 2], [-16.23, -3.34], "Leg Press Work, Change pre-flight to R+1: -1.30 (-16.23, -3.34)"],
+        ["endurance", "leg_press_work", "Leg press total work (21 repetitions)", "whole_leg", "leg press (hip and knee extensors)", "multi-joint (instrumented leg press)", 17, "R+7 (Post2: R+6 to R+9)", 7, [6, 9], [-11.61, 1.43], "Leg Press Work, Change pre-flight to R+7: -0.68 (-11.61,1.43)"],
+        ["endurance", "leg_press_work", "Leg press total work (21 repetitions)", "whole_leg", "leg press (hip and knee extensors)", "multi-joint (instrumented leg press)", 17, "R+30 (Post3: R+25 to R+39)", 30, [25, 39], [-7.36, 6.76], "Leg Press Work, Change pre-flight to R+30: -0.04 (-7.36, 6.76)"],
+        ["endurance", "bench_press_work", "Bench press total work (21 repetitions)", "upper_body", "bench press (chest, shoulders, elbow extensors)", "multi-joint (instrumented bench press)", 17, "R+1 (Post1: R+1 to R+2)", 1, [1, 2], [-5.54, 2.46], "Bench Press work, Change pre-flight to R+1: -0.27 (-5.54, 2.46)"],
+        ["endurance", "bench_press_work", "Bench press total work (21 repetitions)", "upper_body", "bench press (chest, shoulders, elbow extensors)", "multi-joint (instrumented bench press)", 17, "R+7 (Post2: R+6 to R+9)", 7, [6, 9], [-3.11, 4.94], "Bench Press work, Change pre-flight to R+7: 0.16 (-3.11, 4.94)"],
+        ["endurance", "bench_press_work", "Bench press total work (21 repetitions)", "upper_body", "bench press (chest, shoulders, elbow extensors)", "multi-joint (instrumented bench press)", 17, "R+30 (Post3: R+25 to R+39)", 30, [25, 39], [-2.22, 6.02], "Bench Press work, Change pre-flight to R+30: 0.33 (-2.22, 6.02)"],
+
+        ["body_composition", "total_body_mass", "Total body mass (DXA)", "whole_body", "whole body", "whole body (DXA)", null, "R+7 (DXA 1–2 weeks after landing)", 10, [7, 14], [-1.40, 0.86], "Total mass, Change pre-flight to R+7: -0.13 (-1.40, 0.86)"],
+        ["body_composition", "fat_mass", "Fat mass (DXA)", "whole_body", "whole body", "whole body (DXA)", null, "R+7 (DXA 1–2 weeks after landing)", 10, [7, 14], [-6.06, 1.34], "Fat mass, Change pre-flight to R+7: -0.34 (-6.06, 1.34)"],
+        ["body_composition", "lean_body_mass", "Lean body mass (DXA)", "whole_body", "whole body", "whole body (DXA)", null, "R+7 (DXA 1–2 weeks after landing)", 10, [7, 14], [-0.59, 1.55], "Lean mass, Change pre-flight to R+7: 0.26 (-0.59, 1.55)"],
+
+        ["aerobic", "vo2peak", "VO2peak", "whole_body", "whole body", "whole body (peak cycle ergometry)", null, "R+7 (Fig. 2 column)", 7, null, [-8.42, -2.66], "VO2peak, Change pre-flight to R+7: -1.15 (-8.42, -2.66)"],
+        ["aerobic", "vo2peak", "VO2peak", "whole_body", "whole body", "whole body (peak cycle ergometry)", null, "R+30 (Fig. 2 column)", 30, null, [-2.35, 3.58], "VO2peak, Change pre-flight to R+30: 0.13 (-2.35, 3.58)"]
+      ]
+    },
+    {
+      "defaults": {
+        "outcome_category": "aerobic", "outcome_id": "vo2peak", "outcome_name": "VO2peak",
+        "region": "whole_body", "muscle_or_joint": "whole body", "biological_level": "whole body (peak cycle ergometry)",
+        "n": null, "value_rule": null, "value_type": "reported", "formula": null,
+        "timepoint": "First postflight test (Fig. 2 column 'R+1'; Methods say between 2 and 4 days after landing)", "recovery_day": 3, "recovery_window": [2, 4],
+        "pdf_page": 2, "table_or_figure": "Results text; 95% CI from Fig. 2 (PDF page 3)",
+        "notes": "The mean is reported in the text as −7.4% ± 2.0% (the type of the ± value is not stated). The 95% CI is the bracket printed in Fig. 2 (PDF page 3), read as the CI of percent change for the reasons given on the other Scott records. Per-endpoint n is in Supplemental Table 2, which is not in the local PDF."
+      },
+      "fields": ["value", "dispersion", "source_wording"],
+      "rows": [
+        [-7.4, [-11.21, -3.55], "On average, cardiorespiratory fitness (VO2peak) declined by 7.4% ± 2.0% from preflight to postflight (Fig. 1b). Fig. 2: VO2peak, Change pre-flight to R+1: -1.53 (-11.21, -3.55)"]
+      ]
+    }
+  ],
+  "cell_notes": {
+    "bench_press_1rm|Second postflight test (Fig. 2 column 'R+7'; Methods say 30 days after landing)": "The printed bracket (5.50, 10.80) is far from the first-test bracket (0.32, 6.22) and its midpoint would be +8.2%; Fig. 1a shows bench press 1RM near +3%. Transcribed as printed; treat with caution.",
+    "leg_press_1rm|*": "Fig. 2 places the two 1RM tests under the 'R+1' and 'R+7' columns, but the Methods say they were done 5 to 7 days and 30 days after landing. The Methods timing is used for chart position.",
+    "bench_press_1rm|*": "Fig. 2 places the two 1RM tests under the 'R+1' and 'R+7' columns, but the Methods say they were done 5 to 7 days and 30 days after landing. The Methods timing is used for chart position.",
+    "total_body_mass|*": "Per-endpoint n is in Supplemental Table 2, which is not in the local PDF.",
+    "fat_mass|*": "Per-endpoint n is in Supplemental Table 2, which is not in the local PDF.",
+    "lean_body_mass|*": "Per-endpoint n is in Supplemental Table 2, which is not in the local PDF."
+  }
+}

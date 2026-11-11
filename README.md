@@ -1,77 +1,162 @@
 # Atrophy Armour
 
-Atrophy Armour is an educational tool for organizing published evidence about
-muscle changes associated with long-duration spaceflight. The Scenario Explorer
-shows selected observations and transparent calculations. It does not predict
-in-flight atrophy, astronaut performance, or individual outcomes.
+Atrophy Armour is an educational tool that organizes published evidence about
+skeletal-muscle changes in long-duration spaceflight. It shows published group
+results side by side, each traced to a page and table of its source. It is not a
+clinical, operational, or mission-planning predictor and does not estimate any
+individual's or mission's outcome.
+
+## Evidence model (Evidence Engine v2)
+
+All numbers come from one catalog in `data/evidence/`:
+
+- **Eight study files**, one per Study Library study, holding every extracted
+  observation with: study, outcome category, outcome, region and muscle/joint,
+  biological level, unit, statistic, value, dispersion type and values, n and
+  what n counts (crew, flight datasets or fibres), cohort, subgroup, sex,
+  countermeasure/hardware, mission duration with its source wording and page,
+  baseline and measurement timepoint, source file, PDF page, table or figure,
+  exact source wording or cell, value type, verification status, and notes.
+- **`external_sources.json`**: the separate *External supporting evidence*
+  register (E1-E4). These sources are not library studies.
+- **`duration_evidence.json`**: every within-library link between mission
+  duration and outcome (Scott 2023 rank associations, LeBlanc 2000 statements).
+
+`evidence_catalog.py` loads and validates the files and refuses to start if any
+record lacks provenance or a value type. Every value is labelled:
+
+| Value type | Meaning |
+|---|---|
+| `reported` | Copied from the source as printed. |
+| `calculated` | Arithmetic on reported values; the formula is shown (for example percent change from pre/post group means). |
+| `digitized` | Read off a figure. None are used at present. |
+| `approximation` | An assumption, interpolation or fit the source does not prove: every duration-model output, and the Scott 2023 CI midpoints. |
+
+Values were transcribed from rendered PDF pages, not from the text layer, which
+drops minus and ± signs in several PDFs. Suspect cells are stored as printed and
+flagged in their notes (for example Sprint Table 1's leg lean mass SE of 0.04).
+`docs/evidence_matrix.md` summarizes what each study contributes to each
+category; regenerate it with `python build_evidence_matrix.py`.
+
+### Coverage
+
+| Study | Catalog contents |
+|---|---|
+| English et al. (2015) | 82 values: knee/ankle/trunk torque and knee work, mean % change with 95% CI, all/men/women/iRED/ARED, R+5/R+14/R+30 (Tables III-V). |
+| Fitts et al. (2010) | 96 values: soleus and gastrocnemius type I and II fibre diameter, CSA, peak force, shortening velocity; all crew and high/low treadmill groups; mean ± SEM; n = fibres (Tables 2-6). |
+| Scott et al. (2023) | 31 values: leg CSA, leg/bench press force, power, work, 1RM, body composition, VO2peak at R+1/R+7/R+30 (Fig. 2 printed estimates and 95% CIs). |
+| Trappe et al. (2009) | 35 values: calf MRI volumes at R+4/R+19, calf MVC and isokinetic torque at R+7/R+13, peak power, MHC I fibre share (Tables 5-6, text). |
+| English et al. (2020), Sprint | 104 values: CON and SPRINT torque, work, 1RM, leg lean/fat mass, VO2peak and related measures; mean ± SE (Tables 1-4). |
+| LeBlanc et al. (2000) | 45 values: MRI volumes for 17-day Spacelab and 115-197-day Shuttle/Mir crews, DXA body composition (Tables 1-2, text). Shuttle/Mir, not ISS. |
+| Gopalakrishnan et al. (2010) | 7 abstract-level values: printed ranges only. **Abstract only**: no legitimate open full text was found (Europe PMC, Unpaywall and NASA NTRS were checked). The calf range "-10 to 16%" is stored as printed, flagged ambiguous, and not plotted. |
+| Greene et al. (2021) | 16 values: trunk CT CSA and attenuation at return, 1 year and 2-4 years; SMI and ASMI at return (Table 1). |
 
 ## Using the Scenario Explorer
 
-The Study Library retains all eight sources, but the Scenario Explorer only
-offers combinations backed by complete curated numerical records:
+The Explorer works in two steps, top to bottom:
 
-- **English et al. (2015):** the 12 knee, ankle, and trunk isokinetic torque or
-  total-work outcomes; all-participant observations at their reported R+5,
-  R+14, or R+30 timepoints (trunk begins at R+14); men, women, iRED-era, and
-  ARED-era subgroup observations at R+5 for knee/ankle and R+14 for trunk.
-- **Fitts et al. (2010):** soleus slow type I fibre diameter or peak isometric
-  fibre force, comparing L-55 ± 2 days preflight with landing day (R+0).
-  Fibre-level measurements are not whole-joint strength, and fibre counts are
-  not participant counts.
+- **Step 1 · Scenario**: the study filter and five scientific controls. When a
+  control changes, the server recalculates which options are valid and greys
+  out the rest with the reason, but no results are calculated yet. The
+  scenario is saved in the browser and restored on reload.
+- **Step 2 · Results**: press **Show results** to see, in order, the result
+  rows, the mission-duration slider, the three charts and the explanation
+  panels. The slider updates the results and charts live. If a scenario
+  control changes afterwards, the results are marked out of date and the
+  button becomes **Update results**; nothing is recalculated until it is
+  pressed. **Reset scenario to defaults** clears the saved scenario and hides
+  the results.
 
-Choose a supported study, outcome, comparison, and available timepoint. Results
-update when a selection changes. When an English comparison has multiple
-verified postflight points, an additional recovery-series view is available.
-Select any plotted point to open its observation-specific details, including
-the value, biological measurement level, timepoint, source PDF/page/table,
-sample-size definition, and recorded uncertainty or limitations. Point IDs
-are linked to verified Study Library records; changing the scenario clears
-the prior selection. Click an empty part of the chart to clear a point
-selection before selecting it again after closing its details.
+The five scientific controls:
 
-The mission-duration slider is intentionally absent from the explorer:
-duration is not used to scale observations or predict change during flight.
-The existing duration validation and context helpers remain in the analysis
-engine for compatibility; published values and calculations are unchanged.
+1. **Outcome category**: muscle size, whole-joint strength, endurance/work,
+   fibre-level, body composition, aerobic capacity.
+2. **Muscle group / region**: thigh/knee, calf/ankle, trunk, whole leg, upper
+   body, whole body.
+3. **Countermeasure / exercise regimen**: the groups each paper reports (for
+   example iRED vs ARED era, CON vs SPRINT, high vs low treadmill, Spacelab vs
+   Shuttle/Mir). Differences are descriptive, not causal.
+4. **Crew subgroup**: all, men, women. Men and women are available only from
+   English 2015 Table IV.
+5. **Postflight recovery day**: the reported R+x test days, from landing day to
+   2-4 years (Greene 2021). Nothing is interpolated between them.
 
-## Phase 5 study coverage and model limits
+The **study filter** shows one study or all studies that report the selection;
+results are listed separately and never averaged. Options with no data are
+greyed out with the reason (for example "Not measured by Greene et al. (2021)").
+Every result names its source page and table and opens a full provenance view.
 
-The Study Library contains the two original engine-supported studies and six
-additional sources. All six files are present in `data/references/`; the local
-Gopalakrishnan et al. (2010) document is a one-page abstract, not the complete
-article.
+### Mission-duration slider and model
 
-| Study | Local source | Availability and current quantitative use |
-|---|---|---|
-| Scott et al. (2023) | `Effects of exercise countermeasures on multisystem function in long duration spaceflight astronauts (2023).pdf` | Full text available; text accessible, but new values are not verified for engine use. |
-| Trappe et al. (2009) | `Exercise in space human skeletal muscle after 6 months aboardthe International Space Station (2009.pdf` | Full text available; text accessible, but new values are not verified for engine use. |
-| English et al. (2020), NASA Sprint Study | `High intensity training during spaceflight results from the NASA Sprint Study (2020).pdf` | Full text available; text accessible, but new values are not verified for engine use. |
-| LeBlanc et al. (2000) | `Muscle volume, MRI relaxation times (T2), and bodycomposition after spaceﬂight (2000).pdf` | Full text available; text accessible; shuttle/Mir cohorts remain distinct from ISS evidence. |
-| Gopalakrishnan et al. (2010) | `Muscle volume, strength, endurance, and exercise loads during 6-month missions in space (2010) PDF.pdf` | **Abstract only**; abstract-reported values are source-checked and stored as context, not calculation inputs. |
-| Greene et al. (2021) | `Trunk Skeletal Muscle Changes on CT with Long-Duration (2021).pdf` | Full text available; text accessible, but new values are not verified for engine use. |
+The slider's range and default come from the selected study's reported mission
+durations. Moving it changes the model value shown for each result. Every model
+output is labelled `approximation`.
 
-Source availability, extraction status, and quantitative verification status
-are stored separately in the Study Library and shown in the interface. The
-five Gopalakrishnan abstract measurements retain page, abstract section, exact
-source wording, and the abstract-only limitation. Its broad regional and
-joint-level ranges do not identify enough compatible endpoint detail for a
-specific calculation; in particular, the abstract's calf-volume range
-(`-10 to 16%`) is flagged as ambiguous. Its values therefore do not calibrate,
-validate, or drive predictions. No missing full-text methods, tables, figures,
-or results have been reconstructed.
+- **Muscle size, LeBlanc 2000 regions: multi-cohort model.** Straight segments
+  join real cohort means at 8 days (STS-47, quoted by external source E1),
+  17 days (Spacelab) and 115-197 days (Shuttle/Mir), held flat across 115-197
+  days because LeBlanc report no significant slope with duration there. These
+  crews differ in vehicle and exercise, so duration is confounded with
+  countermeasure. Dotted parts are interpolation; dashed parts beyond 197 days
+  are extrapolation.
+- **Everything else: linear fallback.** One group mean at one mission length is
+  the only data, so the line runs from zero at launch to that value. A plain
+  notice beside the slider and in each chart caption says so. Dashed segments
+  and an extrapolation warning mark mission lengths outside the study's reported
+  range (min-max where printed, otherwise mean ± 1 SD, labelled as such).
+- **No model** for abstract ranges without a mean (Gopalakrishnan 2010).
+- **No ground-analogue curve** is drawn. The bed-rest reviews (E2, E3) are cited
+  as context only; E3's equation was not read (abstract only).
 
-The additional full-text papers are registered with their bibliographic
-metadata and extraction state. Their tables have not been manually
-source-verified for this integration, so their values are not promoted into
-verified measurements or used in calculations. The engine continues to use
-only the curated, source-verified English et al. (2015) and Fitts et al. (2010)
-observations. This is intentional: the additional studies cover incompatible
-biological levels, populations, outcomes, and timepoints, and the available
-evidence does not support a defensible common fitted model.
+Scott 2023's rank associations between mission length and change (Somers' D)
+are shown next to the matching results as direction-only context, not equations.
+
+### Charts
+
+Three interactive Plotly charts with hover details (value, unit, uncertainty,
+n, timepoint, value type, source) and click-through provenance: outcome against
+mission duration (model plus real anchor points), recovery over postflight days
+(reported points only, not joined), and a cross-study comparison for the
+selected category and region.
+
+## Measurements page
+
+Every study is shown through the same seven category slots (the six above plus
+**Recovery**). A slot without data reads "Not measured in this study" (or "Not
+reported in the abstract"). Each row gives percent change from the study's own
+baseline (reported, or calculated with the formula shown), the original value
+and unit, statistic, dispersion, n and what it counts, timepoint and source.
+Filters for study, category, region and timepoint; one comparison chart per
+category. The page is read-only. Evidence is added only through the curated
+catalog in `data/evidence/`, which is schema-validated at startup and pinned by
+tests (see `data/README.md`).
+
+## Study Library
+
+The library holds exactly eight studies. The *External supporting evidence*
+register (E1 NASA HRP evidence report; E2 Winnard 2019 and E3 Marusic 2021,
+bed-rest reviews; E4 Comfort 2021, spaceflight meta-analysis) is listed
+separately on the same page with citations, links, quoted text and how each
+source was used.
+
+## Known limitations
+
+- No study measured muscle during flight; all outcomes are pre/postflight.
+- Only LeBlanc 2000 offers measured groups at more than one mission length,
+  and those groups differ in more than duration.
+- Linear lines assume an even rate of change. LeBlanc's own data suggest loss
+  levels off, and E3 describes a logarithmic pattern in bed rest, so the
+  straight line is probably the wrong shape.
+- Scott 2023 values are CI midpoints (approximation); per-endpoint means are in
+  supplemental tables that are not in the local PDF.
+- Greene 2021 gives mission length only as "4-6 months"; its range is
+  converted at 30 days per month and marked approximate.
+- Studies use different statistics (SD, SE, SEM, 95% CI, ranges); error bars
+  show what each source reports and are not comparable as precision.
 
 ## Evidence audit
 
-The two engine-supported studies measure different outcomes at different
+The two studies audited first (English 2015, Fitts 2010) measure different outcomes at different
 biological levels. Their numerical values are kept separate.
 
 ### English et al. (2015)
@@ -148,111 +233,6 @@ biological levels. Their numerical values are kept separate.
   not represent whole-muscle change, and a group-level fibre result must not be
   generalized to whole-joint strength.
 
-## Scenario Explorer
-
-The Scenario Explorer has five scientific inputs plus a mission-duration
-slider. The analysis-view selector changes how observations are displayed; it
-is not an additional scientific model input:
-
-1. **Study** — all eight studies can be selected individually. English et al.
-   and Fitts et al. have numerical scenario controls; the six additional
-   studies show their evidence and model-eligibility status without an
-   unsupported numerical output. The combined view keeps the two supported
-   studies in separate panels with independent controls; their results are
-   never pooled.
-2. **Muscle or joint region** — knee, ankle, or trunk for English et al.;
-   soleus or gastrocnemius for Fitts et al. These are the anatomical targets
-   actually tested in each paper.
-3. **Measured outcome** — movement-specific isokinetic torque/work or a
-   fibre property such as diameter or peak force. Units and available results
-   depend on the selected study.
-4. **Comparison group** — overall cohort, sex, or exercise-device era for
-   English et al.; fibre type for Fitts et al. Subgroup results are descriptive
-   and do not establish causal effects.
-5. **Measurement timepoint** — English et al. offers postflight R+5, R+14, and
-   R+30 where reported; Fitts et al. uses L-55 +/- 2 days to landing day R+0.
-   Recovery timepoints remain separate from mission duration.
-6. **Mission-duration slider** — 90-240 days, default 177 days, step 1 day.
-   It remains explicitly context-only: no compatible linked observations
-   support an outcome-versus-duration relationship. The range is
-   rounded from approximately two SD around the English all-cohort duration
-   (163 +/- 38 days); 177 days is the Fitts cohort mean. A warning is shown
-   outside the English subgroup mean +/- one-SD envelope (105-205 days) or the
-   Fitts observed range (161-192 days), as applicable. The English envelope is
-   not an individual min/max. Duration is contextual only and never multiplies
-   an observed change or generates a loss curve.
-
-Baseline strength and weekly treadmill exposure are not additional controls:
-the reported strength/exposure associations do not provide a verified,
-compatible individual-level dataset for a scenario calculation. English et al.
-report correlations, and Fitts et al.'s exercise summaries and fibre outcomes
-cannot be linked as independent participant-level predictors here.
-
-The analysis-view selector offers an observed-data comparison and an English
-et al. postflight-recovery view. The recovery chart uses days after return on
-its horizontal axis and shows discrete verified observations with their
-reported 95% CIs; it does not draw a continuous trajectory. Other views show
-the reported English group mean and CI, or Fitts
-et al. preflight and landing-day fibre group means. The Fitts chart does not
-add uncertainty bars because the published fibre counts do not provide
-uncertainty for the paired change.
-
-Changing mission duration updates the displayed context and evidence-range
-warning, but does not alter source measurements. The available studies do not
-provide linked, independent outcome observations across enough mission
-durations to support a duration-versus-outcome fit or a continuous in-flight
-prediction. The app therefore does not estimate a hypothetical duration's
-physiological effect.
-
-### Analysis mode and calculations
-
-- **English et al.:** the engine retrieves the paper's reported mean percent
-  change and 95% CI for the selected outcome, group, and timepoint. It displays
-  those values as published relative to L-60; it does not fit a new model.
-  Negative percent change means a lower postflight group mean. Sex and hardware
-  group comparisons are accompanied by the paper's non-significance and
-  observational-design cautions.
-- **Fitts et al.:** for the all-crew soleus type I diameter and peak-force
-  means (Tables 2-3), the engine calculates
-  `absolute change = postflight - preflight` and
-  `percent change = (postflight - preflight) / preflight * 100`. This gives
-  -19 micrometres and -19.4% for diameter, and -0.30 mN and -34.9% for peak
-  force. These ratios are calculated from reported group mean levels and are
-  not the mean of participant-level percent changes. The abstract's rounded
-  descriptions are 20% and 35%, respectively. The app displays the SEM and
-  fibre counts for each pre/post group mean but does not invent a confidence
-  interval or uncertainty for the derived change.
-- Other Fitts selections are explicitly marked as lacking a matching,
-  source-verified numerical record. Their source tables include individual
-  crew/fibre data that need careful curation before further calculations.
-- No validated, externally validated, or duration-dependent prediction model
-  is implemented. The English paper's correlations are not used as equations;
-  the Fitts paper's reported associations are not treated as causal.
-
-### Provenance and data integrity
-
-The existing SQLite database is preserved and migrated additively with
-study-level source-availability, extraction, and quantitative-verification
-fields. On app startup, seeding remains idempotent. Source-checked values from
-English et al. Tables III-V and Fitts et al. Tables 2-3 retain their units,
-timepoints, sample sizes when stated, source page/table, source wording, and
-verification status. The five Gopalakrishnan abstract measurements retain
-their abstract page, section, and exact wording; their study-level status is
-`context_only`. Existing measurement records are not replaced. The engine uses
-only records matching the original studies' curated source catalog, so even a
-source-verified abstract transcription is not automatically a model input.
-Unverified or altered records are excluded from quantitative results.
-
-To add further values, use the Measurements tab. Keep the source PDF page,
-table/figure, unit, measurement timepoint, baseline, exact source wording,
-sample size and its meaning, and uncertainty/extraction notes. New entries
-remain `unverified` until checked against the rendered PDF. Marking a record
-verified does not automatically make it an engine input; add the measurement
-to the curated scenario catalog only after its biological level, units,
-population, and analysis are reviewed and tests are added. Do not convert
-fibre counts into crew sample sizes or infer individual values from group
-means/SDs.
-
 ## Setup
 
 Python 3.14 is the target environment. From the project root in PowerShell:
@@ -271,8 +251,31 @@ failure is not validation of the scientific code.
 ## Run the app
 
 ```powershell
-python -m streamlit run app.py
+python app.py
 ```
+
+The app starts a local server at <http://127.0.0.1:8501/> and opens it in your
+default browser. Press Ctrl+C to stop it. Use `--port`, `--host` and
+`--no-browser` as needed. Everything, including the charting library, is
+served locally, and the pages use the system font stack.
+
+The server is read-only: it answers GET requests and refuses any write with
+405 Method Not Allowed.
+
+### Troubleshooting
+
+- **Run without activating the virtual environment:** from the project folder,
+  run `.\.venv\Scripts\python.exe app.py`.
+- **"Port 8501 is already in use":** another server, usually an older Atrophy
+  Armour still running in a different terminal, holds the port. Close that
+  terminal (or press Ctrl+C in it), or find and stop the process with
+  `netstat -ano | findstr :8501` and `Stop-Process -Id <PID>`. Alternatively,
+  start on another port with `python app.py --port 8502`. The server refuses to
+  share a port, so it can no longer start silently next to an old one.
+- **"The running server looks out of date" or "Server is outdated" on the
+  Explorer page:** the page and the running server come from different
+  versions of the code. Stop the server, start it again, and hard-refresh the
+  page (Ctrl+F5).
 
 ## Diagnose reference PDFs
 
@@ -290,25 +293,32 @@ source PDFs are preserved in `data/references/`.
 python -m pytest
 ```
 
-Tests cover published values, percent-change arithmetic and signs, units,
-confidence intervals, input validation, missing/unverified records, study-level
-separation, duration boundaries/warnings, and the existing Study Library.
+Tests cover the evidence schema and provenance rules, pinned source values for
+every study, percent-change arithmetic and signs, the duration model (anchors,
+supported range, extrapolation and fallback flags), control availability per
+study, page data, the evidence matrix and the HTTP server (including the
+read-only rule). `tests/test_scenario_regression.py` compares the results
+payload with a saved baseline (`tests/fixtures/scenario_baseline.json`) so that
+interface changes cannot silently change the scientific output.
 
 ## Project structure
 
-- `app.py` — Streamlit Scenario Explorer and Study Library interface.
-- `scenario_inputs.py` — typed scenario inputs, available controls, and
-  study-specific validation.
-- `model.py` — scientific calculations, duration warnings, and interpretation.
-- `scenario_evidence.py` — source-checked observations, provenance, and
-  idempotent Study Library seeding/retrieval, including verified recovery data.
-- `plotting.py` — verified relative-change, recovery, and fibre comparison
-  charts.
-- `study_library.py` — SQLite schema, study summaries, and measurement
-  verification rules.
-- `database.py` — SQLite connection helper.
-- `data/` — local Study Library database and source PDFs.
-- `tests/` — application helper, Study Library, and scenario-engine tests.
+The browser only draws what the Python server sends; selection rules,
+calculations and chart construction stay in Python.
+
+- `app.py`, `server.py`: start the local server for `web/` and the JSON API.
+- `api.py`: page data for the three pages; the Explorer has a controls-only
+  view (`/api/scenario/controls`) and a full results view (`/api/scenario`).
+- `evidence_catalog.py`: catalog loading, schema validation, harmonized series.
+- `duration_model.py`: the multi-cohort and linear-fallback duration models.
+- `scenario_inputs.py`: the five controls, study filter and option availability.
+- `model.py`: assembles a scenario from the controls and the duration model.
+- `plotting.py`: duration, recovery and comparison charts.
+- `study_library.py`, `database.py`: SQLite schema and the eight study summaries.
+- `build_evidence_matrix.py`: writes `docs/evidence_matrix.md`.
+- `data/evidence/`: the catalog; `data/references/`: source PDFs.
+- `web/`: pages, `assets/css/site.css`, `assets/js`.
+- `tests/`: test suites.
 
 This is an educational research tool, not a clinical, operational, or
 mission-planning system.

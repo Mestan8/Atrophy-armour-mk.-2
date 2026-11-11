@@ -1,0 +1,108 @@
+{
+  "study_id": "fitts-2010",
+  "presets": {
+    "ALL": {
+      "cohort_id": "all", "cohort": "All nine analysed crew members",
+      "countermeasure_id": "iss_ired_tvis",
+      "countermeasure": "ISS, iRED era: treadmill (TVIS), cycle ergometers and interim resistive exercise device; individually varied programme"
+    },
+    "HIGH": {
+      "cohort_id": "high_treadmill", "cohort": "High treadmill group (crew members B, E, G and H)",
+      "countermeasure_id": "high_treadmill",
+      "countermeasure": "ISS, iRED era: high treadmill group, running 200 min/week or more (4 crew)"
+    },
+    "LOW": {
+      "cohort_id": "low_treadmill", "cohort": "Low treadmill group (crew members A, C, D, F and I)",
+      "countermeasure_id": "low_treadmill",
+      "countermeasure": "ISS, iRED era: low treadmill group, running less than 100 min/week (5 crew)"
+    }
+  },
+  "defaults": {
+    "outcome_category": "fibre",
+    "region": "calf_ankle",
+    "biological_level": "single muscle fibres (biopsy)",
+    "measure_kind": "level",
+    "statistic_type": "mean",
+    "dispersion_type": "SEM",
+    "n_counts": "fibres (subsamples from the crew members in the group; not participants)",
+    "subgroup": "all",
+    "sex": "not reported in this article",
+    "mission_duration": {
+      "value": 177, "unit": "days", "dispersion_type": "SE", "dispersion": [4], "range": [161, 192],
+      "wording": "The subjects (n = 9) age, height, weight and days in space were 45 ± 2 years, 176 ± 2 cm, 81 ± 3 kg, and 177 ± 4 days (range = 161–192 days), respectively.", "pdf_page": 2,
+      "note": "Group value for all nine crew; durations for the treadmill subgroups are not reported separately."
+    },
+    "baseline_timepoint": "L-55 ± 2 days (preflight biopsy)",
+    "value_type": "reported",
+    "verification_status": "rendered_page_checked",
+    "notes": "Values are means ± SEM and n is the number of fibres studied (table footnotes). Fibre counts are not crew sample sizes: nine crew members were analysed. R+0 is a landing-day biopsy, not an in-flight measurement. Treadmill groups were formed after the fact from exercise logs."
+  },
+  "columns": [
+    {"use": "ALL", "label": "All crew members, Pre-flight", "timepoint": "Preflight (L-55)", "timepoint_kind": "preflight", "recovery_day": null},
+    {"use": "ALL", "label": "All crew members, Post-flight", "timepoint": "R+0 (landing day)", "timepoint_kind": "postflight", "recovery_day": 0},
+    {"use": "HIGH", "label": "High treadmill, Pre-flight", "timepoint": "Preflight (L-55)", "timepoint_kind": "preflight", "recovery_day": null},
+    {"use": "HIGH", "label": "High treadmill, Post-flight", "timepoint": "R+0 (landing day)", "timepoint_kind": "postflight", "recovery_day": 0},
+    {"use": "LOW", "label": "Low treadmill, Pre-flight", "timepoint": "Preflight (L-55)", "timepoint_kind": "preflight", "recovery_day": null},
+    {"use": "LOW", "label": "Low treadmill, Post-flight", "timepoint": "R+0 (landing day)", "timepoint_kind": "postflight", "recovery_day": 0}
+  ],
+  "blocks": [
+    {
+      "defaults": {"pdf_page": 6, "table_or_figure": "Table 2", "muscle_or_joint": "soleus, slow type I fibres"},
+      "fields": ["row_label", "outcome_id", "outcome_name", "unit", "ns", "cells"],
+      "rows": [
+        ["Sol Type I, Diameter (μm)", "soleus_type_i_diameter", "Soleus type I fibre diameter", "μm", [540, 458, 243, 220, 297, 238], ["98 ± 1", "79 ± 1*", "90 ± 1", "82 ± 1*", "104 ± 1", "77 ± 1*"]],
+        ["Sol Type I, CSA (μm²)", "soleus_type_i_csa", "Soleus type I fibre cross-sectional area", "μm²", [540, 458, 243, 220, 297, 238], ["7907 ± 705", "4824 ± 459*", "6517 ± 936", "5235 ± 391", "9019 ± 753", "4496 ± 778*"]]
+      ]
+    },
+    {
+      "defaults": {"pdf_page": 6, "table_or_figure": "Table 2", "muscle_or_joint": "gastrocnemius, slow type I fibres"},
+      "fields": ["row_label", "outcome_id", "outcome_name", "unit", "ns", "cells"],
+      "rows": [
+        ["Gastrocnemius Type I, Diameter (μm)", "gastrocnemius_type_i_diameter", "Gastrocnemius type I fibre diameter", "μm", [305, 186, 118, 72, 187, 114], ["82 ± 1", "71 ± 1*", "85 ± 1", "76 ± 1*", "80 ± 1", "68 ± 1*"]],
+        ["Gastrocnemius Type I, CSA (μm²)", "gastrocnemius_type_i_csa", "Gastrocnemius type I fibre cross-sectional area", "μm²", [305, 186, 118, 72, 187, 114], ["5851 ± 643", "4225 ± 490†", "6006 ± 1091", "4437 ± 813", "5758 ± 892", "4098 ± 681"]]
+      ]
+    },
+    {
+      "defaults": {"pdf_page": 7, "table_or_figure": "Table 3", "muscle_or_joint": "soleus, slow type I fibres"},
+      "fields": ["row_label", "outcome_id", "outcome_name", "unit", "ns", "cells"],
+      "rows": [
+        ["Po (mN)", "soleus_type_i_peak_force", "Soleus type I fibre peak isometric force", "mN", [540, 458, 243, 220, 297, 238], ["0.86 ± 0.01", "0.56 ± 0.01*", "0.73 ± 0.01", "0.56 ± 0.01*", "0.97 ± 0.02", "0.56 ± 0.01*"]],
+        ["Vo (FL s−1)", "soleus_type_i_shortening_velocity", "Soleus type I fibre maximal shortening velocity", "FL/s", [540, 458, 243, 220, 297, 238], ["0.85 ± 0.02", "0.68 ± 0.01*", "0.88 ± 0.03", "0.72 ± 0.02*", "0.83 ± 0.02", "0.64 ± 0.02*"]]
+      ]
+    },
+    {
+      "defaults": {"pdf_page": 8, "table_or_figure": "Table 4", "muscle_or_joint": "gastrocnemius, slow type I fibres"},
+      "fields": ["row_label", "outcome_id", "outcome_name", "unit", "ns", "cells"],
+      "rows": [
+        ["Po (mN)", "gastrocnemius_type_i_peak_force", "Gastrocnemius type I fibre peak isometric force", "mN", [305, 186, 118, 72, 187, 114], ["0.61 ± 0.02", "0.46 ± 0.01*", "0.62 ± 0.02", "0.50 ± 0.02*", "0.60 ± 0.03", "0.43 ± 0.01*"]],
+        ["Vo (FL s−1)", "gastrocnemius_type_i_shortening_velocity", "Gastrocnemius type I fibre maximal shortening velocity", "FL/s", [305, 186, 118, 72, 187, 114], ["0.86 ± 0.02", "0.72 ± 0.02*", "0.89 ± 0.03", "0.73 ± 0.04*", "0.85 ± 0.02", "0.71 ± 0.02*"]]
+      ]
+    },
+    {
+      "defaults": {"pdf_page": 9, "table_or_figure": "Table 5", "muscle_or_joint": "soleus, fast type II fibres"},
+      "fields": ["row_label", "outcome_id", "outcome_name", "unit", "ns", "cells"],
+      "rows": [
+        ["Diameter (μm)", "soleus_type_ii_diameter", "Soleus type II fibre diameter", "μm", [60, 84, 37, 24, 23, 60], ["95 ± 2", "80 ± 2*", "90 ± 2", "87 ± 3", "105 ± 5", "77 ± 2*"]],
+        ["CSA (μm²)", "soleus_type_ii_csa", "Soleus type II fibre cross-sectional area", "μm²", [60, 84, 37, 24, 23, 60], ["7358 ± 396", "5245 ± 255*", "6548 ± 296", "6170 ± 490", "9054 ± 845", "4818 ± 296*"]],
+        ["Po (mN)", "soleus_type_ii_peak_force", "Soleus type II fibre peak isometric force", "mN", [60, 84, 37, 24, 23, 60], ["0.97 ± 0.05", "0.71 ± 0.03*", "0.82 ± 0.04", "0.80 ± 0.07", "1.20 ± 0.09", "0.68 ± 0.03*"]],
+        ["Vo (FL s−1)", "soleus_type_ii_shortening_velocity", "Soleus type II fibre maximal shortening velocity", "FL/s", [60, 84, 37, 24, 23, 60], ["2.66 ± 0.16", "2.94 ± 0.15", "2.62 ± 0.20", "2.52 ± 0.26", "2.74 ± 0.25", "3.10 ± 0.17"]]
+      ]
+    },
+    {
+      "defaults": {"pdf_page": 9, "table_or_figure": "Table 6", "muscle_or_joint": "gastrocnemius, fast type II fibres"},
+      "fields": ["row_label", "outcome_id", "outcome_name", "unit", "ns", "cells"],
+      "rows": [
+        ["Diameter (μm)", "gastrocnemius_type_ii_diameter", "Gastrocnemius type II fibre diameter", "μm", [128, 139, 52, 58, 76, 81], ["78 ± 2", "77 ± 1", "91 ± 2", "85 ± 2", "69 ± 2", "70 ± 1"]],
+        ["CSA (μm²)", "gastrocnemius_type_ii_csa", "Gastrocnemius type II fibre cross-sectional area", "μm²", [128, 139, 52, 58, 76, 81], ["5045 ± 282", "4774 ± 154", "9709 ± 361", "5845 ± 221*", "3970 ± 223", "4012 ± 168"]],
+        ["Po (mN)", "gastrocnemius_type_ii_peak_force", "Gastrocnemius type II fibre peak isometric force", "mN", [128, 139, 52, 58, 76, 81], ["0.73 ± 0.03", "0.68 ± 0.02", "0.97 ± 0.05", "0.78 ± 0.03*", "0.57 ± 0.03", "0.61 ± 0.03"]],
+        ["Vo (FL s−1)", "gastrocnemius_type_ii_shortening_velocity", "Gastrocnemius type II fibre maximal shortening velocity", "FL/s", [128, 139, 52, 58, 76, 81], ["3.36 ± 0.11", "2.77 ± 0.09*", "3.45 ± 0.17", "2.78 ± 0.13*", "3.30 ± 0.14", "2.76 ± 0.13*"]]
+      ]
+    }
+  ],
+  "cell_notes": {
+    "soleus_type_i_diameter|All crew members, Post-flight": "The same table row prints the mean of the crew members' percentages of pre-flight diameter as 80 ± 6; the abstract describes this as 20% atrophy. The app's percent change is calculated from the two group means instead.",
+    "soleus_type_i_peak_force|All crew members, Post-flight": "The same table row prints 65 as the percentage of the pre-flight value; the abstract describes a 35% decline. The app's percent change is calculated from the two group means.",
+    "soleus_type_i_shortening_velocity|*": "Table 3 footnote: for crew member C the n for Vo was 35 and 31 (pre and post), so the fibre counts printed for the group rows may overstate n for Vo.",
+    "gastrocnemius_type_ii_csa|High treadmill, Post-flight": "Printed CSA falls from 9709 to 5845 μm² while the printed diameter in the same row changes only from 91 to 85 μm; transcribed as printed."
+  }
+}

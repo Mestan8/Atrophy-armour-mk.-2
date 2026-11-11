@@ -1,0 +1,63 @@
+{
+  "description": "Every link between mission duration and outcome found inside the eight Study Library papers, other than each study's own group mean at its own mean duration. None of these is a prediction equation.",
+  "within_study_associations": [
+    {
+      "study_id": "scott-2023",
+      "statistic": "Somers' D (rank-based association) between mission length and pre-to-postflight change",
+      "pdf_page": 4,
+      "table_or_figure": "Fig. 3a, 3b and 3d, row 'Mission Length'",
+      "value_type": "reported",
+      "verification_status": "rendered_page_checked",
+      "source_wording": "In general, longer mission length was associated with greater loss of bone content, lower body muscle strength, and VO2peak. (Results, PDF page 2)",
+      "limitation": "A rank correlation gives direction and strength of association only. No slope, intercept or confidence interval is printed, so it cannot convert days into percent change and is not used as an equation.",
+      "values": {
+        "leg_press_isometric_force": -0.13,
+        "leg_press_power": -0.24,
+        "leg_press_work": -0.24,
+        "leg_press_1rm": -0.1,
+        "bench_press_isometric_force": -0.29,
+        "bench_press_power": 0.28,
+        "bench_press_work": -0.04,
+        "bench_press_1rm": -0.04,
+        "quadriceps_csa": -0.21,
+        "hamstrings_csa": 0.18,
+        "calf_csa": -0.3,
+        "fat_mass": 0.15,
+        "lean_body_mass": 0.03,
+        "vo2peak": -0.18
+      }
+    }
+  ],
+  "statements": [
+    {
+      "study_id": "leblanc-2000",
+      "applies_to_category": "muscle_size",
+      "pdf_page": 3,
+      "table_or_figure": "Results text, 'Muscle volume'",
+      "value_type": "reported",
+      "verification_status": "rendered_page_checked",
+      "source_wording": "A linear regression of the percent loss against flight duration showed no significant slope for any of the regions, suggesting that the volume changes reached a new steady state by or before ~4 mo of flight.",
+      "limitation": "The slope, its confidence interval and the individual durations are not printed. The statement covers 16 Shuttle/Mir crew on flights of 115 to 197 days who exercised in flight."
+    },
+    {
+      "study_id": "leblanc-2000",
+      "applies_to_category": "muscle_size",
+      "pdf_page": 5,
+      "table_or_figure": "Discussion, 'Muscle volume'",
+      "value_type": "reported",
+      "verification_status": "rendered_page_checked",
+      "source_wording": "For example, the 17-day mission showed decreases up to ~10%, whereas the 4- to 6.5-mo missions showed maximum changes of only 17%.",
+      "limitation": "The short and long cohorts differ in crew, vehicle and exercise, so the comparison mixes duration with countermeasure."
+    },
+    {
+      "study_id": "sprint-2020",
+      "applies_to_category": null,
+      "pdf_page": 6,
+      "table_or_figure": "Table 5 footnote",
+      "value_type": "reported",
+      "verification_status": "rendered_page_checked",
+      "source_wording": "One subject completed a 340-d mission; that value is not included in the mission duration means; however, the subject's data are included in all analyses of dependent variables.",
+      "limitation": "The 340-day subject's outcomes are not reported separately, so this gives no usable long-duration point."
+    }
+  ]
+}

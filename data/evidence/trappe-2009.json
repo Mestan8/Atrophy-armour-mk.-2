@@ -1,0 +1,129 @@
+{
+  "study_id": "trappe-2009",
+  "defaults": {
+    "region": "calf_ankle",
+    "statistic_type": "mean",
+    "dispersion_type": "SE",
+    "n": 9,
+    "n_counts": "crew members",
+    "cohort_id": "all",
+    "cohort": "Nine analyzed ISS crew members (American astronauts and Russian cosmonauts)",
+    "subgroup": "all",
+    "sex": "not reported in this article",
+    "countermeasure_id": "iss_ired_tvis",
+    "countermeasure": "ISS, iRED era: treadmill (TVIS), cycle ergometers and interim resistive exercise device; individually varied programme",
+    "mission_duration": {
+      "value": 177, "unit": "days", "dispersion_type": "SE", "dispersion": [4], "range": [161, 192],
+      "wording": "days in space were ... 177 ± 4 days (range = 161–192 days)", "pdf_page": 2
+    },
+    "value_type": "reported",
+    "verification_status": "rendered_page_checked",
+    "notes": "All data are means ± SE (Statistical analysis, PDF page 4). Individual values for each of the nine crew members are printed in the same table and are not stored here."
+  },
+  "blocks": [
+    {
+      "defaults": {
+        "outcome_category": "muscle_size", "biological_level": "whole muscle (MRI volume)",
+        "measure_kind": "level", "unit": "cm³", "pdf_page": 5, "table_or_figure": "Table 5",
+        "baseline_timepoint": "L-40 (40 ± 3 days before launch)"
+      },
+      "fields": ["outcome_id", "outcome_name", "muscle_or_joint", "timepoint", "timepoint_kind", "recovery_day", "value", "dispersion", "source_wording"],
+      "rows": [
+        ["calf_gastrocnemius_volume", "Gastrocnemius (medial + lateral head) muscle volume", "gastrocnemius", "Preflight (L-40)", "preflight", null, 309, [23], "Gastocnemius (medial + lateral head), Mean ± SE, Pre: 309 ± 23"],
+        ["calf_gastrocnemius_volume", "Gastrocnemius (medial + lateral head) muscle volume", "gastrocnemius", "R+4", "postflight", 4, 274, [18], "Gastocnemius (medial + lateral head), Mean ± SE, Post (R+4): 274 ± 18*"],
+        ["calf_gastrocnemius_volume", "Gastrocnemius (medial + lateral head) muscle volume", "gastrocnemius", "R+19", "postflight", 19, 291, [20], "Gastocnemius (medial + lateral head), Mean ± SE, Post (R+19): 291 ± 20"],
+        ["calf_soleus_volume", "Soleus muscle volume", "soleus", "Preflight (L-40)", "preflight", null, 455, [27], "Soleus, Mean ± SE, Pre: 455 ± 27"],
+        ["calf_soleus_volume", "Soleus muscle volume", "soleus", "R+4", "postflight", 4, 383, [19], "Soleus, Mean ± SE, Post (R+4): 383 ± 19*"],
+        ["calf_soleus_volume", "Soleus muscle volume", "soleus", "R+19", "postflight", 19, 408, [20], "Soleus, Mean ± SE, Post (R+19): 408 ± 20*†"],
+        ["calf_gastrocnemius_soleus_volume", "Gastrocnemius + soleus muscle volume", "gastrocnemius + soleus", "Preflight (L-40)", "preflight", null, 764, [47], "Gastrocnemius + soleus, Mean ± SE, Pre: 764 ± 47"],
+        ["calf_gastrocnemius_soleus_volume", "Gastrocnemius + soleus muscle volume", "gastrocnemius + soleus", "R+4", "postflight", 4, 657, [35], "Gastrocnemius + soleus, Mean ± SE, Post (R+4): 657 ± 35*"],
+        ["calf_gastrocnemius_soleus_volume", "Gastrocnemius + soleus muscle volume", "gastrocnemius + soleus", "R+19", "postflight", 19, 699, [39], "Gastrocnemius + soleus, Mean ± SE, Post (R+19): 699 ± 39*"]
+      ]
+    },
+    {
+      "defaults": {
+        "outcome_category": "muscle_size", "biological_level": "whole muscle (MRI volume)",
+        "measure_kind": "percent_change", "unit": "%", "pdf_page": 5, "table_or_figure": "Table 5",
+        "baseline_timepoint": "L-40 (40 ± 3 days before launch)", "timepoint_kind": "postflight",
+        "notes": "Mean ± SE of the nine individual percent changes printed in Table 5; this is not the ratio of the group mean volumes."
+      },
+      "fields": ["outcome_id", "outcome_name", "muscle_or_joint", "timepoint", "recovery_day", "value", "dispersion", "source_wording"],
+      "rows": [
+        ["calf_gastrocnemius_volume", "Gastrocnemius (medial + lateral head) muscle volume", "gastrocnemius", "R+4", 4, -10, [2], "Gastocnemius, Mean ± SE, % Δ (Pre to R+4): −10 ± 2"],
+        ["calf_gastrocnemius_volume", "Gastrocnemius (medial + lateral head) muscle volume", "gastrocnemius", "R+19", 19, -5, [2], "Gastocnemius, Mean ± SE, % Δ (Pre to R+19): −5 ± 2"],
+        ["calf_soleus_volume", "Soleus muscle volume", "soleus", "R+4", 4, -15, [2], "Soleus, Mean ± SE, % Δ (Pre to R+4): −15 ± 2"],
+        ["calf_soleus_volume", "Soleus muscle volume", "soleus", "R+19", 19, -9, [1], "Soleus, Mean ± SE, % Δ (Pre to R+19): −9 ± 1"],
+        ["calf_gastrocnemius_soleus_volume", "Gastrocnemius + soleus muscle volume", "gastrocnemius + soleus", "R+4", 4, -13, [2], "Gastrocnemius + soleus, Mean ± SE, % Δ (Pre to R+4): −13 ± 2"],
+        ["calf_gastrocnemius_soleus_volume", "Gastrocnemius + soleus muscle volume", "gastrocnemius + soleus", "R+19", 19, -8, [2], "Gastrocnemius + soleus, Mean ± SE, % Δ (Pre to R+19): −8 ± 2"]
+      ]
+    },
+    {
+      "defaults": {
+        "outcome_category": "strength", "biological_level": "whole joint (torque-velocity dynamometer)",
+        "muscle_or_joint": "calf (ankle plantar flexion)",
+        "measure_kind": "level", "unit": "Nm", "pdf_page": 6, "table_or_figure": "Table 6",
+        "baseline_timepoint": "Preflight (four sessions, L-127 to L-27; Table 6 column 'Pre')"
+      },
+      "fields": ["outcome_id", "outcome_name", "timepoint", "timepoint_kind", "recovery_day", "value", "dispersion", "source_wording"],
+      "rows": [
+        ["calf_isometric_mvc", "Calf maximal voluntary isometric contraction (neutral ankle angle)", "Preflight", "preflight", null, 144, [11], "Isometric (at neutral ankle angle), Mean ± SE, Pre: 144 ± 11"],
+        ["calf_isometric_mvc", "Calf maximal voluntary isometric contraction (neutral ankle angle)", "R+7", "postflight", 7, 120, [9], "Isometric (at neutral ankle angle), Mean ± SE, Post (R+7): 120 ± 9*"],
+        ["calf_isometric_mvc", "Calf maximal voluntary isometric contraction (neutral ankle angle)", "R+13", "postflight", 13, 121, [11], "Isometric (at neutral ankle angle), Mean ± SE, Post (R+13): 121 ± 11*"],
+        ["calf_isokinetic_60", "Calf isokinetic peak torque at 60°/s", "Preflight", "preflight", null, 95, [7], "Isokinetic (at 60°/s), Mean ± SE, Pre: 95 ± 7"],
+        ["calf_isokinetic_60", "Calf isokinetic peak torque at 60°/s", "R+7", "postflight", 7, 72, [5], "Isokinetic (at 60°/s), Mean ± SE, Post (R+7): 72 ± 5*"],
+        ["calf_isokinetic_60", "Calf isokinetic peak torque at 60°/s", "R+13", "postflight", 13, 73, [6], "Isokinetic (at 60°/s), Mean ± SE, Post (R+13): 73 ± 6*"],
+        ["calf_isokinetic_180", "Calf isokinetic peak torque at 180°/s", "Preflight", "preflight", null, 43, [3], "Isokinetic (at 180°/s), Mean ± SE, Pre: 43 ± 3"],
+        ["calf_isokinetic_180", "Calf isokinetic peak torque at 180°/s", "R+7", "postflight", 7, 29, [3], "Isokinetic (at 180°/s), Mean ± SE, Post (R+7): 29 ± 3*"],
+        ["calf_isokinetic_180", "Calf isokinetic peak torque at 180°/s", "R+13", "postflight", 13, 30, [4], "Isokinetic (at 180°/s), Mean ± SE, Post (R+13): 30 ± 4*"]
+      ]
+    },
+    {
+      "defaults": {
+        "outcome_category": "strength", "biological_level": "whole joint (torque-velocity dynamometer)",
+        "muscle_or_joint": "calf (ankle plantar flexion)",
+        "measure_kind": "percent_change", "unit": "%", "pdf_page": 5, "table_or_figure": "Results text, 'Muscle performance'",
+        "baseline_timepoint": "Preflight (four sessions, L-127 to L-27)", "timepoint_kind": "postflight",
+        "notes": "Percent change as printed in the results text (mean ± SE). The sign is taken from the wording ('reduced', 'loss', 'reduction')."
+      },
+      "fields": ["outcome_id", "outcome_name", "timepoint", "recovery_day", "value", "dispersion", "source_wording"],
+      "rows": [
+        ["calf_isometric_mvc", "Calf maximal voluntary isometric contraction (neutral ankle angle)", "R+7", 7, -14, [2], "MVC was reduced (P < 0.05) −14 ± 2% at R+7"],
+        ["calf_isometric_mvc", "Calf maximal voluntary isometric contraction (neutral ankle angle)", "R+13", 13, -13, [5], "and remained lower (−13 ± 5%; P < 0.05) at R+13"],
+        ["calf_isokinetic_60", "Calf isokinetic peak torque at 60°/s", "R+7", 7, -20, [3], "At the slow isokinetic speed (60°/s) there was a −20 ± 3% loss (P < 0.05)"],
+        ["calf_isokinetic_60", "Calf isokinetic peak torque at 60°/s", "R+13", 13, -19, [4], "which was sustained (−19 ± 4; P < 0.05) at R+13"],
+        ["calf_isokinetic_180", "Calf isokinetic peak torque at 180°/s", "R+7", 7, -25, [10], "the faster (180°/s) isokinetic speed with a 25 ± 10% reduction at R+7 and R+13"],
+        ["calf_isokinetic_180", "Calf isokinetic peak torque at 180°/s", "R+13", 13, -25, [10], "the faster (180°/s) isokinetic speed with a 25 ± 10% reduction at R+7 and R+13"]
+      ]
+    },
+    {
+      "defaults": {
+        "outcome_category": "strength", "biological_level": "whole joint (torque-velocity dynamometer)",
+        "muscle_or_joint": "calf (ankle plantar flexion)",
+        "outcome_id": "calf_peak_power", "outcome_name": "Calf peak power",
+        "measure_kind": "level", "unit": "W", "pdf_page": 5, "table_or_figure": "Results text, 'Muscle performance'",
+        "baseline_timepoint": "Preflight",
+        "source_wording": "Peak power was 134 ± 11, 91 ± 10, and 94 ± 13 W preflight, R+7, and R+13, respectively. On average, peak power declined 32% with spaceflight (P < 0.05).",
+        "notes": "The sentence runs from the left to the right column of PDF page 5. The authors' rounded summary is a 32% decline; the percent change shown by the app is calculated from the printed group means."
+      },
+      "fields": ["timepoint", "timepoint_kind", "recovery_day", "value", "dispersion"],
+      "rows": [
+        ["Preflight", "preflight", null, 134, [11]],
+        ["R+7", "postflight", 7, 91, [10]],
+        ["R+13", "postflight", 13, 94, [13]]
+      ]
+    },
+    {
+      "defaults": {
+        "outcome_category": "fibre", "biological_level": "single muscle fibres (biopsy, myosin heavy chain typing)",
+        "measure_kind": "proportion_change", "unit": "% (as printed)", "n": 8, "dispersion_type": "none", "dispersion": [],
+        "baseline_timepoint": "L-55 ± 2 days (biopsy)", "timepoint": "R+0 (landing day)", "timepoint_kind": "postflight", "recovery_day": 0,
+        "notes": "Change in the share of fibres expressing only MHC I. The text does not say whether the figure is relative or in percentage points, so it is not placed on the common percent-change axis. One crew member (subject B) was excluded for a small biopsy sample. Fibre counts (4,328 fibres) are not participant counts."
+      },
+      "fields": ["outcome_id", "outcome_name", "muscle_or_joint", "value", "pdf_page", "table_or_figure", "source_wording"],
+      "rows": [
+        ["gastrocnemius_mhc_i_share", "Gastrocnemius MHC I fibre share", "gastrocnemius", -12, 5, "Results text, 'Muscle fiber type'", "The gastrocnemius had a 12% decrease (P < 0.05) in MHC I fibers"],
+        ["soleus_mhc_i_share", "Soleus MHC I fibre share", "soleus", -17, 6, "Results text, 'Muscle fiber type'", "On average, the soleus had a 17% decrease (P < 0.05) in MHC I fibers."]
+      ]
+    }
+  ]
+}

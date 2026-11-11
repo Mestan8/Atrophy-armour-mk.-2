@@ -1,0 +1,61 @@
+{
+  "study_id": "greene-2021",
+  "defaults": {
+    "region": "trunk",
+    "muscle_or_joint": "total trunk muscle at mid-L2 (psoas, quadratus lumborum, erector spinae, abdominal wall)",
+    "statistic_type": "mean",
+    "n_counts": "crew members",
+    "cohort_id": "all",
+    "cohort": "ISS crew members enrolled in a bone-loss study, retrospectively analysed",
+    "subgroup": "all",
+    "sex": "15 men, 1 woman",
+    "countermeasure_id": "iss_not_specified",
+    "countermeasure": "ISS in-flight exercise; hardware and prescription not reported for this cohort",
+    "mission_duration": {
+      "value": null, "unit": "days", "dispersion_type": "none", "dispersion": [], "range": [120, 180],
+      "range_is_approximate": true,
+      "wording": "15 males and 1 female who were on the ISS for 4–6 months", "pdf_page": 3,
+      "note": "Only '4–6 months' is reported. The 120–180 day range is calculated at 30 days per month and is approximate; no mean or SD is reported."
+    },
+    "baseline_timepoint": "Pre-flight (CT typically 1–9 months before launch)",
+    "pdf_page": 17, "table_or_figure": "Table 1",
+    "value_type": "reported",
+    "verification_status": "rendered_page_checked"
+  },
+  "blocks": [
+    {
+      "defaults": {"measure_kind": "level", "dispersion_type": "SD"},
+      "fields": ["outcome_category", "outcome_id", "outcome_name", "biological_level", "unit", "timepoint", "timepoint_kind", "recovery_day", "recovery_window", "n", "value", "dispersion", "source_wording"],
+      "rows": [
+        ["muscle_size", "trunk_csa_ct", "Trunk skeletal muscle cross-sectional area (CT, L2)", "muscle group (CT cross-section)", "cm²", "Pre-flight", "preflight", null, null, 16, 153.4, [17.1], "Pre-Flight, CSA_CT, cm², N 16, Mean ± SD: 153.4 ± 17.1"],
+        ["muscle_size", "trunk_csa_ct", "Trunk skeletal muscle cross-sectional area (CT, L2)", "muscle group (CT cross-section)", "cm²", "Post-flight return (within about two weeks of landing)", "postflight", 7, [0, 14], 16, 146.4, [17.1], "Post-Flight Return, CSA_CT, cm², N 16, Mean ± SD: 146.4 ± 17.1"],
+        ["muscle_size", "trunk_csa_ct", "Trunk skeletal muscle cross-sectional area (CT, L2)", "muscle group (CT cross-section)", "cm²", "1 year post-flight", "postflight", 365, null, 14, 152.3, [16.2], "1 Year Post-Flight, CSA_CT, cm², N 14, Mean ± SD: 152.3 ± 16.2"],
+        ["muscle_size", "trunk_csa_ct", "Trunk skeletal muscle cross-sectional area (CT, L2)", "muscle group (CT cross-section)", "cm²", "2–4 years post-flight", "postflight", 1095, [730, 1460], 8, 154.1, [12.8], "2–4 Years Post-Flight, CSA_CT, cm², N 8, Mean ± SD: 154.1 ± 12.8"],
+        ["body_composition", "trunk_muscle_attenuation_ct", "Trunk muscle attenuation (CT, L2)", "muscle group (CT radiodensity)", "HU", "Pre-flight", "preflight", null, null, 16, 47.4, [3.6], "Pre-Flight, MA_CT, HU, N 16, Mean ± SD: 47.4 ± 3.6"],
+        ["body_composition", "trunk_muscle_attenuation_ct", "Trunk muscle attenuation (CT, L2)", "muscle group (CT radiodensity)", "HU", "Post-flight return (within about two weeks of landing)", "postflight", 7, [0, 14], 16, 45.8, [3.6], "Post-Flight Return, MA_CT, HU, N 16, Mean ± SD: 45.8 ± 3.6"],
+        ["body_composition", "trunk_muscle_attenuation_ct", "Trunk muscle attenuation (CT, L2)", "muscle group (CT radiodensity)", "HU", "1 year post-flight", "postflight", 365, null, 14, 48.5, [3.4], "1 Year Post-Flight, MA_CT, HU, N 14, Mean ± SD: 48.5 ± 3.4"],
+        ["body_composition", "trunk_muscle_attenuation_ct", "Trunk muscle attenuation (CT, L2)", "muscle group (CT radiodensity)", "HU", "2–4 years post-flight", "postflight", 1095, [730, 1460], 8, 48.7, [3.1], "2–4 Years Post-Flight, MA_CT, HU, N 8, Mean ± SD: 48.7 ± 3.1"]
+      ]
+    },
+    {
+      "defaults": {"measure_kind": "percent_change", "unit": "%", "dispersion_type": "SE", "timepoint_kind": "postflight"},
+      "fields": ["outcome_category", "outcome_id", "outcome_name", "biological_level", "timepoint", "recovery_day", "recovery_window", "n", "value", "dispersion", "source_wording", "notes"],
+      "rows": [
+        ["muscle_size", "trunk_csa_ct", "Trunk skeletal muscle cross-sectional area (CT, L2)", "muscle group (CT cross-section)", "Post-flight return (within about two weeks of landing)", 7, [0, 14], 16, -4.7, [1.1], "Post-Flight Return, CSA_CT, Percent Change from Pre-Flight, Mean ± SE: −4.7 ± 1.1, P <.001", "Return scans were 'generally performed within two weeks after landing' (PDF page 3); the chart position (day 7) is the middle of that window, not a reported day."],
+        ["muscle_size", "trunk_csa_ct", "Trunk skeletal muscle cross-sectional area (CT, L2)", "muscle group (CT cross-section)", "1 year post-flight", 365, null, 14, -0.7, [1.2], "1 Year Post-Flight, CSA_CT, Percent Change from Pre-Flight, Mean ± SE: −0.7 ± 1.2, P 0.58", "Plotted at 365 days as the nominal position of 'one year'."],
+        ["muscle_size", "trunk_csa_ct", "Trunk skeletal muscle cross-sectional area (CT, L2)", "muscle group (CT cross-section)", "2–4 years post-flight", 1095, [730, 1460], 8, 0.8, [1.5], "2–4 Years Post-Flight, CSA_CT, Percent Change from Pre-Flight, Mean ± SE: 0.8 ± 1.5, P 0.63", "Plotted at the middle of the 2–4 year window; the position is nominal."],
+        ["body_composition", "trunk_muscle_attenuation_ct", "Trunk muscle attenuation (CT, L2)", "muscle group (CT radiodensity)", "Post-flight return (within about two weeks of landing)", 7, [0, 14], 16, -3.2, [1.7], "Post-Flight Return, MA_CT, Percent Change from Pre-Flight, Mean ± SE: −3.2 ± 1.7, P 0.07", "Not statistically significant in the source. Table 1 gives the absolute change as −1.6 ± 0.8 HU, while the Discussion (PDF page 6) says −2.5 ± 1.8 HU; the table value is stored and the discrepancy is unresolved."],
+        ["body_composition", "trunk_muscle_attenuation_ct", "Trunk muscle attenuation (CT, L2)", "muscle group (CT radiodensity)", "1 year post-flight", 365, null, 14, 2.5, [1.8], "1 Year Post-Flight, MA_CT, Percent Change from Pre-Flight, Mean ± SE: 2.5 ± 1.8, P 0.17", "Not statistically significant in the source. Plotted at 365 days as the nominal position of 'one year'."],
+        ["body_composition", "trunk_muscle_attenuation_ct", "Trunk muscle attenuation (CT, L2)", "muscle group (CT radiodensity)", "2–4 years post-flight", 1095, [730, 1460], 8, 2.6, [2.2], "2–4 Years Post-Flight, MA_CT, Percent Change from Pre-Flight, Mean ± SE: 2.6 ± 2.2, P 0.25", "Not statistically significant in the source. Plotted at the middle of the 2–4 year window; the position is nominal."],
+        ["body_composition", "skeletal_muscle_index_ct", "Skeletal muscle index (CT area / height²)", "muscle group (CT cross-section, height-normalised)", "Post-flight return (within about two weeks of landing)", 7, [0, 14], 6, -5.2, [1.0], "Post-Flight Return, SMI_CT, cm²/m², N 6, Percent Change from Pre-Flight, Mean ± SE: −5.2 ± 1.0, P 0.004", "Subset of six crew members with DXA and height data. Table 1 prints N=16 for the pre-flight SMI row although the text describes a six-person subset."]
+      ]
+    },
+    {
+      "defaults": {"measure_kind": "percent_change", "unit": "%", "dispersion_type": "SE", "timepoint_kind": "postflight", "region": "whole_body", "muscle_or_joint": "arms and legs (appendicular lean mass)"},
+      "fields": ["outcome_category", "outcome_id", "outcome_name", "biological_level", "timepoint", "recovery_day", "recovery_window", "n", "value", "dispersion", "source_wording", "notes"],
+      "rows": [
+        ["body_composition", "appendicular_skeletal_muscle_index_dxa", "Appendicular skeletal muscle index (DXA limb lean mass / height²)", "limb lean mass (DXA, height-normalised)", "Post-flight return (within about two weeks of landing)", 7, [0, 14], 6, -2.4, [1.1], "Post-Flight Return, ASMI_DXA, kg/m², N 6, Percent Change from Pre-Flight, Mean ± SE: −2.4 ± 1.1, P 0.07", "Not statistically significant in the source. Subset of six crew members. This is limb lean mass, so its region is recorded as whole body rather than trunk."]
+      ]
+    }
+  ]
+}

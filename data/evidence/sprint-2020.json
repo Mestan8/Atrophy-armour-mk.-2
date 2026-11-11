@@ -1,0 +1,126 @@
+{
+  "study_id": "sprint-2020",
+  "presets": {
+    "CON": {
+      "n": 17, "cohort_id": "con", "cohort": "CON: crew who performed the ISS standard-of-care exercise prescription", "sex": "14 men, 3 women",
+      "countermeasure_id": "iss_standard_care",
+      "countermeasure": "ISS standard of care (CON): ARED, T2 treadmill and CEVIS cycle; resistance and aerobic exercise 6 days/week",
+      "mission_duration": {"value": 165, "unit": "days", "dispersion_type": "SD", "dispersion": [42], "range": null, "wording": "Mission duration (d)*: CON 165 ± 42. *One subject completed a 340-d mission; that value is not included in the mission duration means", "pdf_page": 6}
+    },
+    "SPRINT": {
+      "n": 9, "cohort_id": "sprint", "cohort": "SPRINT: crew who performed the high intensity / lower volume Sprint prescription", "sex": "8 men, 1 woman",
+      "countermeasure_id": "sprint",
+      "countermeasure": "Sprint: high intensity / lower volume; resistance 3 days/week and aerobic 6 days/week on ARED, T2 and CEVIS",
+      "mission_duration": {"value": 152, "unit": "days", "dispersion_type": "SD", "dispersion": [24], "range": null, "wording": "Mission duration (d)*: SPRINT 152 ± 24. *One subject completed a 340-d mission; that value is not included in the mission duration means", "pdf_page": 6}
+    }
+  },
+  "defaults": {
+    "statistic_type": "mean",
+    "dispersion_type": "SE",
+    "measure_kind": "level",
+    "n_counts": "crew members in the group (per-test n is not reported)",
+    "subgroup": "all",
+    "value_type": "reported",
+    "verification_status": "rendered_page_checked",
+    "notes": "Group means ± SE from mixed-effects models. Crew self-selected their group and the control prescription changed during the study. One 340-day subject is included in the outcome data but excluded from the duration mean; the article does not say which group."
+  },
+  "blocks": [
+    {
+      "defaults": {
+        "biological_level": "whole joint (isokinetic dynamometry)", "pdf_page": 3, "table_or_figure": "Table 2",
+        "baseline_timepoint": "L-50 (about 50 days preflight)"
+      },
+      "columns": [
+        {"use": "CON", "label": "CON, Preflight", "timepoint": "Preflight (L-50)", "timepoint_kind": "preflight", "recovery_day": null},
+        {"use": "CON", "label": "CON, R+5", "timepoint": "R+5", "timepoint_kind": "postflight", "recovery_day": 5},
+        {"use": "CON", "label": "CON, R+14", "timepoint": "R+14", "timepoint_kind": "postflight", "recovery_day": 14},
+        {"use": "CON", "label": "CON, R+30", "timepoint": "R+30", "timepoint_kind": "postflight", "recovery_day": 30},
+        {"use": "SPRINT", "label": "SPRINT, Preflight", "timepoint": "Preflight (L-50)", "timepoint_kind": "preflight", "recovery_day": null},
+        {"use": "SPRINT", "label": "SPRINT, R+5", "timepoint": "R+5", "timepoint_kind": "postflight", "recovery_day": 5},
+        {"use": "SPRINT", "label": "SPRINT, R+14", "timepoint": "R+14", "timepoint_kind": "postflight", "recovery_day": 14},
+        {"use": "SPRINT", "label": "SPRINT, R+30", "timepoint": "R+30", "timepoint_kind": "postflight", "recovery_day": 30}
+      ],
+      "fields": ["row_label", "outcome_category", "outcome_id", "outcome_name", "region", "muscle_or_joint", "unit", "cells"],
+      "rows": [
+        ["Knee ext, 60° s−1", "strength", "knee_extension_60", "Knee extension peak torque at 60°/s", "thigh_knee", "knee extensors", "Nm", ["208 ± 11", "194 ± 11*", "191 ± 11*", "195 ± 11*", "191 ± 15", "177 ± 15*", "186 ± 11*", "188 ± 15*"]],
+        ["Knee flex, 60° s−1", "strength", "knee_flexion_60", "Knee flexion peak torque at 60°/s", "thigh_knee", "knee flexors", "Nm", ["113 ± 6", "102 ± 6***", "103 ± 6*,**", "107 ± 6*,**", "100 ± 7", "100 ± 7*", "102 ± 7*", "103 ± 7*"]],
+        ["Knee ext, 180° s−1", "endurance", "knee_extension_work_180", "Knee extension total work at 180°/s", "thigh_knee", "knee extensors", "J", ["2657 ± 121", "2466 ± 121***", "2509 ± 121*", "2599 ± 121", "2500 ± 161", "2207 ± 161*", "2381 ± 161*", "2406 ± 161"]],
+        ["Knee flex, 180° s−1", "endurance", "knee_flexion_work_180", "Knee flexion total work at 180°/s", "thigh_knee", "knee flexors", "J", ["1573 ± 77", "1403 ± 77*", "1439 ± 77*", "1489 ± 77*", "1518 ± 103*", "1394 ± 103*", "1461 ± 103*", "1515 ± 103*"]],
+        ["Ankle conc PF, 30° s−1", "strength", "ankle_extension_con_30", "Ankle concentric plantarflexion peak torque at 30°/s", "calf_ankle", "ankle plantar flexors", "Nm", ["134 ± 6", "120 ± 6*", "123 ± 6*", "132 ± 6", "131 ± 8", "116 ± 8*", "120 ± 8*", "133 ± 8"]],
+        ["Ankle ecc PF, 30° s−1", "strength", "ankle_extension_ecc_30", "Ankle eccentric plantarflexion peak torque at 30°/s", "calf_ankle", "ankle plantar flexors", "Nm", ["191 ± 11", "172 ± 11*", "180 ± 11", "189 ± 11", "193 ± 15", "161 ± 15*", "174 ± 15", "198 ± 15"]],
+        ["Trunk ext, 60° s−1", "strength", "trunk_extension_60", "Trunk extension peak torque at 60°/s", "trunk", "trunk extensors", "Nm", ["446 ± 26", null, "408 ± 27*,**", "423 ± 27", "400 ± 35", null, "429 ± 36*", "393 ± 35"]],
+        ["Trunk flex, 60° s−1", "strength", "trunk_flexion_60", "Trunk flexion peak torque at 60°/s", "trunk", "trunk flexors", "Nm", ["225 ± 10", null, "196 ± 12*", "210 ± 11", "196 ± 14", null, "172 ± 14*", "181 ± 14"]]
+      ]
+    },
+    {
+      "defaults": {
+        "outcome_category": "strength", "biological_level": "multi-joint lift (one-repetition maximum)", "unit": "kg",
+        "pdf_page": 3, "table_or_figure": "Table 3",
+        "baseline_timepoint": "L-60 (about 60–90 days preflight)"
+      },
+      "columns": [
+        {"use": "CON", "label": "CON, Preflight", "timepoint": "Preflight (L-60)", "timepoint_kind": "preflight", "recovery_day": null},
+        {"use": "CON", "label": "CON, R+7", "timepoint": "R+7", "timepoint_kind": "postflight", "recovery_day": 7},
+        {"use": "CON", "label": "CON, R+30", "timepoint": "R+30", "timepoint_kind": "postflight", "recovery_day": 30},
+        {"use": "SPRINT", "label": "SPRINT, Preflight", "timepoint": "Preflight (L-60)", "timepoint_kind": "preflight", "recovery_day": null},
+        {"use": "SPRINT", "label": "SPRINT, R+7", "timepoint": "R+7", "timepoint_kind": "postflight", "recovery_day": 7},
+        {"use": "SPRINT", "label": "SPRINT, R+30", "timepoint": "R+30", "timepoint_kind": "postflight", "recovery_day": 30}
+      ],
+      "fields": ["row_label", "outcome_id", "outcome_name", "region", "muscle_or_joint", "cells"],
+      "rows": [
+        ["Leg press 1RM (kg)", "leg_press_1rm", "Leg press one-repetition maximum", "whole_leg", "leg press (hip and knee extensors)", ["304 ± 18", "299 ± 18", "317 ± 18*", "284 ± 22", "270 ± 22", "289 ± 22*"]],
+        ["Bench press 1RM (kg)", "bench_press_1rm", "Bench press one-repetition maximum", "upper_body", "bench press (chest, shoulders, elbow extensors)", ["88 ± 6", "91 ± 6*", "94 ± 6*", "79 ± 7", "82 ± 7*", "85 ± 7*"]]
+      ]
+    },
+    {
+      "defaults": {
+        "outcome_category": "body_composition", "biological_level": "regional tissue mass (DXA)", "unit": "kg",
+        "region": "whole_leg", "muscle_or_joint": "both legs",
+        "pdf_page": 2, "table_or_figure": "Table 1",
+        "baseline_timepoint": "About 90 days preflight"
+      },
+      "columns": [
+        {"use": "CON", "label": "CON, Preflight", "timepoint": "Preflight (about L-90)", "timepoint_kind": "preflight", "recovery_day": null},
+        {"use": "CON", "label": "CON, Postflight", "timepoint": "R+7 to R+14", "timepoint_kind": "postflight", "recovery_day": 10, "recovery_window": [7, 14]},
+        {"use": "SPRINT", "label": "SPRINT, Preflight", "timepoint": "Preflight (about L-90)", "timepoint_kind": "preflight", "recovery_day": null},
+        {"use": "SPRINT", "label": "SPRINT, Postflight", "timepoint": "R+7 to R+14", "timepoint_kind": "postflight", "recovery_day": 10, "recovery_window": [7, 14]}
+      ],
+      "fields": ["row_label", "outcome_id", "outcome_name", "cells"],
+      "rows": [
+        ["Leg lean mass (kg)", "leg_lean_mass", "Leg lean mass (DXA)", ["18.77 ± 0.68", "18.64 ± 0.68", "18.37 ± 0.94", "18.28 ± 0.04"]],
+        ["Leg fat mass (kg)", "leg_fat_mass", "Leg fat mass (DXA)", ["6.10 ± 0.43", "5.75 ± 0.43*", "6.02 ± 0.62", "5.69 ± 0.62*"]]
+      ]
+    },
+    {
+      "defaults": {
+        "outcome_category": "aerobic", "biological_level": "whole body (graded cycle test)",
+        "region": "whole_body", "muscle_or_joint": "whole body",
+        "pdf_page": 4, "table_or_figure": "Table 4",
+        "baseline_timepoint": "L-50 (about 50 days preflight)"
+      },
+      "columns": [
+        {"use": "CON", "label": "CON, Preflight", "timepoint": "Preflight (L-50)", "timepoint_kind": "preflight", "recovery_day": null},
+        {"use": "CON", "label": "CON, R+3", "timepoint": "R+3", "timepoint_kind": "postflight", "recovery_day": 3},
+        {"use": "CON", "label": "CON, R+30", "timepoint": "R+30", "timepoint_kind": "postflight", "recovery_day": 30},
+        {"use": "SPRINT", "label": "SPRINT, Preflight", "timepoint": "Preflight (L-50)", "timepoint_kind": "preflight", "recovery_day": null},
+        {"use": "SPRINT", "label": "SPRINT, R+1", "timepoint": "R+1", "timepoint_kind": "postflight", "recovery_day": 1},
+        {"use": "SPRINT", "label": "SPRINT, R+30", "timepoint": "R+30", "timepoint_kind": "postflight", "recovery_day": 30}
+      ],
+      "fields": ["row_label", "outcome_id", "outcome_name", "unit", "cells"],
+      "rows": [
+        ["VO2peak (L min−1)", "vo2peak_absolute", "VO2peak (absolute)", "L/min", ["3.36 ± 0.19", "3.12 ± 0.19*", "3.32 ± 0.19", "3.22 ± 0.23", "2.91 ± 0.23*", "3.23 ± 0.23"]],
+        ["VO2peak (mL kg−1 min−1)", "vo2peak_relative", "VO2peak (relative to body mass)", "mL/kg/min", ["41.8 ± 1.6", "39.7 ± 1.6*", "41.8 ± 1.6", "41.6 ± 1.9", "38.2 ± 1.9*", "42.0 ± 1.9"]],
+        ["Ventilatory threshold (L min−1)", "ventilatory_threshold", "Ventilatory threshold", "L/min", ["2.22 ± 0.15", "1.97 ± 0.15*", "2.25 ± 0.15", "2.08 ± 0.16", "1.79 ± 0.18*", "2.00 ± 0.18"]],
+        ["Peak workload (W)", "peak_workload", "Peak workload", "W", ["302 ± 14", "281 ± 14*", "304 ± 14", "269 ± 17", "256 ± 17*", "288 ± 17"]]
+      ]
+    }
+  ],
+  "cell_notes": {
+    "leg_lean_mass|SPRINT, Postflight": "Printed as '18.28 ± 0.04'. The other three leg-lean-mass cells have SE 0.68–0.94, so this SE may be a typographical error in the source; it is transcribed as printed and not corrected.",
+    "knee_extension_work_180|*": "Table 2 lists this row among peak-torque rows, but its footnote states that knee extension and flexion at 180°/s are total work in joules for a whole set of repetitions.",
+    "knee_flexion_work_180|*": "Table 2 lists this row among peak-torque rows, but its footnote states that knee extension and flexion at 180°/s are total work in joules for a whole set of repetitions.",
+    "knee_extension_60|SPRINT, R+14": "Printed SE is 11 in this cell and 15 in the other three SPRINT cells of the row; transcribed as printed.",
+    "vo2peak_absolute|CON, R+3": "Most CON subjects were tested on R+3 and SPRINT subjects on R+1, so the first postflight aerobic timepoint differs by group.",
+    "vo2peak_relative|CON, R+3": "Most CON subjects were tested on R+3 and SPRINT subjects on R+1, so the first postflight aerobic timepoint differs by group."
+  }
+}

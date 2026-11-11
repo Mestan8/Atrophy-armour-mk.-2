@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Measurements · Atrophy Armour</title>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="assets/css/site.css">
+</head>
+<body data-page="measurements">
+<a class="skip" href="#measurements">Skip to the measurements</a>
+<header class="site" id="site-header"></header>
+<script src="assets/js/site-header.js"></script>
+
+<main>
+  <section id="measurements" class="wrap" aria-labelledby="measurements-title">
+    <h2 id="measurements-title">Measurements</h2>
+    <p class="lede">Every study is shown through the same seven categories in the same order. A category a study did not measure says so. Percent change is always relative to that study's own baseline; select a source button for the full provenance. This page is read-only: evidence is added only through the curated catalog in data/evidence.</p>
+    <div class="panel">
+      <form id="filters" class="filters"></form>
+    </div>
+    <div id="status" aria-live="polite"></div>
+
+    <h3>Comparison charts (one per category, studies side by side, never merged)</h3>
+    <div id="charts"></div>
+
+    <h3>Studies</h3>
+    <div id="studies"></div>
+
+    <details class="panel"><summary>What the value-type labels mean</summary><div id="value-types"></div></details>
+
+  </section>
+</main>
+
+<dialog id="observation" aria-labelledby="observation-title">
+  <h3 id="observation-title"></h3>
+  <div id="observation-body"></div>
+  <p><button id="observation-close" type="button">Close details</button></p>
+</dialog>
+
+<script src="assets/vendor/plotly.min.js"></script>
+<script src="assets/js/core.js"></script>
+<script src="assets/js/measurements.js"></script>
+</body>
+</html>

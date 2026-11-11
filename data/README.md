@@ -1,22 +1,32 @@
 # Data directory
 
-The Study Library creates its local SQLite database here as
-`study_library.sqlite3`. The database is ignored by Git and is initialized from
-the source-grounded study summaries in `study_library.py`. On application
-startup, `scenario_evidence.py` idempotently adds the scenario's curated,
-source-verified publication values to the existing `measurements` table.
-The additive database migration also stores source availability, extraction
-status, and quantitative verification status separately for each study.
+- `evidence/`: the curated evidence catalog used by the whole application.
+  - `<study-id>.json`: one file per Study Library study. Shared fields are
+    written once per block (`defaults`), and tables are stored cell by cell as
+    printed (for example `"194 ± 11*"`), so each record can be compared with
+    the PDF. `evidence_catalog.py` expands them into one validated observation
+    each.
+  - `external_sources.json`: external supporting evidence (E1-E4), kept
+    separate from the Study Library.
+  - `duration_evidence.json`: within-library associations and statements about
+    mission duration. Context only; never used as equations.
+- `references/`: the eight source PDFs and `pdf_accessibility_report.md`.
+  The Gopalakrishnan et al. (2010) file is a one-page abstract; no legitimate
+  open full text was found, so its values are abstract-level ranges.
+- `study_library.sqlite3`: local database (ignored by Git) with the study
+  summaries.
 
-For Gopalakrishnan et al. (2010), only a one-page abstract is available. On
-startup, its explicitly reported abstract values are stored with page 1,
-abstract section, source wording, and caveats. They are retained as context
-only and are not part of the curated scenario catalog or prediction engine.
+Evidence is added only through the catalog in `evidence/`; the application has
+no way to enter or edit values. To add or correct a value: read it from the
+rendered PDF page (the text layer loses minus and ± signs), edit the study file
+with page, table, exact wording, statistic, dispersion, n and what n counts,
+set `value_type` and `verification_status`, add a pinned test, then run
+`python build_evidence_matrix.py` and `python -m pytest`. Calculated and
+approximated values need a `formula`; approximations also need notes saying
+what was assumed and what would replace it. The loader rejects any record
+without provenance or a value type. Do not convert fibre counts into crew
+counts or infer individual values from group statistics.
 
-No other article table values are automatically imported. Any manually entered
-measurement must retain its source page, exact wording or context, units,
-timepoint, and verification status. Verify values against the rendered source
-PDF before marking them `source_verified`. Engine inputs are limited to values
-explicitly included in the curated scenario catalog; a verified library record
-is not automatically used as an engine input. Do not treat test fixtures as
-research evidence.
+Older databases may still contain a `measurements` table (version 1) and a
+`manual_observations` table (Evidence Engine v2). Both are left untouched and
+are no longer read.

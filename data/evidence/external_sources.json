@@ -1,0 +1,85 @@
+{
+  "description": "External supporting evidence. These sources were opened during the Evidence Engine v2 work on 2026-11-11. They are NOT Study Library studies and are kept in a separate register.",
+  "sources": [
+    {
+      "id": "E1",
+      "short_label": "NASA HRP evidence report (Rivas et al. 2023)",
+      "citation": "Rivas E, Strock N, Dillon EL, Frisco D. Risk of Impaired Performance Due to Reduced Muscle Mass, Strength & Endurance (Short Title: Muscle) and Risk of Reduced Physical Performance Capabilities Due to Reduced Aerobic Capacity (Short Title: Aerobic). NASA Human Research Program evidence report HRP-47072; NASA Technical Reports Server document 20220019338; published 1 April 2023.",
+      "url": "https://ntrs.nasa.gov/citations/20220019338",
+      "access": "Full PDF (169 pages) downloaded from NTRS and read as text.",
+      "population": "Spaceflight (review of Mercury through ISS) and ground analogues; this register uses only its spaceflight statements.",
+      "evidence_type": "spaceflight",
+      "used_for": [
+        "8-day Space Shuttle (STS-47) MRI muscle-volume changes, used as short-duration points in the muscle-size duration chart.",
+        "Statement that long-duration loss was greater than short-duration loss but less than short flights would predict.",
+        "Its description of Gopalakrishnan et al. (2010), used to interpret the ambiguous calf range in the abstract."
+      ],
+      "quotes": [
+        {"page": 27, "text": "The subjects included four Space Shuttle crewmembers from an 8-day mission. All subjects completed three preflight measurements and two postflight tests at R+1 and R+15/16."},
+        {"page": 27, "text": "Significant reductions were observed in the anterior calf muscles (−3.9%), the gastrocnemius/soleus muscles (−6.3%), hamstrings (−8.0%), and intrinsic back muscles (−10.3%) [14]."},
+        {"page": 32, "text": "The data indicated that loss of muscle volume, particularly in the legs and back, was greater during long-duration space flight than with short-duration space flight, but not as great as the data from short-duration flight might have predicted [114]."},
+        {"page": 38, "text": "One investigation during the “iRED era” involved four ISS astronauts with mission durations of 161–194 days [57]"},
+        {"page": 38, "text": "Calf muscles were found to undergo the greater decrements than thigh muscles (10-18% vs. 4–7% loss, respectively) [57]."}
+      ],
+      "data_points": [
+        {"id": "E1-sts47-anterior-calf", "outcome_id": "anterior_leg_volume", "muscle_or_joint": "anterior calf muscles", "value": -3.9, "unit": "%", "mission_duration_days": 8, "n": 4, "n_counts": "Space Shuttle crew members", "timepoint": "R+1", "dispersion_type": "not reported", "page": 27, "value_type": "reported"},
+        {"id": "E1-sts47-gastrocnemius-soleus", "outcome_id": "gastrocnemius_soleus_combined", "muscle_or_joint": "gastrocnemius/soleus muscles (reported as one group)", "value": -6.3, "unit": "%", "mission_duration_days": 8, "n": 4, "n_counts": "Space Shuttle crew members", "timepoint": "R+1", "dispersion_type": "not reported", "page": 27, "value_type": "reported"},
+        {"id": "E1-sts47-hamstrings", "outcome_id": "hamstrings_volume", "muscle_or_joint": "hamstrings", "value": -8.0, "unit": "%", "mission_duration_days": 8, "n": 4, "n_counts": "Space Shuttle crew members", "timepoint": "R+1", "dispersion_type": "not reported", "page": 27, "value_type": "reported"},
+        {"id": "E1-sts47-intrinsic-back", "outcome_id": "intrinsic_back_volume", "muscle_or_joint": "intrinsic back muscles", "value": -10.3, "unit": "%", "mission_duration_days": 8, "n": 4, "n_counts": "Space Shuttle crew members", "timepoint": "R+1", "dispersion_type": "not reported", "page": 27, "value_type": "reported"}
+      ],
+      "limitations": "Secondary source: the 8-day values are the report's summary of an earlier Shuttle experiment (its reference [14]), not the primary paper. No SD or CI is given. Measured at R+1, not landing day. The same report's Figure 16 caption gives n = 8 for the 8-day group while the text says four crew members; the text value is stored."
+    },
+    {
+      "id": "E2",
+      "short_label": "Winnard et al. 2019 (bed rest, no countermeasures)",
+      "citation": "Winnard A, Scott J, Waters N, Vance M, Caplan N. Effect of Time on Human Muscle Outcomes During Simulated Microgravity Exposure Without Countermeasures—Systematic Review. Frontiers in Physiology 2019;10:1046.",
+      "url": "https://doi.org/10.3389/fphys.2019.01046",
+      "access": "Open-access full text opened at frontiersin.org; the first 100,000 characters (through the main Discussion) were read.",
+      "population": "Ground analogue: bed-rest studies described as spaceflight simulations, no-countermeasure groups only. NOT spaceflight data.",
+      "evidence_type": "analogue",
+      "used_for": [
+        "Context shown beside the duration slider: in bed rest without countermeasures, muscle outcomes worsen over time and the largest changes are in plantar flexors and quadriceps. No number from this source enters any calculation."
+      ],
+      "quotes": [
+        {"page": "Results, Study Selection", "text": "The most common bed rest duration was 60 days, with shortest and longest durations being seven and 120 days, respectively."},
+        {"page": "Abstract", "text": "Moderate effects were apparent by 7–15 days and large by 28–56 days."},
+        {"page": "Results, Synthesized Findings", "text": "All muscle volumes decreased over time. Moderate effects were becoming apparent by 14 days and large by 28 days."},
+        {"page": "Discussion", "text": "The high risk of bias and lack of core outcome measure sets means that the conclusions reached by this review should be treated with some caution"}
+      ],
+      "data_points": [],
+      "limitations": "Reports days to reach moderate or large effect sizes, not percent change against time, so it cannot supply a time-course function. Bed rest is not spaceflight and these groups did no exercise."
+    },
+    {
+      "id": "E3",
+      "short_label": "Marusic et al. 2021 (bed rest, abstract only)",
+      "citation": "Marusic U, Narici M, Simunic B, Pisot R, Ritzmann R. Nonuniform loss of muscle strength and atrophy during bed rest: a systematic review. Journal of Applied Physiology 2021;131(1):194–206.",
+      "url": "https://doi.org/10.1152/japplphysiol.00363.2020",
+      "access": "ABSTRACT ONLY, read through the Europe PMC record (PMID 33703945). The publisher and PubMed Central pages blocked automated access, so the full text and its fitted equations were not read.",
+      "population": "Ground analogue: bed rest, 318 healthy adults, 5–120 days, knee extensors. NOT spaceflight data.",
+      "evidence_type": "analogue",
+      "used_for": [
+        "Context only: its abstract states that knee-extensor strength loss and atrophy in bed rest follow a logarithmic pattern. This is a reason to distrust a straight line; it is not used to draw any curve because the equation was not read."
+      ],
+      "quotes": [
+        {"page": "Abstract", "text": "Bed rest results in nonuniform loss of isometric muscle strength and atrophy over time."}
+      ],
+      "data_points": [],
+      "limitations": "Abstract-level only. No coefficients were read, so no function from this source is used."
+    },
+    {
+      "id": "E4",
+      "short_label": "Comfort et al. 2021 (spaceflight meta-analysis, abstract only)",
+      "citation": "Comfort P, McMahon JJ, Jones PA, Cuthbert M, Kendall K, Lake JP, Haff GG. Effects of Spaceflight on Musculoskeletal Health: A Systematic Review and Meta-analysis, Considerations for Interplanetary Travel. Sports Medicine 2021;51(10):2097–2114.",
+      "url": "https://doi.org/10.1007/s40279-021-01496-9",
+      "access": "ABSTRACT ONLY, read through the Europe PMC record (PMID 34115344). The publisher page required sign-in and PubMed Central blocked automated access.",
+      "population": "Spaceflight; pooled analysis of 11 studies.",
+      "evidence_type": "spaceflight",
+      "used_for": [
+        "Context only: confirms that pooled spaceflight evidence shows large lower-limb strength and size deficits with high between-study heterogeneity. The abstract contains no analysis of mission duration, so nothing from it enters the duration model."
+      ],
+      "quotes": [],
+      "data_points": [],
+      "limitations": "Abstract-level only. Pooled effect sizes are standardized (Hedges' g), not percent changes, and are not used in any calculation."
+    }
+  ]
+}
