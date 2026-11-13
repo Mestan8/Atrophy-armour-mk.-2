@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>3D Simulator · Atrophy Armour</title>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="assets/css/site.css">
+<link rel="stylesheet" href="assets/css/simulator.css">
+<!-- Three.js 0.186.1 (MIT) is committed under assets/vendor/three/; nothing is loaded from a CDN. -->
+<script type="importmap">
+{"imports":{
+  "three":"./assets/vendor/three/three.module.js",
+  "three/addons/controls/OrbitControls.js":"./assets/vendor/three/OrbitControls.js",
+  "three/addons/renderers/CSS2DRenderer.js":"./assets/vendor/three/CSS2DRenderer.js",
+  "three/addons/environments/RoomEnvironment.js":"./assets/vendor/three/RoomEnvironment.js"
+}}
+</script>
+</head>
+<body data-page="simulator">
+<a class="skip" href="#sim-controls">Skip to the simulator controls</a>
+<header class="site" id="site-header"></header>
+<script src="assets/js/site-header.js"></script>
+
+<main class="wrap sim-main">
+  <h2 id="page-title">3D Simulator · human soleus</h2>
+  <div id="version-notice" aria-live="polite"></div>
+  <p class="lede">Zoom from the lower leg to a single sarcomere and move through a six-month ISS mission. Changes are driven by group averages from Fitts et al. (2010) and Trappe et al. (2009), nine ISS crew members. This is a visualization of published group means, not a prediction for any individual.</p>
+  <div id="sim-status" aria-live="polite"></div>
+
+  <div class="sim-layout">
+    <section class="sim-stage-wrap" aria-label="3D view">
+      <div id="sim-stage" class="sim-stage" tabindex="0" role="application"
+           aria-roledescription="3D model"
+           aria-label="3D model of the soleus. Keys: plus and minus zoom, 0 to 4 jump to a level, arrow keys pan, R resets the view. The text panel below lists every value shown.">
+        <div id="sim-webgl-fallback" class="sim-fallback" hidden></div>
+        <nav class="sim-breadcrumb" aria-label="Zoom level"><ol id="sim-breadcrumb"></ol></nav>
+        <div class="sim-zoom" role="group" aria-label="Zoom">
+          <button type="button" id="zoom-in" aria-label="Zoom in">+</button>
+          <button type="button" id="zoom-out" aria-label="Zoom out">−</button>
+          <button type="button" id="zoom-reset">Reset view</button>
+        </div>
+        <div class="sim-caption" id="sim-caption" aria-live="polite"></div>
+        <div class="sim-banner" id="sim-banner" hidden></div>
+        <div class="sim-scalebar" aria-hidden="true"><span id="scalebar-line"></span><span id="scalebar-text"></span></div>
+        <div class="sim-legend" id="sim-legend" hidden></div>
+        <div class="sim-fps" id="sim-fps" hidden></div>
+      </div>
+    </section>
+
+    <aside class="sim-side" id="sim-controls" aria-label="Simulator controls">
+      <div class="panel sim-panel">
+        <h3><label for="sim-day">Mission day <span class="slider-value" id="sim-day-value">0</span></label></h3>
+        <input id="sim-day" type="range" min="0" max="177" step="1" value="0" aria-describedby="sim-day-help">
+        <div class="sim-row">
+          <button type="button" id="sim-play" class="primary" aria-pressed="false">Play mission</button>
+          <button type="button" id="sim-end">End of mission</button>
+          <button type="button" id="sim-recovery" aria-pressed="false">Recovery: R+19</button>
+        </div>
+        <p class="help" id="sim-day-help"></p>
+        <p class="help"><strong>Time-course model:</strong> <span id="sim-model-label"></span></p>
+        <div id="sim-model-notice"></div>
+        <div class="field">
+          <label for="sim-shape">Shape of the change between launch and landing</label>
+          <select id="sim-shape"></select>
+        </div>
+        <div class="field">
+          <label for="sim-cohort">Crew group</label>
+          <select id="sim-cohort"></select>
+          <p class="help" id="sim-cohort-help"></p>
+        </div>
+        <fieldset class="sim-toggles">
+          <legend>Display</legend>
+          <label><input type="checkbox" id="opt-compare"> Compare with preflight (ghost outline)</label>
+          <label><input type="checkbox" id="opt-overlay"> Colour by % change from preflight</label>
+          <label><input type="checkbox" id="opt-types" checked> Colour fibre types (fascicle level)</label>
+          <label><input type="checkbox" id="opt-gastro" checked> Show gastrocnemius (ghosted)</label>
+          <label><input type="checkbox" id="opt-labels" checked> Labels</label>
+          <label><input type="checkbox" id="opt-em"> Electron-microscopy findings in crew with high atrophy (fibre level, qualitative)</label>
+        </fieldset>
+      </div>
+
+      <div class="panel sim-panel" id="sim-info" aria-live="polite">
+        <h3 id="sim-info-title">Click a structure</h3>
+        <div id="sim-info-body"><p class="help">Select any labelled structure in the 3D view to see what it does, its current value against preflight, the uncertainty, n, timepoint, value type and source.</p></div>
+      </div>
+    </aside>
+  </div>
+
+  <details class="panel" id="sim-values-panel" open>
+    <summary>All values on this day (text view)</summary>
+    <div id="sim-values"></div>
+  </details>
+  <details class="panel">
+    <summary>Time-course model and what the in-between days assume</summary>
+    <div id="sim-model"></div>
+  </details>
+  <details class="panel">
+    <summary>What is data-driven and what is illustrative</summary>
+    <div id="sim-illustrative"></div>
+  </details>
+  <details class="panel">
+    <summary>Value-type labels</summary>
+    <div id="sim-value-types"></div>
+  </details>
+</main>
+
+<script src="assets/js/core.js"></script>
+<script type="module" src="assets/js/simulator.js"></script>
+</body>
+</html>

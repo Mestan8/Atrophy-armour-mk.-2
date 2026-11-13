@@ -119,6 +119,38 @@ mission duration (model plus real anchor points), recovery over postflight days
 (reported points only, not joined), and a cross-study comparison for the
 selected category and region.
 
+## 3D Simulator
+
+`simulator.html` shows an interactive 3D model of the human soleus. You can zoom
+continuously from the lower leg (L0) through a belly cross-section (L1), a
+fascicle (L2) and a single fibre (L3) down to one sarcomere (L4). A mission-day
+slider (day 0 to 177, the cohort's mean mission length) moves the model from
+preflight to the reported postflight values of the same nine ISS crew members
+(Fitts et al. 2010, Trappe et al. 2009). It is a visualization of published
+group means, not a prediction for any individual.
+
+- **Values and provenance:** every value is in `data/simulator/soleus_parameters.json`
+  (value, unit, dispersion, n and what n counts, value type, source, page/table
+  and exact quote). This file is separate from the evidence catalog because it
+  allows the extra value type `illustrative` (drawn counts, shapes and
+  positions) and holds anatomy/ultrastructure sources that are not Study
+  Library studies. `simulator_model.py` validates it at server start and
+  evaluates one day: `GET /api/simulator/soleus?day=&cohort=&shape=&phase=`.
+- **Timepoints:** fibre and electron-microscopy values are landing-day biopsies
+  (R+0); muscle volumes are MRI at R+4, with an R+19 recovery snap. Nothing was
+  measured in flight.
+- **In-between days** are approximations. The default shape reuses the
+  LeBlanc 2000 multi-cohort soleus curve from `duration_model.py`
+  (`normalized_shape`), scaled to this cohort's own endpoints. A straight-line
+  alternative follows the shape of a 70-day bed-rest study. Thin-filament
+  (EM) values are not interpolated, because a 17-day flight changed them in the
+  opposite direction.
+- **Crew groups:** all crew (n = 9), or Fitts' high (n = 4) and low (n = 5)
+  treadmill groups. Group values are never mixed with all-crew values.
+- **Rendering:** Three.js 0.186.1 (MIT) is committed under
+  `web/assets/vendor/three/`, with no CDN and no build step. Add `?fps=1` to the
+  URL to show the frame rate.
+
 ## Measurements page
 
 Every study is shown through the same seven category slots (the six above plus
@@ -307,7 +339,8 @@ The browser only draws what the Python server sends; selection rules,
 calculations and chart construction stay in Python.
 
 - `app.py`, `server.py`: start the local server for `web/` and the JSON API.
-- `api.py`: page data for the three pages; the Explorer has a controls-only
+- `simulator_model.py`, `data/simulator/`: 3D Simulator values and day evaluation.
+- `api.py`: page data for the four pages; the Explorer has a controls-only
   view (`/api/scenario/controls`) and a full results view (`/api/scenario`).
 - `evidence_catalog.py`: catalog loading, schema validation, harmonized series.
 - `duration_model.py`: the multi-cohort and linear-fallback duration models.

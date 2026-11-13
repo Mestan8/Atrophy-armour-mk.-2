@@ -64,6 +64,13 @@ def post_json(
         ("/measurements.html", "text/html"),
         ("/assets/css/site.css", "text/css"),
         ("/assets/js/explorer.js", "text/javascript"),
+        ("/simulator.html", "text/html"),
+        ("/assets/css/simulator.css", "text/css"),
+        ("/assets/js/simulator.js", "text/javascript"),
+        ("/assets/js/sim/scene.js", "text/javascript"),
+        ("/assets/vendor/three/three.module.js", "text/javascript"),
+        ("/assets/vendor/three/three.core.js", "text/javascript"),
+        ("/assets/vendor/three/OrbitControls.js", "text/javascript"),
     ],
 )
 def test_pages_and_assets_are_served(
@@ -77,7 +84,7 @@ def test_pages_and_assets_are_served(
 
 
 def test_pages_have_no_web_fonts_or_animation_scripts() -> None:
-    for page in ("index.html", "library.html", "measurements.html"):
+    for page in ("index.html", "library.html", "measurements.html", "simulator.html"):
         html = (PROJECT_ROOT / "web" / page).read_text(encoding="utf-8")
         assert "fonts.googleapis" not in html
         assert "motion-boot" not in html and "reveal.js" not in html
@@ -260,3 +267,46 @@ def test_health_reports_the_api_version_the_page_expects(server: AtrophyServer) 
     assert json.loads(body) == {"status": "ok", "api_version": API_VERSION}
     script = (PROJECT_ROOT / "web" / "assets" / "js" / "explorer.js").read_text(encoding="utf-8")
     assert re.search(r"const API_VERSION='([^']+)'", script).group(1) == API_VERSION
+
+
+def test_simulator_endpoint_returns_values_with_provenance(server: AtrophyServer) -> None:
+    from api import API_VERSION
+
+    status, headers, body = request(server, "GET", "/api/simulator/soleus?day=177&cohort=all")
+    assert status == 200
+    assert headers["content-type"].startswith("application/json")
+    view = json.loads(body)
+    assert view["api_version"] == API_VERSION
+    volume = next(p for p in view["parameters"] if p["id"] == "soleus_volume")
+    assert volume["value"] == 383 and volume["value_type"] == "reported"
+    assert volume["end"]["source"] == "Trappe et al. (2009)"
+
+    status, _, body = request(server, "GET", "/api/simulator/soleus?day=999&cohort=nobody&shape=x")
+    view = json.loads(body)
+    assert status == 200
+    assert view["day"]["clamped"] is True and view["day"]["value"] == 177
+    assert view["cohort"]["id"] == "all"
+
+
+def test_simulator_page_and_endpoint_are_get_only(server: AtrophyServer) -> None:
+    status, _ = post_json(server, "/api/simulator/soleus", {"day": 10})
+    assert status == 405
+
+
+def test_simulator_page_expects_the_same_api_version() -> None:
+    import re
+
+    from api import API_VERSION
+
+    script = (PROJECT_ROOT / "web" / "assets" / "js" / "simulator.js").read_text(encoding="utf-8")
+    assert re.search(r"const API_VERSION='([^']+)'", script).group(1) == API_VERSION
+
+
+def test_three_js_is_vendored_locally_and_pinned() -> None:
+    vendor = PROJECT_ROOT / "web" / "assets" / "vendor" / "three"
+    module = (vendor / "three.module.js").read_text(encoding="utf-8")
+    assert "SPDX-License-Identifier: MIT" in module[:300]
+    assert (vendor / "LICENSE").exists()
+    page = (PROJECT_ROOT / "web" / "simulator.html").read_text(encoding="utf-8")
+    assert "cdn" not in page.lower().replace("no cdn", "").replace("from a cdn", "")
+    assert "./assets/vendor/three/three.module.js" in page

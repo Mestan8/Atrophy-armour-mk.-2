@@ -389,6 +389,44 @@ def _linear_model(series: Series, point) -> DurationModel:
     )
 
 
+@dataclass(frozen=True)
+class NormalizedShape:
+    """A duration curve rescaled to run from 0 (launch) to 1 (its plateau value).
+
+    Used by the 3D simulator to borrow only the *shape* of a multi-cohort curve and
+    scale it to another study's own endpoints. The scale is never borrowed.
+    """
+
+    model: DurationModel
+    reference_day: float
+
+    def fraction_at(self, day: float) -> float:
+        end = self.model.value_at(self.reference_day)
+        return self.model.value_at(day) / end if end else 0.0
+
+    def nodes(self) -> tuple[tuple[float, float], ...]:
+        """The curve's corner points as (day, fraction), up to the reference day."""
+        days = [day for day, _ in self.model._nodes() if day < self.reference_day]
+        days.append(self.reference_day)
+        return tuple((day, self.fraction_at(day)) for day in days)
+
+
+def normalized_shape(outcome_id: str, reference_day: float) -> NormalizedShape | None:
+    """The LeBlanc et al. (2000) multi-cohort curve for ``outcome_id``, as a 0-1 shape.
+
+    ``reference_day`` is the day that maps to 1 (the end of the mission being
+    illustrated). Returns ``None`` when no multi-cohort curve exists. Existing
+    duration-model outputs are not affected.
+    """
+    series = _leblanc_series(outcome_id, _LONG_COHORT)
+    if series is None:
+        return None
+    model = _multi_cohort_model(series)
+    if model is None:
+        return None
+    return NormalizedShape(model=model, reference_day=float(reference_day))
+
+
 def model_for(series: Series, point=None) -> DurationModel | None:
     """Choose the duration model for a series, anchored on ``point``.
 

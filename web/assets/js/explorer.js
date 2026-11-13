@@ -8,7 +8,7 @@
 const {get,el,callout,tag,rows,fillSelect,openDetails,drawChart}=window.AA;
 const STORE_KEY='atrophy.scenario.v3';
 /* Must match API_VERSION in api.py. A different value means the running server is older or newer than this page. */
-const API_VERSION='2026-11-11.two-step-explorer';
+const API_VERSION='2026-11-12.3d-simulator';
 const RESTART_COMMAND='.\\.venv\\Scripts\\python.exe app.py';
 const RESTART_HINT='The running server looks out of date — restart it with '+RESTART_COMMAND;
 

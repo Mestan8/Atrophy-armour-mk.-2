@@ -31,6 +31,7 @@ from evidence_catalog import (
     study_label,
 )
 from model import Scenario, ScenarioRow, analyze_scenario, describe_change
+from simulator_model import evaluate as evaluate_simulator
 from plotting import (
     create_comparison_plot,
     create_duration_plot,
@@ -51,7 +52,7 @@ from study_library import get_study, list_studies
 
 # Bump whenever an endpoint is added, removed or changes shape. The Explorer page
 # carries the same string and warns when the running server reports another one.
-API_VERSION = "2026-11-11.two-step-explorer"
+API_VERSION = "2026-11-12.3d-simulator"
 
 EDUCATIONAL_NOTICE = (
     "Educational tool. It organizes published group results and is not a "
@@ -356,6 +357,25 @@ def build_health_view(
 ) -> dict[str, object]:
     """A cheap liveness and version check; the page uses it to spot an outdated server."""
     return {"status": "ok", "api_version": API_VERSION}
+
+
+def build_simulator_view(
+    connection: sqlite3.Connection,
+    selection: Mapping[str, object],
+) -> dict[str, object]:
+    """Every 3D Simulator value for one mission day, with provenance and value type.
+
+    Query: ``day`` (0 to the end of the mission; clamped and flagged outside it),
+    ``cohort`` (all, high_treadmill, low_treadmill), ``shape`` (spaceflight_cohorts,
+    linear) and ``phase`` (mission, recovery).
+    """
+    view = evaluate_simulator(
+        selection.get("day", 0),
+        selection.get("cohort", "all"),
+        selection.get("shape"),
+        selection.get("phase", "mission"),
+    )
+    return {"api_version": API_VERSION, **view}
 
 
 def _controls_payload(controls) -> list[dict[str, object]]:

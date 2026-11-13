@@ -4,7 +4,8 @@
 const PAGES=[
   {id:'explorer',href:'index.html',label:'Scenario Explorer',blurb:'Explore published postflight muscle results by outcome, region, regimen, crew subgroup, recovery day and mission duration.'},
   {id:'library',href:'library.html',label:'Study Library',blurb:'The eight library studies, and separately the external supporting evidence.'},
-  {id:'measurements',href:'measurements.html',label:'Measurements',blurb:'Every study through the same seven measurement categories, each value traced to its source.'}
+  {id:'measurements',href:'measurements.html',label:'Measurements',blurb:'Every study through the same seven measurement categories, each value traced to its source.'},
+  {id:'simulator',href:'simulator.html',label:'3D Simulator',blurb:'An interactive 3D soleus, from the leg to the sarcomere, through a six-month ISS mission (Fitts 2010, Trappe 2009).'}
 ];
 const current=document.body.dataset.page;
 const page=PAGES.find(p=>p.id===current);

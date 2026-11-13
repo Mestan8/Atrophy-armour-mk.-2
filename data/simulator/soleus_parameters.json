@@ -1,0 +1,581 @@
+{
+  "description": "Every value used by the 3D Simulator page (human soleus). Kept separate from the evidence catalog: it allows the extra value type 'illustrative' and holds external anatomy/ultrastructure sources that are NOT Study Library studies and NOT in the external supporting evidence register. A later references page will be generated from the 'sources' block. Values were checked against rendered PDF pages (Fitts Tables 2, 3, 5, 7; Trappe Tables 5 and 8) or quoted from the opened web/full-text source on 2026-11-12.",
+  "schema_version": 1,
+  "sources": {
+    "fitts-2010": {"kind": "study", "study_id": "fitts-2010", "short_label": "Fitts et al. (2010)"},
+    "trappe-2009": {"kind": "study", "study_id": "trappe-2009", "short_label": "Trappe et al. (2009)"},
+    "leblanc-2000": {"kind": "study", "study_id": "leblanc-2000", "short_label": "LeBlanc et al. (2000)"},
+    "E1": {"kind": "external_register", "register_id": "E1", "short_label": "NASA HRP evidence report (Rivas et al. 2023), register entry E1"},
+    "bolsterlee-2018": {
+      "kind": "external", "short_label": "Bolsterlee et al. (2018)",
+      "citation": "Bolsterlee B, Finni T, D'Souza A, Eguchi J, Clarke EC, Herbert RD. Three-dimensional architecture of the whole human soleus muscle in vivo. PeerJ 2018;6:e4610.",
+      "doi": "10.7717/peerj.4610", "url": "https://doi.org/10.7717/peerj.4610",
+      "access": "Open-access full text read through Europe PMC (PMC5910694) on 2026-11-12.",
+      "population": "Six healthy young adults (3 men, 3 women), MRI/DTI; two cadaveric muscles for validation. Normal anatomy, not spaceflight.",
+      "evidence_type": "normal anatomy"
+    },
+    "hendrickse-2022": {
+      "kind": "external", "short_label": "Hendrickse et al. (2022)",
+      "citation": "Hendrickse PW, Wüst RCI, Ganse B, Giakoumaki I, Rittweger J, Bosutti A, Degens H. Capillary rarefaction during bed rest is proportionally less than fibre atrophy and loss of oxidative capacity. J Cachexia Sarcopenia Muscle 2022;13(6):2712-2723.",
+      "doi": "10.1002/jcsm.13072", "url": "https://doi.org/10.1002/jcsm.13072",
+      "access": "Open-access full text read through Europe PMC (PMC9745458) on 2026-11-12.",
+      "population": "Healthy adults, 55-day head-down-tilt bed rest; control group n = 6 used here. Baseline values are normal soleus; later values are GROUND ANALOGUE, not spaceflight.",
+      "evidence_type": "normal anatomy (baseline) and ground analogue (bed rest)"
+    },
+    "scott-2020": {
+      "kind": "external", "short_label": "Scott et al. (2020), NASA bed rest",
+      "citation": "Scott JM, Downs M, Buxton R, Goetchius E, Crowell B, Ploutz-Snyder R, Hackney KJ, Ryder J, English K, Ploutz-Snyder LL. Disuse-Induced Muscle Loss and Rehabilitation: The National Aeronautics and Space Administration Bed Rest Study. Crit Care Explor 2020;2(12):e0269.",
+      "doi": "10.1097/CCE.0000000000000269", "url": "https://doi.org/10.1097/CCE.0000000000000269",
+      "access": "Open-access full text read through Europe PMC (PMC7688251) on 2026-11-12.",
+      "population": "Nine adults, 70 days of sedentary head-down-tilt bed rest without exercise. GROUND ANALOGUE, not spaceflight.",
+      "evidence_type": "ground analogue"
+    },
+    "szikora-2022": {
+      "kind": "external", "short_label": "Szikora et al. (2022)",
+      "citation": "Szikora S, Görög P, Mihály J. The Mechanisms of Thin Filament Assembly and Length Regulation in Muscles. Int J Mol Sci 2022;23(10):5306.",
+      "doi": "10.3390/ijms23105306", "url": "https://doi.org/10.3390/ijms23105306",
+      "access": "Open-access full text read through Europe PMC (PMC9140763) on 2026-11-12.",
+      "population": "Review of vertebrate and invertebrate muscle.", "evidence_type": "normal ultrastructure (review)"
+    },
+    "laine-2018": {
+      "kind": "external", "short_label": "Lainé et al. (2018)",
+      "citation": "Lainé J, Skoglund G, Fournier E, Tabti N. Development of the excitation-contraction coupling machinery and its relation to myofibrillogenesis in human iPSC-derived skeletal myocytes. Skelet Muscle 2018;8:1.",
+      "doi": "10.1186/s13395-017-0147-5", "url": "https://doi.org/10.1186/s13395-017-0147-5",
+      "access": "Open-access full text read through Europe PMC (PMC5756430) on 2026-11-12.",
+      "population": "Human iPSC-derived myocytes, compared against adult human skeletal muscle organisation.", "evidence_type": "normal ultrastructure"
+    },
+    "alqusairi-2011": {
+      "kind": "external", "short_label": "Al-Qusairi & Laporte (2011)",
+      "citation": "Al-Qusairi L, Laporte J. T-tubule biogenesis and triad formation in skeletal muscle and implication in human diseases. Skelet Muscle 2011;1:26.",
+      "doi": "10.1186/2044-5040-1-26", "url": "https://doi.org/10.1186/2044-5040-1-26",
+      "access": "Open-access full text read through Europe PMC (PMC3156648) on 2026-11-12.",
+      "population": "Review.", "evidence_type": "normal ultrastructure (review)"
+    },
+    "openstax-ap2e": {
+      "kind": "external", "short_label": "OpenStax Anatomy and Physiology 2e",
+      "citation": "Betts JG, Young KA, Wise JA, Johnson E, Poe B, Kruse DH, Korol O, Johnson JE, Womble M, DeSaix P. Anatomy and Physiology 2e. Houston (TX): OpenStax; 2022. Sections 10.2, 10.3 and 11.6. CC BY-NC-SA 4.0.",
+      "doi": null, "url": "https://openstax.org/books/anatomy-and-physiology-2e/pages/10-2-skeletal-muscle",
+      "access": "Web pages 10.2, 10.3 and 11.6 opened on 2026-11-12.",
+      "population": "Textbook.", "evidence_type": "standard anatomy/physiology reference"
+    },
+    "kenhub-soleus": {
+      "kind": "external", "short_label": "Kenhub, Soleus muscle",
+      "citation": "Jurkovicova E (author), Salvador F (reviewer). Soleus muscle. Kenhub anatomy library; last reviewed 19 September 2023.",
+      "doi": null, "url": "https://www.kenhub.com/en/library/anatomy/soleus-muscle",
+      "access": "Web page opened on 2026-11-12.",
+      "population": "Reviewed anatomy reference.", "evidence_type": "standard anatomy reference"
+    }
+  },
+
+  "mission": {
+    "end_day": 177,
+    "range": [161, 192],
+    "value_type": "reported",
+    "source": "fitts-2010", "location": "PDF page 2, Methods 'Flight and subjects'",
+    "quote": "The subjects (n = 9) age, height, weight and days in space were 45 ± 2 years, 176 ± 2 cm, 81 ± 3 kg, and 177 ± 4 days (range = 161–192 days), respectively.",
+    "note": "Same nine crew in Trappe et al. (2009), PDF page 2. Durations for the treadmill subgroups are not reported separately, so 177 days is used for every cohort."
+  },
+
+  "cohorts": {
+    "all": {"label": "All crew", "n_crew": 9, "members": ["A", "B", "C", "D", "E", "F", "G", "H", "I"],
+            "note": "All nine analysed crew members (Fitts and Trappe)."},
+    "high_treadmill": {"label": "High treadmill group", "n_crew": 4, "members": ["B", "E", "G", "H"],
+            "source": "fitts-2010", "location": "PDF page 8, Results; table footnotes",
+            "quote": "we subdivided the crew members into those running 200 min week−1 or more (high treadmill) from those running less than 100 min week−1 (low treadmill).",
+            "note": "Fitts grouping. Trappe et al. (2009, PDF page 7) describe a different 'high-volume' group of three (B, E and H). Groups were formed after the flight from exercise logs; differences are descriptive, not causal."},
+    "low_treadmill": {"label": "Low treadmill group", "n_crew": 5, "members": ["A", "C", "D", "F", "I"],
+            "source": "fitts-2010", "location": "PDF page 8, Results; table footnotes",
+            "quote": "High treadmill group subjects B, E, G and H, and low treadmill group subjects A, C, D, F and I",
+            "note": "Fitts grouping."}
+  },
+
+  "time_varying": [
+    {
+      "id": "soleus_volume", "name": "Soleus muscle volume", "levels": ["L0", "L1"], "unit": "cm³",
+      "biological_level": "whole muscle (MRI)", "statistic": "mean", "dispersion_type": "SE",
+      "pre_timepoint": "L-40 (MRI, 40 ± 3 days before launch)",
+      "end_timepoint": "R+4 (MRI, 4 ± 1 days after landing; not an in-flight value)",
+      "recovery_timepoint": "R+19 (MRI, 19 ± 2 days after landing)",
+      "interpolate": true,
+      "function": {"text": "The soleus lowers the sole of the foot the ground, as when foot-tapping or jumping; it also maintains posture while walking.", "source": "openstax-ap2e", "location": "Section 11.6, Figure 11.33 table"},
+      "values": {
+        "all": {
+          "pre": {"value": 455, "dispersion": [27], "n": 9, "n_counts": "crew members", "value_type": "reported", "source": "trappe-2009", "location": "PDF page 5, Table 5 (Soleus, Mean ± SE, Pre)", "quote": "455 ± 27"},
+          "end": {"value": 383, "dispersion": [19], "n": 9, "n_counts": "crew members", "value_type": "reported", "source": "trappe-2009", "location": "PDF page 5, Table 5 (Soleus, Mean ± SE, Post (R+4))", "quote": "383 ± 19*"},
+          "recovery": {"value": 408, "dispersion": [20], "n": 9, "n_counts": "crew members", "value_type": "reported", "source": "trappe-2009", "location": "PDF page 5, Table 5 (Soleus, Mean ± SE, Post (R+19))", "quote": "408 ± 20*†"},
+          "reported_change_end": {"value": -15, "dispersion": [2], "unit": "%", "source": "trappe-2009", "location": "PDF page 5, Table 5, % Δ (Pre to R+4)", "quote": "−15 ± 2", "note": "Mean ± SE of the nine individual percent changes, not the ratio of group means."},
+          "reported_change_recovery": {"value": -9, "dispersion": [1], "unit": "%", "source": "trappe-2009", "location": "PDF page 5, Table 5, % Δ (Pre to R+19)", "quote": "−9 ± 1"}
+        }
+      },
+      "individuals": {
+        "source": "trappe-2009", "location": "PDF page 5, Table 5 (Soleus rows A–I)", "unit": "cm³",
+        "pre": {"A": 604, "B": 309, "C": 444, "D": 434, "E": 418, "F": 440, "G": 517, "H": 443, "I": 489},
+        "end": {"A": 456, "B": 272, "C": 360, "D": 362, "E": 406, "F": 338, "G": 442, "H": 400, "I": 409},
+        "recovery": {"A": 517, "B": 294, "C": 392, "D": 403, "E": 404, "F": 369, "G": 457, "H": 407, "I": 425},
+        "subgroups": ["high_treadmill", "low_treadmill"],
+        "note": "Subgroup means are calculated here from the printed individual volumes (the paper prints no subgroup means for these groups). Dispersion is the SE calculated from the same individual values."
+      }
+    },
+    {
+      "id": "gastrocnemius_volume", "name": "Gastrocnemius (medial + lateral head) volume", "levels": ["L0"], "unit": "cm³",
+      "biological_level": "whole muscle (MRI)", "statistic": "mean", "dispersion_type": "SE",
+      "pre_timepoint": "L-40 (MRI)", "end_timepoint": "R+4 (MRI; not an in-flight value)", "recovery_timepoint": "R+19 (MRI)",
+      "interpolate": true,
+      "function": {"text": "The gastrocnemius lowers the sole of the foot to the ground, as when foot-tapping or jumping; it also assists in moving the back of the lower legs up and back toward the buttocks.", "source": "openstax-ap2e", "location": "Section 11.6, Figure 11.33 table"},
+      "values": {
+        "all": {
+          "pre": {"value": 309, "dispersion": [23], "n": 9, "n_counts": "crew members", "value_type": "reported", "source": "trappe-2009", "location": "PDF page 5, Table 5 (Gastrocnemius, Mean ± SE, Pre)", "quote": "309 ± 23"},
+          "end": {"value": 274, "dispersion": [18], "n": 9, "n_counts": "crew members", "value_type": "reported", "source": "trappe-2009", "location": "PDF page 5, Table 5 (Gastrocnemius, Mean ± SE, Post (R+4))", "quote": "274 ± 18*"},
+          "recovery": {"value": 291, "dispersion": [20], "n": 9, "n_counts": "crew members", "value_type": "reported", "source": "trappe-2009", "location": "PDF page 5, Table 5 (Gastrocnemius, Mean ± SE, Post (R+19))", "quote": "291 ± 20"}
+        }
+      },
+      "individuals": {
+        "source": "trappe-2009", "location": "PDF page 5, Table 5 (Gastrocnemius rows A–I)", "unit": "cm³",
+        "pre": {"A": 379, "B": 229, "C": 237, "D": 289, "E": 247, "F": 322, "G": 430, "H": 288, "I": 359},
+        "end": {"A": 299, "B": 204, "C": 208, "D": 272, "E": 255, "F": 264, "G": 381, "H": 269, "I": 318},
+        "recovery": {"A": 370, "B": 209, "C": 231, "D": 295, "E": 254, "F": 272, "G": 388, "H": 286, "I": 317},
+        "subgroups": ["high_treadmill", "low_treadmill"],
+        "note": "Subgroup means calculated from the printed individual volumes."
+      }
+    },
+    {
+      "id": "type_i_diameter", "name": "Slow type I fibre diameter", "levels": ["L1", "L2", "L3"], "unit": "µm",
+      "biological_level": "single fibres (biopsy)", "statistic": "mean", "dispersion_type": "SEM",
+      "pre_timepoint": "L-55 ± 2 days (biopsy)", "end_timepoint": "R+0 (landing-day biopsy, 6–8 h after landing; not an in-flight value)",
+      "interpolate": true,
+      "function": {"text": "Each muscle fiber is encased in a thin connective tissue layer of collagen and reticular fibers called the endomysium.", "source": "openstax-ap2e", "location": "Section 10.2"},
+      "values": {
+        "all": {
+          "pre": {"value": 98, "dispersion": [1], "n": 540, "n_counts": "fibres from 9 crew members", "value_type": "reported", "source": "fitts-2010", "location": "PDF page 6, Table 2 (All crew members, Pre-flight, Sol Type I Diameter)", "quote": "98 ± 1"},
+          "end": {"value": 79, "dispersion": [1], "n": 458, "n_counts": "fibres from 9 crew members", "value_type": "reported", "source": "fitts-2010", "location": "PDF page 6, Table 2 (All crew members, Post-flight)", "quote": "79 ± 1∗"},
+          "reported_change_end": {"value": -20, "dispersion": [6], "unit": "%", "source": "fitts-2010", "location": "PDF page 6, Table 2, % column (80 ± 6 % of pre-flight)", "quote": "80 ± 6", "note": "Mean of the crew members' percentages of pre-flight diameter (80 ± 6 %), i.e. −20 %. The abstract calls this '20% in the soleus type I fibres (98 to 79 μm diameter)'."}
+        },
+        "high_treadmill": {
+          "pre": {"value": 90, "dispersion": [1], "n": 243, "n_counts": "fibres from 4 crew members", "value_type": "reported", "source": "fitts-2010", "location": "PDF page 6, Table 2 (High treadmill, Pre-flight)", "quote": "90 ± 1"},
+          "end": {"value": 82, "dispersion": [1], "n": 220, "n_counts": "fibres from 4 crew members", "value_type": "reported", "source": "fitts-2010", "location": "PDF page 6, Table 2 (High treadmill, Post-flight)", "quote": "82 ± 1∗"}
+        },
+        "low_treadmill": {
+          "pre": {"value": 104, "dispersion": [1], "n": 297, "n_counts": "fibres from 5 crew members", "value_type": "reported", "source": "fitts-2010", "location": "PDF page 6, Table 2 (Low Treadmill, Pre-flight)", "quote": "104 ± 1"},
+          "end": {"value": 77, "dispersion": [1], "n": 238, "n_counts": "fibres from 5 crew members", "value_type": "reported", "source": "fitts-2010", "location": "PDF page 6, Table 2 (Low Treadmill, Post-flight)", "quote": "77 ± 1∗"}
+        }
+      }
+    },
+    {
+      "id": "type_i_csa", "name": "Slow type I fibre cross-sectional area", "levels": ["L2", "L3"], "unit": "µm²",
+      "biological_level": "single fibres (biopsy)", "statistic": "mean", "dispersion_type": "SEM",
+      "pre_timepoint": "L-55 ± 2 days (biopsy)", "end_timepoint": "R+0 (landing-day biopsy; not an in-flight value)",
+      "interpolate": true,
+      "note": "Fitts calculated CSA from each fibre's mean diameter assuming a circular section (PDF page 4). The mean CSA is larger than π(mean diameter/2)² because fibre sizes vary; the 3D model draws fibres from the reported diameters.",
+      "values": {
+        "all": {
+          "pre": {"value": 7907, "dispersion": [705], "n": 540, "n_counts": "fibres from 9 crew members", "value_type": "reported", "source": "fitts-2010", "location": "PDF page 6, Table 2 (All crew members, Pre-flight, CSA)", "quote": "7907 ± 705"},
+          "end": {"value": 4824, "dispersion": [459], "n": 458, "n_counts": "fibres from 9 crew members", "value_type": "reported", "source": "fitts-2010", "location": "PDF page 6, Table 2 (All crew members, Post-flight, CSA)", "quote": "4824 ± 459∗"},
+          "reported_change_end": {"value": -33, "dispersion": [], "unit": "%", "source": "fitts-2010", "location": "PDF page 8, Results", "quote": "The mean space flight-induced decline in soleus type I fibre CSA was 33%"}
+        },
+        "high_treadmill": {
+          "pre": {"value": 6517, "dispersion": [936], "n": 243, "n_counts": "fibres from 4 crew members", "value_type": "reported", "source": "fitts-2010", "location": "PDF page 6, Table 2 (High treadmill, Pre-flight, CSA)", "quote": "6517 ± 936"},
+          "end": {"value": 5235, "dispersion": [391], "n": 220, "n_counts": "fibres from 4 crew members", "value_type": "reported", "source": "fitts-2010", "location": "PDF page 6, Table 2 (High treadmill, Post-flight, CSA)", "quote": "5235 ± 391"}
+        },
+        "low_treadmill": {
+          "pre": {"value": 9019, "dispersion": [753], "n": 297, "n_counts": "fibres from 5 crew members", "value_type": "reported", "source": "fitts-2010", "location": "PDF page 6, Table 2 (Low Treadmill, Pre-flight, CSA)", "quote": "9019 ± 753"},
+          "end": {"value": 4496, "dispersion": [778], "n": 238, "n_counts": "fibres from 5 crew members", "value_type": "reported", "source": "fitts-2010", "location": "PDF page 6, Table 2 (Low Treadmill, Post-flight, CSA)", "quote": "4496 ± 778∗"}
+        }
+      }
+    },
+    {
+      "id": "type_ii_diameter", "name": "Fast type II fibre diameter", "levels": ["L2"], "unit": "µm",
+      "biological_level": "single fibres (biopsy)", "statistic": "mean", "dispersion_type": "SEM",
+      "pre_timepoint": "L-55 ± 2 days (biopsy)", "end_timepoint": "R+0 (landing-day biopsy; not an in-flight value)",
+      "interpolate": true,
+      "note": "Fibres containing both slow and fast myosin (hybrids) were excluded by Fitts (PDF page 5).",
+      "values": {
+        "all": {
+          "pre": {"value": 95, "dispersion": [2], "n": 60, "n_counts": "fibres from 9 crew members", "value_type": "reported", "source": "fitts-2010", "location": "PDF page 9, Table 5 (All crew members, Pre-flight, Diameter)", "quote": "95 ± 2"},
+          "end": {"value": 80, "dispersion": [2], "n": 84, "n_counts": "fibres from 9 crew members", "value_type": "reported", "source": "fitts-2010", "location": "PDF page 9, Table 5 (All crew members, Post-flight)", "quote": "80 ± 2∗"}
+        },
+        "high_treadmill": {
+          "pre": {"value": 90, "dispersion": [2], "n": 37, "n_counts": "fibres from 4 crew members", "value_type": "reported", "source": "fitts-2010", "location": "PDF page 9, Table 5 (High treadmill, Pre-flight)", "quote": "90 ± 2"},
+          "end": {"value": 87, "dispersion": [3], "n": 24, "n_counts": "fibres from 4 crew members", "value_type": "reported", "source": "fitts-2010", "location": "PDF page 9, Table 5 (High treadmill, Post-flight)", "quote": "87 ± 3"}
+        },
+        "low_treadmill": {
+          "pre": {"value": 105, "dispersion": [5], "n": 23, "n_counts": "fibres from 5 crew members", "value_type": "reported", "source": "fitts-2010", "location": "PDF page 9, Table 5 (Low treadmill, Pre-flight)", "quote": "105 ± 5"},
+          "end": {"value": 77, "dispersion": [2], "n": 60, "n_counts": "fibres from 5 crew members", "value_type": "reported", "source": "fitts-2010", "location": "PDF page 9, Table 5 (Low treadmill, Post-flight)", "quote": "77 ± 2∗"}
+        }
+      }
+    },
+    {
+      "id": "type_ii_csa", "name": "Fast type II fibre cross-sectional area", "levels": ["L2"], "unit": "µm²",
+      "biological_level": "single fibres (biopsy)", "statistic": "mean", "dispersion_type": "SEM",
+      "pre_timepoint": "L-55 ± 2 days (biopsy)", "end_timepoint": "R+0 (landing-day biopsy; not an in-flight value)",
+      "interpolate": true,
+      "values": {
+        "all": {
+          "pre": {"value": 7358, "dispersion": [396], "n": 60, "n_counts": "fibres from 9 crew members", "value_type": "reported", "source": "fitts-2010", "location": "PDF page 9, Table 5 (All crew members, Pre-flight, CSA)", "quote": "7358 ± 396"},
+          "end": {"value": 5245, "dispersion": [255], "n": 84, "n_counts": "fibres from 9 crew members", "value_type": "reported", "source": "fitts-2010", "location": "PDF page 9, Table 5 (All crew members, Post-flight, CSA)", "quote": "5245 ± 255∗"}
+        },
+        "high_treadmill": {
+          "pre": {"value": 6548, "dispersion": [296], "n": 37, "n_counts": "fibres from 4 crew members", "value_type": "reported", "source": "fitts-2010", "location": "PDF page 9, Table 5 (High treadmill, Pre-flight, CSA)", "quote": "6548 ± 296"},
+          "end": {"value": 6170, "dispersion": [490], "n": 24, "n_counts": "fibres from 4 crew members", "value_type": "reported", "source": "fitts-2010", "location": "PDF page 9, Table 5 (High treadmill, Post-flight, CSA)", "quote": "6170 ± 490"}
+        },
+        "low_treadmill": {
+          "pre": {"value": 9054, "dispersion": [845], "n": 23, "n_counts": "fibres from 5 crew members", "value_type": "reported", "source": "fitts-2010", "location": "PDF page 9, Table 5 (Low treadmill, Pre-flight, CSA)", "quote": "9054 ± 845"},
+          "end": {"value": 4818, "dispersion": [296], "n": 60, "n_counts": "fibres from 5 crew members", "value_type": "reported", "source": "fitts-2010", "location": "PDF page 9, Table 5 (Low treadmill, Post-flight, CSA)", "quote": "4818 ± 296∗"}
+        }
+      }
+    },
+    {
+      "id": "type_i_peak_force", "name": "Type I fibre peak isometric force (P0)", "levels": ["L3"], "unit": "mN",
+      "biological_level": "single fibres (biopsy)", "statistic": "mean", "dispersion_type": "SEM",
+      "pre_timepoint": "L-55 ± 2 days (biopsy)", "end_timepoint": "R+0 (landing-day biopsy)", "interpolate": true,
+      "values": {
+        "all": {
+          "pre": {"value": 0.86, "dispersion": [0.01], "n": 540, "n_counts": "fibres from 9 crew members", "value_type": "reported", "source": "fitts-2010", "location": "PDF page 7, Table 3 (All crew members, Pre-flight, Po)", "quote": "0.86 ± 0.01"},
+          "end": {"value": 0.56, "dispersion": [0.01], "n": 458, "n_counts": "fibres from 9 crew members", "value_type": "reported", "source": "fitts-2010", "location": "PDF page 7, Table 3 (All crew members, Post-flight, Po)", "quote": "0.56 ± 0.01∗"}
+        },
+        "high_treadmill": {
+          "pre": {"value": 0.73, "dispersion": [0.01], "n": 243, "n_counts": "fibres from 4 crew members", "value_type": "reported", "source": "fitts-2010", "location": "PDF page 7, Table 3 (High treadmill, Pre-flight)", "quote": "0.73 ± 0.01"},
+          "end": {"value": 0.56, "dispersion": [0.01], "n": 220, "n_counts": "fibres from 4 crew members", "value_type": "reported", "source": "fitts-2010", "location": "PDF page 7, Table 3 (High treadmill, Post-flight)", "quote": "0.56 ± 0.01∗"}
+        },
+        "low_treadmill": {
+          "pre": {"value": 0.97, "dispersion": [0.02], "n": 297, "n_counts": "fibres from 5 crew members", "value_type": "reported", "source": "fitts-2010", "location": "PDF page 7, Table 3 (Low treadmill, Pre-flight)", "quote": "0.97 ± 0.02"},
+          "end": {"value": 0.56, "dispersion": [0.01], "n": 238, "n_counts": "fibres from 5 crew members", "value_type": "reported", "source": "fitts-2010", "location": "PDF page 7, Table 3 (Low treadmill, Post-flight)", "quote": "0.56 ± 0.01∗"}
+        }
+      }
+    },
+    {
+      "id": "type_i_specific_tension", "name": "Type I fibre force per cross-sectional area", "levels": ["L3"], "unit": "kN m⁻²",
+      "biological_level": "single fibres (biopsy)", "statistic": "mean", "dispersion_type": "SEM",
+      "pre_timepoint": "L-55 ± 2 days (biopsy)", "end_timepoint": "R+0 (landing-day biopsy)", "interpolate": true,
+      "note": "The all-crew change is not significant: 'the crew average for soleus fibre force expressed in kN m−2 was not altered pre- versus post-flight' (PDF page 7).",
+      "values": {
+        "all": {
+          "pre": {"value": 115, "dispersion": [1], "n": 540, "n_counts": "fibres from 9 crew members", "value_type": "reported", "source": "fitts-2010", "location": "PDF page 7, Table 3 (All crew members, Pre-flight, kN m−2)", "quote": "115 ± 1"},
+          "end": {"value": 114, "dispersion": [1], "n": 458, "n_counts": "fibres from 9 crew members", "value_type": "reported", "source": "fitts-2010", "location": "PDF page 7, Table 3 (All crew members, Post-flight, kN m−2)", "quote": "114 ± 1"}
+        },
+        "high_treadmill": {
+          "pre": {"value": 115, "dispersion": [2], "n": 243, "n_counts": "fibres from 4 crew members", "value_type": "reported", "source": "fitts-2010", "location": "PDF page 7, Table 3 (High treadmill, Pre-flight, kN m−2)", "quote": "115 ± 2"},
+          "end": {"value": 106, "dispersion": [2], "n": 220, "n_counts": "fibres from 4 crew members", "value_type": "reported", "source": "fitts-2010", "location": "PDF page 7, Table 3 (High treadmill, Post-flight, kN m−2)", "quote": "106 ± 2∗"}
+        },
+        "low_treadmill": {
+          "pre": {"value": 114, "dispersion": [1], "n": 297, "n_counts": "fibres from 5 crew members", "value_type": "reported", "source": "fitts-2010", "location": "PDF page 7, Table 3 (Low treadmill, Pre-flight, kN m−2)", "quote": "114 ± 1"},
+          "end": {"value": 121, "dispersion": [2], "n": 238, "n_counts": "fibres from 5 crew members", "value_type": "reported", "source": "fitts-2010", "location": "PDF page 7, Table 3 (Low treadmill, Post-flight, kN m−2)", "quote": "121 ± 2∗"}
+        }
+      }
+    },
+    {
+      "id": "type_i_vo", "name": "Type I fibre maximal unloaded shortening velocity (V0)", "levels": ["L3", "L4"], "unit": "FL s⁻¹",
+      "biological_level": "single fibres (biopsy)", "statistic": "mean", "dispersion_type": "SEM",
+      "pre_timepoint": "L-55 ± 2 days (biopsy)", "end_timepoint": "R+0 (landing-day biopsy)", "interpolate": true,
+      "note": "Table 3 footnote: for crew member C the n for Vo was 35 and 31, so the printed fibre counts may overstate n for Vo.",
+      "values": {
+        "all": {
+          "pre": {"value": 0.85, "dispersion": [0.02], "n": 540, "n_counts": "fibres from 9 crew members", "value_type": "reported", "source": "fitts-2010", "location": "PDF page 7, Table 3 (All crew members, Pre-flight, Vo)", "quote": "0.85 ± 0.02"},
+          "end": {"value": 0.68, "dispersion": [0.01], "n": 458, "n_counts": "fibres from 9 crew members", "value_type": "reported", "source": "fitts-2010", "location": "PDF page 7, Table 3 (All crew members, Post-flight, Vo)", "quote": "0.68 ± 0.01∗"}
+        },
+        "high_treadmill": {
+          "pre": {"value": 0.88, "dispersion": [0.03], "n": 243, "n_counts": "fibres from 4 crew members", "value_type": "reported", "source": "fitts-2010", "location": "PDF page 7, Table 3 (High treadmill, Pre-flight, Vo)", "quote": "0.88 ± 0.03"},
+          "end": {"value": 0.72, "dispersion": [0.02], "n": 220, "n_counts": "fibres from 4 crew members", "value_type": "reported", "source": "fitts-2010", "location": "PDF page 7, Table 3 (High treadmill, Post-flight, Vo)", "quote": "0.72 ± 0.02∗"}
+        },
+        "low_treadmill": {
+          "pre": {"value": 0.83, "dispersion": [0.02], "n": 297, "n_counts": "fibres from 5 crew members", "value_type": "reported", "source": "fitts-2010", "location": "PDF page 7, Table 3 (Low treadmill, Pre-flight, Vo)", "quote": "0.83 ± 0.02"},
+          "end": {"value": 0.64, "dispersion": [0.02], "n": 238, "n_counts": "fibres from 5 crew members", "value_type": "reported", "source": "fitts-2010", "location": "PDF page 7, Table 3 (Low treadmill, Post-flight, Vo)", "quote": "0.64 ± 0.02∗"}
+        }
+      }
+    },
+    {
+      "id": "type_i_peak_power", "name": "Type I fibre peak power", "levels": ["L3"], "unit": "µN FL s⁻¹",
+      "biological_level": "single fibres (biopsy)", "statistic": "mean", "dispersion_type": "SEM",
+      "pre_timepoint": "L-55 ± 2 days (biopsy)", "end_timepoint": "R+0 (landing-day biopsy)", "interpolate": true,
+      "values": {
+        "all": {
+          "pre": {"value": 14.20, "dispersion": [0.45], "n": 311, "n_counts": "fibres from 9 crew members", "value_type": "reported", "source": "fitts-2010", "location": "PDF page 14, Table 8 (All Crew, Pre-flight, Peak power)", "quote": "14.20 ± 0.45"},
+          "end": {"value": 7.47, "dispersion": [0.24], "n": 238, "n_counts": "fibres from 9 crew members", "value_type": "reported", "source": "fitts-2010", "location": "PDF page 14, Table 8 (All Crew, Post-flight, Peak power)", "quote": "7.47 ± 0.24∗"}
+        },
+        "high_treadmill": {
+          "pre": {"value": 10.35, "dispersion": [0.57], "n": 128, "n_counts": "fibres from 4 crew members", "value_type": "reported", "source": "fitts-2010", "location": "PDF page 14, Table 8 (High Treadmill (4), Pre-flight)", "quote": "10.35 ± 0.57"},
+          "end": {"value": 6.77, "dispersion": [0.28], "n": 114, "n_counts": "fibres from 4 crew members", "value_type": "reported", "source": "fitts-2010", "location": "PDF page 14, Table 8 (High Treadmill (4), Post-flight)", "quote": "6.77 ± 0.28∗"}
+        },
+        "low_treadmill": {
+          "pre": {"value": 16.52, "dispersion": [0.64], "n": 183, "n_counts": "fibres from 5 crew members", "value_type": "reported", "source": "fitts-2010", "location": "PDF page 14, Table 8 (Low Treadmill (5), Pre-flight)", "quote": "16.52 ± 0.64"},
+          "end": {"value": 7.98, "dispersion": [0.35], "n": 124, "n_counts": "fibres from 5 crew members", "value_type": "reported", "source": "fitts-2010", "location": "PDF page 14, Table 8 (Low Treadmill (5), Post-flight)", "quote": "7.98 ± 0.35∗"}
+        }
+      }
+    },
+    {
+      "id": "type_ii_peak_force", "name": "Type II fibre peak isometric force (P0)", "levels": ["L3"], "unit": "mN",
+      "biological_level": "single fibres (biopsy)", "statistic": "mean", "dispersion_type": "SEM",
+      "pre_timepoint": "L-55 ± 2 days (biopsy)", "end_timepoint": "R+0 (landing-day biopsy)", "interpolate": true,
+      "values": {
+        "all": {
+          "pre": {"value": 0.97, "dispersion": [0.05], "n": 60, "n_counts": "fibres from 9 crew members", "value_type": "reported", "source": "fitts-2010", "location": "PDF page 9, Table 5 (All crew members, Pre-flight, Po)", "quote": "0.97 ± 0.05"},
+          "end": {"value": 0.71, "dispersion": [0.03], "n": 84, "n_counts": "fibres from 9 crew members", "value_type": "reported", "source": "fitts-2010", "location": "PDF page 9, Table 5 (All crew members, Post-flight, Po)", "quote": "0.71 ± 0.03∗"}
+        },
+        "high_treadmill": {
+          "pre": {"value": 0.82, "dispersion": [0.04], "n": 37, "n_counts": "fibres from 4 crew members", "value_type": "reported", "source": "fitts-2010", "location": "PDF page 9, Table 5 (High treadmill, Pre-flight, Po)", "quote": "0.82 ± 0.04"},
+          "end": {"value": 0.80, "dispersion": [0.07], "n": 24, "n_counts": "fibres from 4 crew members", "value_type": "reported", "source": "fitts-2010", "location": "PDF page 9, Table 5 (High treadmill, Post-flight, Po)", "quote": "0.80 ± 0.07"}
+        },
+        "low_treadmill": {
+          "pre": {"value": 1.20, "dispersion": [0.09], "n": 23, "n_counts": "fibres from 5 crew members", "value_type": "reported", "source": "fitts-2010", "location": "PDF page 9, Table 5 (Low treadmill, Pre-flight, Po)", "quote": "1.20 ± 0.09"},
+          "end": {"value": 0.68, "dispersion": [0.03], "n": 60, "n_counts": "fibres from 5 crew members", "value_type": "reported", "source": "fitts-2010", "location": "PDF page 9, Table 5 (Low treadmill, Post-flight, Po)", "quote": "0.68 ± 0.03∗"}
+        }
+      }
+    },
+    {
+      "id": "type_ii_vo", "name": "Type II fibre maximal unloaded shortening velocity (V0)", "levels": ["L3"], "unit": "FL s⁻¹",
+      "biological_level": "single fibres (biopsy)", "statistic": "mean", "dispersion_type": "SEM",
+      "pre_timepoint": "L-55 ± 2 days (biopsy)", "end_timepoint": "R+0 (landing-day biopsy)", "interpolate": true,
+      "note": "Not significantly changed: 'With the exception of the soleus fast type II fibres, which were unaltered by space flight' (PDF page 9).",
+      "values": {
+        "all": {
+          "pre": {"value": 2.66, "dispersion": [0.16], "n": 60, "n_counts": "fibres from 9 crew members", "value_type": "reported", "source": "fitts-2010", "location": "PDF page 9, Table 5 (All crew members, Pre-flight, Vo)", "quote": "2.66 ± 0.16"},
+          "end": {"value": 2.94, "dispersion": [0.15], "n": 84, "n_counts": "fibres from 9 crew members", "value_type": "reported", "source": "fitts-2010", "location": "PDF page 9, Table 5 (All crew members, Post-flight, Vo)", "quote": "2.94 ± 0.15"}
+        },
+        "high_treadmill": {
+          "pre": {"value": 2.62, "dispersion": [0.20], "n": 37, "n_counts": "fibres from 4 crew members", "value_type": "reported", "source": "fitts-2010", "location": "PDF page 9, Table 5 (High treadmill, Pre-flight, Vo)", "quote": "2.62 ± 0.20"},
+          "end": {"value": 2.52, "dispersion": [0.26], "n": 24, "n_counts": "fibres from 4 crew members", "value_type": "reported", "source": "fitts-2010", "location": "PDF page 9, Table 5 (High treadmill, Post-flight, Vo)", "quote": "2.52 ± 0.26"}
+        },
+        "low_treadmill": {
+          "pre": {"value": 2.74, "dispersion": [0.25], "n": 23, "n_counts": "fibres from 5 crew members", "value_type": "reported", "source": "fitts-2010", "location": "PDF page 9, Table 5 (Low treadmill, Pre-flight, Vo)", "quote": "2.74 ± 0.25"},
+          "end": {"value": 3.10, "dispersion": [0.17], "n": 60, "n_counts": "fibres from 5 crew members", "value_type": "reported", "source": "fitts-2010", "location": "PDF page 9, Table 5 (Low treadmill, Post-flight, Vo)", "quote": "3.10 ± 0.17"}
+        }
+      }
+    },
+    {
+      "id": "type_ii_peak_power", "name": "Type II fibre peak power", "levels": ["L3"], "unit": "µN FL s⁻¹",
+      "biological_level": "single fibres (biopsy)", "statistic": "mean", "dispersion_type": "SEM",
+      "pre_timepoint": "L-55 ± 2 days (biopsy)", "end_timepoint": "R+0 (landing-day biopsy)", "interpolate": true,
+      "note": "Table 10 prints all-crew values only.",
+      "values": {
+        "all": {
+          "pre": {"value": 51.72, "dispersion": [4.09], "n": 24, "n_counts": "fibres from 9 crew members", "value_type": "reported", "source": "fitts-2010", "location": "PDF page 16, Table 10 (Soleus, Pre-flight, Peak power)", "quote": "51.72 ± 4.09"},
+          "end": {"value": 28.52, "dispersion": [4.20], "n": 29, "n_counts": "fibres from 9 crew members", "value_type": "reported", "source": "fitts-2010", "location": "PDF page 16, Table 10 (Soleus, Post-flight, Peak power)", "quote": "28.52 ± 4.20∗"}
+        }
+      }
+    },
+    {
+      "id": "thin_filament_density", "name": "Thin-filament density near the M line (slow fibres)", "levels": ["L4"], "unit": "filaments µm⁻²",
+      "biological_level": "myofilament lattice (electron microscopy)", "statistic": "mean", "dispersion_type": "SEM",
+      "pre_timepoint": "L-55 ± 2 days (biopsy)", "end_timepoint": "R+0 (landing-day biopsy)",
+      "interpolate": false,
+      "no_interpolation_reason": "Measured only before flight and on landing day. Fitts et al. report that after a 17-day flight the change went the opposite way (fewer, shorter thin filaments), so no in-between curve is drawn.",
+      "no_interpolation_quote": {"source": "fitts-2010", "location": "PDF page 5, Methods", "quote": "indicated that thin filaments were not missing as expected from 17 day flight data but appeared more abundant, pointing to increased thin filament length."},
+      "function": {"text": "Thin filaments arise from nucleation sites in the Z band and exhibit different lengths in normal skeletal muscles.", "source": "fitts-2010", "location": "PDF page 22, Figure 16 legend"},
+      "values": {
+        "all": {
+          "pre": {"value": 2253, "dispersion": [132], "n": 5, "n_counts": "slow fibres per crew member per timepoint (90 fibres in total); the paper does not state over which unit the SEM was taken", "value_type": "reported", "source": "fitts-2010", "location": "PDF page 14, Results 'Ultrastructural changes and quantification'", "quote": "The average thin filament density (2744 ± 167 μm−2) post-flight in the near M region was 22% (P < 0.01) higher than that (2253 ± 132 μm−2) before flight."},
+          "end": {"value": 2744, "dispersion": [167], "n": 5, "n_counts": "slow fibres per crew member per timepoint (90 fibres in total)", "value_type": "reported", "source": "fitts-2010", "location": "PDF page 14, Results", "quote": "The average thin filament density (2744 ± 167 μm−2) post-flight in the near M region was 22% (P < 0.01) higher"},
+          "reported_change_end": {"value": 22, "dispersion": [], "unit": "%", "source": "fitts-2010", "location": "PDF page 14, Results", "quote": "was 22% (P < 0.01) higher"}
+        }
+      }
+    },
+    {
+      "id": "thin_thick_ratio", "name": "Thin:thick filament ratio near the M line", "levels": ["L4"], "unit": "ratio",
+      "biological_level": "myofilament lattice (electron microscopy)", "statistic": "mean", "dispersion_type": "SEM",
+      "pre_timepoint": "L-55 ± 2 days (biopsy)", "end_timepoint": "R+0 (landing-day biopsy)",
+      "interpolate": false,
+      "no_interpolation_reason": "Measured only before flight and on landing day; the 17-day flight data changed in the opposite direction.",
+      "values": {
+        "all": {
+          "pre": {"value": 2.2, "dispersion": [0.15], "n": 5, "n_counts": "slow fibres per crew member per timepoint (90 fibres in total)", "value_type": "reported", "source": "fitts-2010", "location": "PDF page 14, Results", "quote": "The ratio of thin:thick filaments was significantly (P < 0.01) higher post-flight (2.9 ± 0.21) compared to pre-flight (2.2 ± 0.15)."},
+          "end": {"value": 2.9, "dispersion": [0.21], "n": 5, "n_counts": "slow fibres per crew member per timepoint (90 fibres in total)", "value_type": "reported", "source": "fitts-2010", "location": "PDF page 14, Results", "quote": "higher post-flight (2.9 ± 0.21)"}
+        }
+      }
+    },
+    {
+      "id": "thick_filament_density", "name": "Thick-filament density near the M line (normalised to 2.5 µm sarcomere length)", "levels": ["L4"], "unit": "filaments µm⁻²",
+      "biological_level": "myofilament lattice (electron microscopy)", "statistic": "mean", "dispersion_type": "SEM",
+      "pre_timepoint": "L-55 ± 2 days (biopsy)", "end_timepoint": "R+0 (landing-day biopsy)",
+      "interpolate": false,
+      "no_interpolation_reason": "Not significantly different (P = 0.07); the lattice geometry is held constant.",
+      "values": {
+        "all": {
+          "pre": {"value": 999, "dispersion": [21], "n": 5, "n_counts": "slow fibres per crew member per timepoint (90 fibres in total)", "value_type": "reported", "source": "fitts-2010", "location": "PDF page 5, Methods", "quote": "the average thick filament density of the pre-flight fibres (999 ± 21 filaments μm−2) was comparable (P = 0.07) to that of the post-flight fibres (945 ± 19μm2), confirming standardization."},
+          "end": {"value": 945, "dispersion": [19], "n": 5, "n_counts": "slow fibres per crew member per timepoint (90 fibres in total)", "value_type": "reported", "source": "fitts-2010", "location": "PDF page 5, Methods", "quote": "945 ± 19μm2"}
+        }
+      }
+    }
+  ],
+
+  "fibre_type_distribution": {
+    "id": "mhc_distribution", "name": "Myosin heavy chain (MHC) fibre-type distribution", "levels": ["L2"], "unit": "% of fibres",
+    "biological_level": "single fibres (biopsy, MHC typing)", "statistic": "mean", "dispersion_type": "SE",
+    "pre_timepoint": "L-55 ± 2 days (biopsy)", "end_timepoint": "R+0 (landing-day biopsy)",
+    "interpolate": true,
+    "source": "trappe-2009", "location": "PDF page 8, Table 8 'Soleus fiber type distribution before and after spaceflight'",
+    "n": 8, "n_counts": "crew members (subject B excluded: small biopsy sample); 2,368 soleus fibres typed",
+    "note": "Table 8 shows that the 'decrease of 17% in MHC I fibers' in the Results text is 17 percentage points (88 → 71 % of fibres). Fitts et al. (PDF page 18) quote '88 and 77% slow type I fibres pre- vs. post-flight' for the same muscle; Table 8's 71 % is used here.",
+    "categories": [
+      {"id": "I", "label": "MHC I", "render_class": "type_i", "pre": [88, 3], "end": [71, 7], "quote_pre": "88±3", "quote_end": "71±7*"},
+      {"id": "I/IIa", "label": "MHC I/IIa (hybrid)", "render_class": "hybrid", "pre": [2, 1], "end": [7, 3], "quote_pre": "2±1", "quote_end": "7±3"},
+      {"id": "IIa", "label": "MHC IIa", "render_class": "type_ii", "pre": [9, 2], "end": [13, 4], "quote_pre": "9±2", "quote_end": "13±4"},
+      {"id": "IIa/IIx", "label": "MHC IIa/IIx (hybrid of two fast isoforms)", "render_class": "type_ii", "pre": [1, 1], "end": [7, 4], "quote_pre": "1±1", "quote_end": "7±4"},
+      {"id": "IIx", "label": "MHC IIx", "render_class": "type_ii", "pre": [0, 0], "end": [1, 1], "quote_pre": "0±0", "quote_end": "1±1"},
+      {"id": "I/IIa/IIx", "label": "MHC I/IIa/IIx (hybrid)", "render_class": "hybrid", "pre": [0, 0], "end": [1, 1], "quote_pre": "0±0", "quote_end": "1±1"}
+    ],
+    "individuals": {
+      "order": ["I", "I/IIa", "IIa", "IIa/IIx", "IIx", "I/IIa/IIx"],
+      "pre": {"A": [86, 1, 13, 0, 0, 0], "C": [83, 4, 11, 2, 0, 0], "D": [85, 1, 12, 1, 0, 0], "E": [82, 5, 6, 5, 0, 2], "F": [80, 2, 17, 1, 0, 0], "G": [99, 0, 1, 0, 0, 0], "H": [86, 0, 12, 2, 0, 0], "I": [100, 0, 0, 0, 0, 0]},
+      "end": {"A": [42, 2, 42, 12, 2, 0], "C": [63, 23, 12, 0, 1, 1], "D": [82, 2, 11, 5, 1, 0], "E": [85, 4, 7, 3, 0, 1], "F": [45, 1, 17, 33, 3, 1], "G": [74, 16, 7, 0, 1, 2], "H": [80, 4, 10, 4, 1, 1], "I": [97, 3, 0, 0, 0, 0]},
+      "note": "Subgroup means calculated from the printed individual rows; subject B has no data, so the high treadmill group has n = 3 (E, G, H) for this variable."
+    },
+    "render_classes": {
+      "type_i": "Slow fibres containing only MHC I. Drawn with the Fitts type I diameter.",
+      "type_ii": "Fibres containing only fast isoforms (IIa, IIa/IIx, IIx). Drawn with the Fitts type II diameter; Fitts typed fibres as slow or fast and excluded fibres containing both slow and fast myosin.",
+      "hybrid": "Fibres containing slow and fast myosin (I/IIa, I/IIa/IIx). Fitts excluded these, so their size is not reported; they are drawn with the type I diameter (approximation)."
+    }
+  },
+
+  "static": [
+    {"id": "sarcomere_length", "name": "Sarcomere length used in the model", "levels": ["L3", "L4"], "value": 2.5, "unit": "µm", "dispersion_type": "none", "dispersion": [], "n": null, "n_counts": "not applicable",
+     "value_type": "reported", "source": "fitts-2010", "location": "PDF page 4, Methods 'Single fibre preparation'", "quote": "Sarcomere length was adjusted to 2.5 μm using an eyepiece micrometer (800×)",
+     "note": "This is the length at which Fitts measured fibres and normalised the EM counts, not an in-vivo resting length. Not measured in flight; does not change with the slider."},
+    {"id": "thick_filament_length", "name": "Thick (myosin) filament length", "levels": ["L4"], "value": 1.65, "unit": "µm", "dispersion_type": "none", "dispersion": [], "n": null, "n_counts": "review value (vertebrates)",
+     "value_type": "reported", "source": "szikora-2022", "location": "Introduction", "quote": "The length of the thick filaments is constant (~1.65 μm) and is conserved across vertebrate species and muscle types."},
+    {"id": "thin_filament_max_length", "name": "Length of the longest thin filaments", "levels": ["L4"], "value": 1.27, "unit": "µm", "dispersion_type": "none", "dispersion": [], "n": null, "n_counts": "not stated",
+     "value_type": "approximation", "source": "fitts-2010", "location": "PDF page 5, Methods 'Analysis of thin filament density by electron microscopy'", "quote": "only the longest thin filaments (∼1.27 nm) could reach this far.",
+     "formula": "Printed unit 'nm' read as µm.", "assumed": "The printed unit is a typesetting error: a 1.27 nm filament could not reach the M-line region of a 2.5 μm sarcomere, so µm is the only physically possible unit.", "needed_to_replace": "A measured human soleus thin-filament length distribution."},
+    {"id": "thick_filament_spacing", "name": "Thick-filament spacing used for normalisation", "levels": ["L4"], "value": 31.3, "unit": "nm", "dispersion_type": "none", "dispersion": [], "n": null, "n_counts": "not applicable (normalisation value)",
+     "value_type": "reported", "source": "fitts-2010", "location": "PDF page 5, Methods", "quote": "To normalize for sarcomere length differences among fibres, thick filament spacing was adjusted to 31.3 nm (2.5 μm sarcomere length).",
+     "note": "A normalisation constant used by the authors, not a measured in-vivo lattice spacing."},
+    {"id": "z_band_thin_density_max", "name": "Maximum thin-filament density (I band near the Z line)", "levels": ["L4"], "value": 3251, "unit": "filaments µm⁻²", "dispersion_type": "none", "dispersion": [], "n": null, "n_counts": "average of two earlier studies (Riley et al. 1998, 2000), as quoted by Fitts",
+     "value_type": "reported", "source": "fitts-2010", "location": "PDF pages 14–15, Results", "quote": "thin filament densities in soleus I bands near the Z line, which averaged 3251 μm−2 for the two studies ... The 3251 μm−2 represents the largest number nucleated at the Z band"},
+    {"id": "myofibril_diameter", "name": "Myofibril diameter", "levels": ["L3"], "value": 1.2, "unit": "µm", "dispersion_type": "none", "dispersion": [], "n": null, "n_counts": "textbook value",
+     "value_type": "reported", "source": "openstax-ap2e", "location": "Section 10.2", "quote": "Because myofibrils are only approximately 1.2 μm in diameter",
+     "note": "Fitts et al. describe smaller myofibrils after flight only qualitatively (crew with high atrophy), so this diameter is held constant."},
+    {"id": "shank_length", "name": "Shank length (lateral femoral condyle to lateral malleolus)", "levels": ["L0"], "value": 39.3, "unit": "cm", "dispersion_type": "SD", "dispersion": [2.2], "n": 6, "n_counts": "healthy young adults",
+     "value_type": "reported", "source": "bolsterlee-2018", "location": "Table 1", "quote": "Shank length (cm) a 39.3 ± 2.2",
+     "note": "Used only to set the size of the leg model; not data from the ISS crew."},
+    {"id": "posterior_compartment_share", "name": "Posterior compartments' share of soleus volume", "levels": ["L1"], "value": 80, "unit": "%", "dispersion_type": "SD", "dispersion": [5], "n": 6, "n_counts": "healthy young adults",
+     "value_type": "reported", "source": "bolsterlee-2018", "location": "Abstract, Results", "quote": "The posterior compartments of the soleus comprised 80 ± 5% of the total muscle volume (356 ± 58 cm 3 )."},
+    {"id": "compartment_structure", "name": "Soleus compartment structure", "levels": ["L1"], "value": null, "unit": "description", "dispersion_type": "none", "dispersion": [], "n": 6, "n_counts": "healthy young adults (two cadaveric muscles for validation)",
+     "value_type": "reported", "source": "bolsterlee-2018", "location": "Introduction and Results", "quote": "it consists of a unipennate posterior part wrapped around a radially bipennate anterior part"},
+    {"id": "fascicle_length", "name": "Fascicle length (whole muscle, short length)", "levels": ["L1"], "value": 36.8, "unit": "mm", "dispersion_type": "SD", "dispersion": [8.4], "n": 6, "n_counts": "healthy young adults",
+     "value_type": "reported", "source": "bolsterlee-2018", "location": "Table 2, Whole-muscle, Short", "quote": "Whole-muscle Short 362.2 ± 59.2 101.8 ± 19.1 36.8 ± 8.4 30.6 ± 3.3",
+     "note": "Not measured in the ISS crew; does not change with the slider."},
+    {"id": "pennation_medial_anterior", "name": "Pennation angle, medial-anterior compartment", "levels": ["L1"], "value": 22.0, "unit": "°", "dispersion_type": "SD", "dispersion": [4.7], "n": 6, "n_counts": "healthy young adults",
+     "value_type": "reported", "source": "bolsterlee-2018", "location": "Table 2, Medial-anterior, Short", "quote": "Medial-anterior Short 33.5 ± 10.1 9.3 ± 3.5 37.7 ± 9.3 22.0 ± 4.7 15.3 ± 4.4"},
+    {"id": "pennation_lateral_anterior", "name": "Pennation angle, lateral-anterior compartment", "levels": ["L1"], "value": 27.1, "unit": "°", "dispersion_type": "SD", "dispersion": [4.1], "n": 6, "n_counts": "healthy young adults",
+     "value_type": "reported", "source": "bolsterlee-2018", "location": "Table 2, Lateral-anterior, Short", "quote": "Lateral-anterior Short 40.4 ± 14.4 10.9 ± 4.1 37.7 ± 10.4 27.1 ± 4.1 16.1 ± 3.9"},
+    {"id": "pennation_medial_posterior", "name": "Pennation angle, medial-posterior compartment", "levels": ["L1"], "value": 38.3, "unit": "°", "dispersion_type": "SD", "dispersion": [7.7], "n": 6, "n_counts": "healthy young adults",
+     "value_type": "reported", "source": "bolsterlee-2018", "location": "Table 2, Medial-posterior, Short", "quote": "Medial-posterior Short 146.6 ± 29.1 41.5 ± 8.8 36.0 ± 7.5 38.3 ± 7.7 19.7 ± 4.3"},
+    {"id": "pennation_lateral_posterior", "name": "Pennation angle, lateral-posterior compartment", "levels": ["L1"], "value": 34.9, "unit": "°", "dispersion_type": "SD", "dispersion": [4.3], "n": 6, "n_counts": "healthy young adults",
+     "value_type": "reported", "source": "bolsterlee-2018", "location": "Table 2, Lateral-posterior, Short", "quote": "Lateral-posterior Short 141.7 ± 47.4 40.1 ± 12.5 35.7 ± 7.9 34.9 ± 4.3 18.6 ± 3.2"},
+    {"id": "capillaries_per_type_i_fibre", "name": "Local capillary-to-fibre ratio, soleus type I fibres (baseline)", "levels": ["L2"], "value": 1.83, "unit": "capillaries per fibre", "dispersion_type": "SD", "dispersion": [0.26], "n": 6, "n_counts": "participants (control group, before bed rest)",
+     "value_type": "reported", "source": "hendrickse-2022", "location": "Table 2, SOL LCFR, Control Type I, BDC", "quote": "SOL LCFR Control Type I 1.83 ± 0.26",
+     "note": "Baseline (normal) value from a bed-rest study, not ISS crew. Fitts and Trappe did not measure capillaries, so capillary number does not change with the slider."},
+    {"id": "capillary_density_type_i", "name": "Capillary fibre density, soleus type I fibres (baseline)", "levels": ["L2"], "value": 344, "unit": "mm⁻²", "dispersion_type": "SD", "dispersion": [84], "n": 6, "n_counts": "participants (control group, before bed rest)",
+     "value_type": "reported", "source": "hendrickse-2022", "location": "Table 2, SOL CFD, Control Type I, BDC", "quote": "CFD (mm −2 ) Control Type I 344 ± 84"},
+    {"id": "triads_per_sarcomere", "name": "Triads per sarcomere (one at each A–I junction)", "levels": ["L3", "L4"], "value": 2, "unit": "count", "dispersion_type": "none", "dispersion": [], "n": null, "n_counts": "not applicable",
+     "value_type": "calculated", "source": "laine-2018", "location": "Results", "quote": "individual triads could be observed at typical locations, in register with the A-I junction, as in the adult muscle",
+     "formula": "A sarcomere has two A–I junctions (one on each side of the A band), so one triad at each gives two per sarcomere."}
+  ],
+
+  "structures": [
+    {"id": "epimysium", "name": "Epimysium", "levels": ["L1"], "function": {"text": "Each muscle is wrapped in a sheath of dense, irregular connective tissue called the epimysium,", "source": "openstax-ap2e", "location": "Section 10.2"}},
+    {"id": "perimysium", "name": "Perimysium", "levels": ["L1", "L2"], "function": {"text": "muscle fibers are organized into individual bundles, each called a fascicle, by a middle layer of connective tissue called the perimysium.", "source": "openstax-ap2e", "location": "Section 10.2"}},
+    {"id": "endomysium", "name": "Endomysium", "levels": ["L2"], "function": {"text": "each muscle fiber is encased in a thin connective tissue layer of collagen and reticular fibers called the endomysium.", "source": "openstax-ap2e", "location": "Section 10.2"}},
+    {"id": "capillary", "name": "Capillary", "levels": ["L2"], "function": {"text": "Where C:F is independent of fibre size and a reduction in this parameter is indicative of capillary rarefaction (assuming fibre number is not changed), CD is influenced by fibre size and is a reflection of the diffusion capacity of the capillary bed of the muscle tissue.", "source": "hendrickse-2022", "location": "Introduction"}},
+    {"id": "sarcolemma", "name": "Sarcolemma", "levels": ["L3"], "function": {"text": "The plasma membrane of muscle fibers is called the sarcolemma,", "source": "openstax-ap2e", "location": "Section 10.2"}},
+    {"id": "myonucleus", "name": "Myonuclei", "levels": ["L3"], "function": {"text": "Multiple nuclei mean multiple copies of genes.", "source": "openstax-ap2e", "location": "Section 10.2"}, "note": "Number and spacing are illustrative: no myonuclear data were reported by Fitts or Trappe."},
+    {"id": "mitochondria", "name": "Mitochondria", "levels": ["L3"], "function": {"text": "The filamentous mitochondria (m) predominately encircling I bands in pre-flight muscle fibres become more globular post-flight and invade the A bands, most striking with greater atrophy", "source": "fitts-2010", "location": "PDF page 18, Figure 10 legend"}, "note": "Qualitative electron-microscopy description; number, size and volume fraction are illustrative."},
+    {"id": "sarcoplasmic_reticulum", "name": "Sarcoplasmic reticulum", "levels": ["L3"], "function": {"text": "the specialized smooth endoplasmic reticulum, which stores, releases, and retrieves calcium ions (Ca++).", "source": "openstax-ap2e", "location": "Section 10.2"}},
+    {"id": "t_tubule", "name": "T-tubule and triad", "levels": ["L3"], "function": {"text": "The T-tubules carry the action potential into the interior of the cell.", "source": "openstax-ap2e", "location": "Section 10.2"}, "note": "Triad: 'The close association of one T-tubule with two terminal cisternae on both sides of the tubule forms the triad' (Al-Qusairi & Laporte 2011, Introduction)."},
+    {"id": "myofibril", "name": "Myofibril", "levels": ["L3"], "function": {"text": "The contraction of a striated muscle fiber occurs as the sarcomeres, linearly arranged within myofibrils, shorten as myosin heads pull on the actin filaments.", "source": "openstax-ap2e", "location": "Section 10.3"}},
+    {"id": "z_disc", "name": "Z-disc", "levels": ["L4"], "function": {"text": "Thin filaments, anchored at their ends by the Z-discs, do not extend completely into the central region of the sarcomere", "source": "openstax-ap2e", "location": "Section 10.3"}},
+    {"id": "m_line", "name": "M-line / H-zone", "levels": ["L4"], "function": {"text": "a central region that only contains thick filaments, anchored at their bases at a spot called the M-line.", "source": "openstax-ap2e", "location": "Section 10.3"}},
+    {"id": "a_band", "name": "A-band", "levels": ["L4"], "function": {"text": "The region where thick and thin filaments overlap has a dense appearance, as there is little space between the filaments.", "source": "openstax-ap2e", "location": "Section 10.3"}},
+    {"id": "i_band", "name": "I-band", "levels": ["L4"], "function": {"text": "When a sarcomere contracts, the Z lines move closer together, and the I band becomes smaller.", "source": "openstax-ap2e", "location": "Section 10.3, Figure 10.10 caption"}},
+    {"id": "thick_filament", "name": "Thick filament (myosin)", "levels": ["L4"], "function": {"text": "each thick filament of roughly 300 myosin molecules has multiple myosin heads", "source": "openstax-ap2e", "location": "Section 10.3"}},
+    {"id": "thin_filament", "name": "Thin filament (actin)", "levels": ["L4"], "function": {"text": "After prolonged spaceflight, thin filament length increases (indicated by red extensions of thin filaments) and density increases in the Near M region (post-flight).", "source": "fitts-2010", "location": "PDF page 22, Figure 16 legend"}},
+    {"id": "titin", "name": "Titin", "levels": ["L4"], "function": {"text": "regarding the thick filaments, titin seems to act as a molecular ruler or template as it directly regulates the thick filament length.", "source": "szikora-2022", "location": "Section on thick filament length"}, "note": "Drawn schematically from the Z-disc to the M-line; no titin data were reported by Fitts or Trappe."},
+    {"id": "tibia_fibula", "name": "Tibia and fibula (origin of the soleus)", "levels": ["L0"], "function": {"text": "It originates in the superior tibia, fibula, and interosseous membrane.", "source": "openstax-ap2e", "location": "Section 11.6, Figure 11.33 table"}, "note": "Kenhub: 'The soleus muscle arises from the soleal line on the dorsal surface of the tibia' and 'Part of the fibers arises from the tendinous arch of the soleus'. Bone shapes are illustrative."},
+    {"id": "achilles_tendon", "name": "Calcaneal (Achilles) tendon and calcaneus", "levels": ["L0"], "function": {"text": "The superficial muscles in the posterior compartment of the leg all insert onto the calcaneal tendon, a strong tendon that inserts into the calcaneal bone of the ankle.", "source": "openstax-ap2e", "location": "Section 11.6"}, "note": "Kenhub: 'together they insert onto the posterior surface of the calcaneus via the calcaneal tendon'."},
+    {"id": "skin", "name": "Skin outline", "levels": ["L0"], "function": null, "note": "Illustrative outline only."}
+  ],
+
+  "illustrative": [
+    {"id": "leg_geometry", "name": "Leg, bone, tendon and skin shapes", "levels": ["L0"], "value_type": "illustrative",
+     "reason": "Procedural shapes placed to follow the described origins and insertion; not traced from any image. Only the soleus and gastrocnemius volumes and the shank length come from data."},
+    {"id": "soleus_shape", "name": "Soleus outline", "levels": ["L0", "L1"], "value_type": "illustrative",
+     "reason": "Procedural shape. Its absolute volume is scaled to the reported mean (455 cm³ preflight); the outline itself is not from imaging of the crew."},
+    {"id": "l1_fascicle_count", "name": "Fascicles drawn in the cross-section", "levels": ["L1"], "value": 160, "unit": "count", "value_type": "illustrative",
+     "reason": "The real number of fascicles in a soleus section was not measured in these studies. Fascicles are drawn as a representative mosaic."},
+    {"id": "l2_fibre_count", "name": "Fibres drawn in the fascicle", "levels": ["L2"], "value": 100, "unit": "count", "value_type": "illustrative",
+     "reason": "A representative bundle. Fibre diameters and the share of each fibre type come from data; the count and positions do not."},
+    {"id": "l2_capillary_placement", "name": "Capillary positions", "levels": ["L2"], "value_type": "illustrative",
+     "reason": "About 1.8 capillaries per type I fibre (Hendrickse et al. 2022 baseline) are placed in the gaps between fibres; positions are illustrative."},
+    {"id": "l3_myofibril_count_pre", "name": "Myofibrils drawn in the fibre (preflight)", "levels": ["L3"], "value": 900, "unit": "count", "value_type": "illustrative",
+     "reason": "A real 98 µm fibre holds thousands of 1.2 µm myofibrils; a reduced number is drawn at the true diameter. During the mission the count is scaled with fibre cross-sectional area (approximation)."},
+    {"id": "l3_myonuclei", "name": "Myonuclei drawn on the fibre", "levels": ["L3"], "value": 10, "unit": "count", "value_type": "illustrative",
+     "reason": "Number and spacing of myonuclei were not measured in these studies."},
+    {"id": "l3_mitochondria", "name": "Mitochondria drawn in the fibre", "levels": ["L3"], "value": 420, "unit": "count", "value_type": "illustrative",
+     "reason": "No mitochondrial volume fraction was measured; size and number are chosen to be visible at this scale. Shape follows the qualitative EM description (filamentous around the I band preflight; globular, invading the A band after flight in crew with high atrophy)."},
+    {"id": "l4_lattice_size", "name": "Thick filaments drawn in the lattice cross-section", "levels": ["L4"], "value": 37, "unit": "count", "value_type": "illustrative",
+     "reason": "A small hexagonal patch at the normalised 31.3 nm spacing. The number of thin filaments per thick filament comes from the reported ratio; their exact positions are illustrative."},
+    {"id": "l4_thin_length_mix", "name": "Thin-filament lengths in the longitudinal view", "levels": ["L4"], "value_type": "illustrative",
+     "reason": "Following the concept in Fitts et al. Fig. 16: thin filaments have different lengths; the share long enough to reach the near-M region is calculated from the reported densities (density near M ÷ 3251 μm−2)."}
+  ],
+
+  "qualitative_findings": [
+    {"id": "em_high_atrophy", "levels": ["L3"], "value_type": "reported", "source": "fitts-2010", "location": "PDF page 13, Results 'Ultrastructural changes and quantification'",
+     "quote": "crew members exhibiting high levels of slow fibre atrophy in the soleus muscle following 6 months of spaceflight had smaller myofibrils, fewer intracellular lipids, smaller and globular mitochondria and increased space between myofibrils filled with glycogen particles (Fig. 10).",
+     "applies_to": "Crew with high fibre atrophy (for example subject F, 51 % atrophy). Not a group mean; not quantified."},
+    {"id": "em_low_atrophy", "levels": ["L3"], "value_type": "reported", "source": "fitts-2010", "location": "PDF page 14, Results",
+     "quote": "subjects with little atrophy retained similar sized, closely packed myofibrils, lipid droplets and filamentous mitochondria encircling the myofibrils at the I band level (Fig. 10).",
+     "applies_to": "Crew with little fibre atrophy."},
+    {"id": "fibre_vs_muscle", "levels": ["L1"], "value_type": "reported", "source": "fitts-2010", "location": "PDF page 18, Discussion",
+     "quote": "the two crew members with the greatest soleus type I fibre atrophy also lost the most soleus muscle volume detected by MRI.",
+     "applies_to": "Why fibre and whole-muscle changes are shown side by side: the fibre CSA loss (biopsy, R+0) is larger than the whole-muscle volume loss (MRI, R+4). The page does not reconcile them."}
+  ],
+
+  "time_course": {
+    "end_day": 177,
+    "default_shape": "spaceflight_cohorts",
+    "shapes": {
+      "spaceflight_cohorts": {
+        "label": "Spaceflight cohorts (front-loaded, then level)",
+        "value_type": "approximation",
+        "method": "duration_model.normalized_shape('soleus_volume', 177): the existing multi-cohort soleus curve (LeBlanc et al. 2000 plus the 8-day point in register entry E1), divided by its own plateau so it runs from 0 at launch to 1 at day 177. Only its shape is used; every parameter is scaled to its own Fitts or Trappe endpoints.",
+        "sources": ["leblanc-2000", "E1", "fitts-2010"],
+        "supporting_quotes": [
+          {"source": "fitts-2010", "location": "PDF page 2, Introduction", "quote": "The composite data from Skylab, MIR and Shuttle flights suggest that the loss of limb muscle mass is exponential with the duration of flight, and that a microgravity steady state may be reached by approximately 180 days (Fitts et al. 2000)."},
+          {"source": "leblanc-2000", "location": "PDF page 3, Results 'Muscle volume' (catalog duration_evidence.json)", "quote": "A linear regression of the percent loss against flight duration showed no significant slope for any of the regions, suggesting that the volume changes reached a new steady state by or before ~4 mo of flight."}
+        ],
+        "assumed": "All parameters follow the same time course as soleus volume in separate Shuttle and Mir crews: about 38 % of the end-of-mission change by day 8, 58 % by day 17 and the full change from day 115 on, joined by straight segments.",
+        "why": "These are the only spaceflight measurements of the soleus at more than one mission length. Fitts et al. and LeBlanc et al. both describe a loss that slows and levels off.",
+        "needed_to_replace": "Repeated in-flight measurements (for example MRI or ultrasound) of the same crew during a six-month mission.",
+        "notice": "In-between days are an approximation. No one measured these crew members during flight. The curve borrows its shape from other crews (Space Shuttle and Mir, 8 to 197 days), who exercised differently, and is scaled to this cohort's own before and after values."
+      },
+      "linear": {
+        "label": "Straight line (constant daily rate)",
+        "value_type": "approximation",
+        "method": "fraction = day / 177",
+        "sources": ["scott-2020"],
+        "supporting_quotes": [
+          {"source": "scott-2020", "location": "Abstract and Results", "quote": "Across all muscles except the rectus femoris (no change), there was a linear decline during bed rest, with the highest atrophic rate occurring in the soleus (–0.33%/d)."},
+          {"source": "scott-2020", "location": "Results", "quote": "Model R 2 , AIC, and BIC for the linear models was similar to the exponential decay and fractional polynomial nonlinear models"}
+        ],
+        "assumed": "Every parameter changes by the same amount each day, from its preflight value at launch to its end-of-mission value at day 177.",
+        "why": "In a 70-day bed-rest study without exercise (a ground analogue, not spaceflight), soleus size fell along a straight line and showed no plateau. Its rate (−0.33 %/day) is NOT used: it would predict far more loss than the crew showed. Only the straight shape is borrowed.",
+        "needed_to_replace": "Repeated in-flight measurements of the same crew.",
+        "notice": "In-between days are an approximation that assumes an even daily rate. The straight shape comes from a bed-rest study (people lying in bed on the ground, no exercise), not from spaceflight."
+      }
+    },
+    "check_points": [
+      {"id": "widrick_17d_diameter", "parameter": "type_i_diameter", "day": 17, "percent_change": -8, "source": "fitts-2010", "location": "PDF page 18, Discussion",
+       "quote": "The 20 and 35% decline in the slow type I fibre diameter and force observed in this work exceeded the 8 and 21% drop in these variables following a 17-day Shuttle flight (Widrick et al. 1999)",
+       "note": "A different crew (four Shuttle astronauts, 17-day flight). Shown for comparison only; not used to build the curve."},
+      {"id": "widrick_17d_force", "parameter": "type_i_peak_force", "day": 17, "percent_change": -21, "source": "fitts-2010", "location": "PDF page 18, Discussion",
+       "quote": "exceeded the 8 and 21% drop in these variables following a 17-day Shuttle flight (Widrick et al. 1999)",
+       "note": "Different crew; comparison only."},
+      {"id": "widrick_17d_csa", "parameter": "type_i_csa", "day": 17, "percent_change": -15, "source": "fitts-2010", "location": "PDF page 2, Introduction",
+       "quote": "the cross-sectional areas (CSAs) of the slow type I and fast type IIa fibres of the soleus muscles of the four crew members were on average 15 and 26% smaller post- compared to pre-flight (Widrick et al. 1999).",
+       "note": "Different crew (17-day flight); comparison only."}
+    ],
+    "context": [
+      {"source": "hendrickse-2022", "location": "Abstract, Results; Table 1", "evidence_type": "ground analogue",
+       "quote": "After just 6 days of bed rest, fibre atrophy (−23.2 ± 12.4%, P < 0.001) and reductions in capillary‐to‐fibre ratio (C:F; 1.97 ± 0.57 vs . 1.56 ± 0.41, P < 0.001) were proportional in both muscles",
+       "use": "Context only: in bed rest, fibre atrophy was fast in the first week and slower afterwards. Not used in any calculation."}
+    ]
+  }
+}

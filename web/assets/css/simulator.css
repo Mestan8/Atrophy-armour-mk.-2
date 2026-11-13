@@ -1,0 +1,56 @@
+/* 3D Simulator page. Page chrome follows site.css; only the 3D stage has its own richer look
+   (teal radial-gradient background, leader-line labels), as allowed for this page. */
+.sim-main{max-width:1440px}
+.sim-layout{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:12px;align-items:start;margin:0 0 12px}
+@media (max-width:980px){.sim-layout{grid-template-columns:minmax(0,1fr)}}
+.sim-stage{position:relative;height:min(78vh,760px);min-height:420px;border-radius:4px;overflow:hidden;
+  background:radial-gradient(ellipse at 50% 42%,#1f6f6a 0%,#0f4a49 45%,#062a2c 100%);outline-offset:3px;touch-action:none}
+@media (max-width:600px){.sim-stage{height:70vh;min-height:360px}}
+.sim-stage canvas{display:block;position:absolute;inset:0}
+.sim-stage [hidden]{display:none!important}
+.sim-stage .sim-css2d{position:absolute;inset:0;pointer-events:none}
+.sim-breadcrumb{position:absolute;left:10px;top:10px;z-index:3}
+.sim-breadcrumb ol{list-style:none;display:flex;flex-wrap:wrap;gap:2px;margin:0;padding:0}
+.sim-breadcrumb li+li::before{content:"›";color:#cfe9e6;padding:0 4px}
+.sim-breadcrumb button{background:rgba(0,0,0,.25);border:1px solid rgba(255,255,255,.25);color:#eaf6f5;padding:3px 8px;font-size:13px;border-radius:12px}
+.sim-breadcrumb button[aria-current="true"]{background:#eaf6f5;color:#0b3b3b;font-weight:700}
+.sim-zoom{position:absolute;right:10px;top:10px;z-index:3;display:flex;gap:4px}
+.sim-zoom button{background:rgba(0,0,0,.3);border:1px solid rgba(255,255,255,.35);color:#fff;min-width:34px;font-size:15px}
+.sim-caption{position:absolute;left:10px;right:10px;bottom:40px;z-index:3;color:#e8f4f3;font-size:13px;max-width:620px;text-shadow:0 1px 2px rgba(0,0,0,.6)}
+.sim-caption strong{color:#fff}
+.sim-banner{position:absolute;left:50%;top:48px;transform:translateX(-50%);z-index:3;max-width:min(560px,90%);
+  background:rgba(255,244,214,.95);border-left:4px solid var(--approx-border);color:#1c1c1c;padding:6px 10px;font-size:13px;border-radius:2px}
+.sim-scalebar{position:absolute;left:10px;bottom:12px;z-index:3;display:flex;align-items:center;gap:8px;color:#fff;font-family:var(--mono);font-size:12px}
+.sim-scalebar #scalebar-line{display:inline-block;height:6px;border:2px solid #fff;border-top:0}
+.sim-legend{position:absolute;right:10px;bottom:12px;z-index:3;background:rgba(0,0,0,.35);color:#fff;padding:6px 8px;font-size:12px;border-radius:3px}
+.sim-legend .bar{width:160px;height:10px;margin:4px 0;background:linear-gradient(90deg,#d7301f,#fc8d59,#f7f7f7,#91bfdb,#4575b4)}
+.sim-legend .ends{display:flex;justify-content:space-between}
+.sim-legend .swatch{display:inline-block;width:10px;height:10px;margin-right:4px;border:1px solid #fff;vertical-align:-1px}
+.sim-fps{position:absolute;right:10px;top:48px;z-index:3;color:#fff;font-family:var(--mono);font-size:12px;background:rgba(0,0,0,.4);padding:2px 6px}
+.sim-fallback{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:24px;color:#fff;text-align:center;z-index:4}
+.sim-fade{position:absolute;inset:0;background:#0b3b3b;opacity:0;pointer-events:none;z-index:2}
+.sim-fade.on{opacity:1}
+@media (prefers-reduced-motion:no-preference){.sim-fade{transition:opacity .22s ease}}
+
+/* Leader-line labels: a small circle at the structure, a thin white line, then the text. */
+.sim-label{position:relative;width:0;height:0;pointer-events:auto;cursor:pointer;color:#fff;font-size:12px;white-space:nowrap}
+.sim-label .dot{position:absolute;left:-4px;top:-4px;width:8px;height:8px;border:1.5px solid #fff;border-radius:50%;background:rgba(255,255,255,.15)}
+.sim-label svg{position:absolute;left:0;top:0;overflow:visible;pointer-events:none}
+.sim-label .text{position:absolute;padding:1px 5px;background:rgba(5,35,36,.55);border-radius:2px;text-shadow:0 1px 1px rgba(0,0,0,.5)}
+.sim-label .text em{font-style:normal;color:#ffe9a8;font-size:11px}
+.sim-label:focus-visible .text,.sim-label:hover .text{background:rgba(255,255,255,.9);color:#0b3b3b}
+
+.sim-side .sim-panel h3{margin-bottom:6px}
+.sim-row{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0 4px}
+.sim-toggles{border:1px solid var(--border);border-radius:3px;margin:8px 0 0;padding:6px 10px}
+.sim-toggles label{display:block;font-size:14px;margin:3px 0}
+#sim-info-body .rows>div{grid-template-columns:120px minmax(0,1fr)}
+.sim-quote{font-size:13px;color:var(--muted);border-left:3px solid var(--border);padding-left:8px;margin:6px 0}
+.sim-table{width:100%;border-collapse:collapse;font-size:13px}
+.sim-table th,.sim-table td{text-align:left;padding:4px 6px;border-top:1px solid #e6e6e6;vertical-align:top}
+.sim-table th{color:var(--muted);font-weight:600}
+.sim-table td.num{font-family:var(--mono);white-space:nowrap}
+.sim-table-wrap{overflow-x:auto}
+.tag.illustrative{background:#efe7fb;border-color:#7b5bb5}
+.tag.reported{background:#e6f4ea;border-color:#3b7a4b}
+@media (max-width:600px){.sim-zoom{top:auto;bottom:34px}.sim-caption{display:none}.sim-breadcrumb button{padding:2px 6px;font-size:12px}}

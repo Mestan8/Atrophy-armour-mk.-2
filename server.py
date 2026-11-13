@@ -21,9 +21,11 @@ from api import (
     build_measurements_view,
     build_scenario_controls_view,
     build_scenario_view,
+    build_simulator_view,
 )
 from database import connect_database
 from evidence_catalog import catalog, external_sources
+from simulator_model import parameters as simulator_parameters
 from study_library import DEFAULT_DATABASE_PATH, initialize_database
 
 
@@ -40,6 +42,7 @@ _GET_ROUTES: dict[str, _Route] = {
     "/api/scenario/controls": build_scenario_controls_view,
     "/api/library": build_library_view,
     "/api/measurements": build_measurements_view,
+    "/api/simulator/soleus": build_simulator_view,
 }
 
 
@@ -55,6 +58,8 @@ class _Handler(SimpleHTTPRequestHandler):
         ".html": "text/html; charset=utf-8",
         ".css": "text/css; charset=utf-8",
         ".js": "text/javascript; charset=utf-8",
+        ".mjs": "text/javascript; charset=utf-8",
+        ".json": "application/json",
     }
     _cache_policy = "no-cache"
 
@@ -171,6 +176,7 @@ class AtrophyServer(ThreadingHTTPServer):
         # Fail at startup, not mid-request, if any evidence record lacks provenance.
         catalog()
         external_sources()
+        simulator_parameters()
         initialize_database(database_path).close()
         try:
             super().__init__(address, _Handler)
