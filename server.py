@@ -60,6 +60,9 @@ class _Handler(SimpleHTTPRequestHandler):
         ".js": "text/javascript; charset=utf-8",
         ".mjs": "text/javascript; charset=utf-8",
         ".json": "application/json",
+        # The OS MIME registry (used on Windows) may not know these theme assets.
+        ".woff2": "font/woff2",
+        ".webp": "image/webp",
     }
     _cache_policy = "no-cache"
 
@@ -142,12 +145,12 @@ _PORT_IN_USE_WINERRORS = {10048, 10013}
 
 
 class PortInUseError(OSError):
-    """The port is taken, most likely by another Atrophy Armour server."""
+    """The port is taken, most likely by another Atrophy Armour Mk. 2 server."""
 
     def __init__(self, port: int) -> None:
         super().__init__(
             errno.EADDRINUSE,
-            f"Port {port} is already in use, probably by an older Atrophy Armour "
+            f"Port {port} is already in use, probably by an older Atrophy Armour Mk. 2 "
             "server. Close that terminal/process or start with "
             f"--port {port + 1}.",
         )

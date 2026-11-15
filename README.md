@@ -1,6 +1,6 @@
-# Atrophy Armour
+# Atrophy Armour Mk. 2
 
-Atrophy Armour is an educational tool that organizes published evidence about
+Atrophy Armour Mk. 2 is an educational tool that organizes published evidence about
 skeletal-muscle changes in long-duration spaceflight. It shows published group
 results side by side, each traced to a page and table of its source. It is not a
 clinical, operational, or mission-planning predictor and does not estimate any
@@ -289,7 +289,8 @@ python app.py
 The app starts a local server at <http://127.0.0.1:8501/> and opens it in your
 default browser. Press Ctrl+C to stop it. Use `--port`, `--host` and
 `--no-browser` as needed. Everything, including the charting library, is
-served locally, and the pages use the system font stack.
+served locally, including the Inter typeface (self-hosted `.woff2`, with the
+system font stack as fallback).
 
 The server is read-only: it answers GET requests and refuses any write with
 405 Method Not Allowed.
@@ -298,8 +299,8 @@ The server is read-only: it answers GET requests and refuses any write with
 
 - **Run without activating the virtual environment:** from the project folder,
   run `.\.venv\Scripts\python.exe app.py`.
-- **"Port 8501 is already in use":** another server, usually an older Atrophy
-  Armour still running in a different terminal, holds the port. Close that
+- **"Port 8501 is already in use":** another server, usually an older Atrophy Armour
+  Mk. 2 still running in a different terminal, holds the port. Close that
   terminal (or press Ctrl+C in it), or find and stop the process with
   `netstat -ano | findstr :8501` and `Stop-Process -Id <PID>`. Alternatively,
   start on another port with `python app.py --port 8502`. The server refuses to
@@ -350,7 +351,9 @@ calculations and chart construction stay in Python.
 - `study_library.py`, `database.py`: SQLite schema and the eight study summaries.
 - `build_evidence_matrix.py`: writes `docs/evidence_matrix.md`.
 - `data/evidence/`: the catalog; `data/references/`: source PDFs.
-- `web/`: pages, `assets/css/site.css`, `assets/js`.
+- `web/`: pages, `assets/css/site.css` (theme tokens), `assets/js`,
+  `assets/fonts/` (Inter, self-hosted, SIL OFL) and `assets/img/headers/`
+  (decorative header images; sources and licences in `CREDITS.md`).
 - `tests/`: test suites.
 
 This is an educational research tool, not a clinical, operational, or

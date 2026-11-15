@@ -10,7 +10,7 @@ const PAGES=[
 const current=document.body.dataset.page;
 const page=PAGES.find(p=>p.id===current);
 const wrap=document.createElement('div'); wrap.className='wrap';
-const title=document.createElement('h1'); title.textContent='Atrophy Armour';
+const title=document.createElement('h1'); title.textContent='Atrophy Armour Mk. 2';
 const nav=document.createElement('nav'); nav.setAttribute('aria-label','Pages');
 const list=document.createElement('ul');
 PAGES.forEach(p=>{

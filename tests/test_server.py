@@ -235,7 +235,7 @@ def test_app_reports_a_busy_port_and_exits_non_zero(
     port = server.server_address[1]
     assert app.main(["--no-browser", "--port", str(port)]) == 1
     message = capsys.readouterr().err
-    assert f"Port {port} is already in use, probably by an older Atrophy Armour server" in message
+    assert f"Port {port} is already in use, probably by an older Atrophy Armour Mk. 2 server" in message
 
 
 def test_controls_load_first_without_any_results_request(tmp_path: Path) -> None:

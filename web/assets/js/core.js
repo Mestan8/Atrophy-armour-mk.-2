@@ -6,7 +6,7 @@
 async function request(url,options){
   let response;
   try{ response=await fetch(url,options); }
-  catch(_){ throw new Error('The Atrophy Armour server is not responding. Check that it is still running.'); }
+  catch(_){ throw new Error('The Atrophy Armour Mk. 2 server is not responding. Check that it is still running.'); }
   let body=null;
   try{ body=await response.json(); }catch(_){ /* handled below */ }
   if(!response.ok || body===null){
@@ -66,19 +66,34 @@ function openDetails(details){
   if(close) close.addEventListener('click',()=>document.getElementById('observation').close());
 })();
 
-/* Draws a Plotly figure built by the server. Only fonts and backgrounds are adjusted here, never data. */
+/* Draws a Plotly figure built by the server. Only fonts, axis/grid colours and backgrounds are adjusted here
+   (taken from the theme tokens in site.css), never data, series colours, markers or dash styles. */
+function themeColour(name,fallback){
+  const value=getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+  return value || fallback;
+}
 function drawChart(node,figure,details){
   Plotly.purge(node);
   if(!figure){ node.hidden=true; return; }
   node.hidden=false;
+  const text=themeColour('--text','#0f1d33'), muted=themeColour('--muted','#4a5a70');
+  const grid=themeColour('--border-soft','#e3e9f1'), line=themeColour('--control','#7b8ba1');
+  const axis={automargin:true,gridcolor:grid,linecolor:line,tickcolor:line,zerolinecolor:line,tickfont:{color:muted},title:{font:{color:text}}};
+  const withAxis=base=>{
+    const merged=Object.assign({},base,axis);
+    if(base && base.title) merged.title=Object.assign({},typeof base.title==='string'?{text:base.title}:base.title,{font:{color:text}});
+    else delete merged.title;
+    return merged;
+  };
   const layout=Object.assign({},figure.layout,{
     title:undefined,
     paper_bgcolor:'#ffffff',plot_bgcolor:'#ffffff',
-    font:{family:getComputedStyle(document.body).fontFamily,size:13,color:'#1c1c1c'},
+    font:{family:getComputedStyle(document.body).fontFamily,size:13,color:text},
     margin:{t:16,r:16,b:16,l:16},
-    hoverlabel:{bgcolor:'#ffffff',bordercolor:'#8a8a8a',font:{color:'#1c1c1c',size:12},align:'left'},
-    xaxis:Object.assign({},figure.layout.xaxis,{automargin:true,gridcolor:'#e6e6e6'}),
-    yaxis:Object.assign({},figure.layout.yaxis,{automargin:true,gridcolor:'#e6e6e6'})
+    hoverlabel:{bgcolor:'#ffffff',bordercolor:line,font:{family:getComputedStyle(document.body).fontFamily,color:text,size:12},align:'left'},
+    legend:Object.assign({},figure.layout.legend,{font:{color:text}}),
+    xaxis:withAxis(figure.layout.xaxis),
+    yaxis:withAxis(figure.layout.yaxis)
   });
   Plotly.newPlot(node,figure.data,layout,{responsive:true,displaylogo:false}).then(()=>{
     node.on('plotly_click',event=>{

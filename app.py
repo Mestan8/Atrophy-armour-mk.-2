@@ -1,4 +1,4 @@
-"""Start Atrophy Armour and open it in the default browser."""
+"""Start Atrophy Armour Mk. 2 and open it in the default browser."""
 
 import argparse
 import sys
@@ -8,7 +8,7 @@ from server import PortInUseError, create_server
 
 
 def main(arguments: list[str] | None = None) -> int:
-    parser = argparse.ArgumentParser(description="Run Atrophy Armour locally.")
+    parser = argparse.ArgumentParser(description="Run Atrophy Armour Mk. 2 locally.")
     parser.add_argument("--host", default="127.0.0.1")
     parser.add_argument("--port", type=int, default=8501)
     parser.add_argument(
@@ -28,7 +28,7 @@ def main(arguments: list[str] | None = None) -> int:
         return 1
 
     url = f"http://{options.host}:{server.server_address[1]}/"
-    print(f"Atrophy Armour is running at {url} (press Ctrl+C to stop)", flush=True)
+    print(f"Atrophy Armour Mk. 2 is running at {url} (press Ctrl+C to stop)", flush=True)
     if not options.no_browser:
         webbrowser.open(url)
     try:
