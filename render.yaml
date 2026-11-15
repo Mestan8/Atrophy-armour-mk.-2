@@ -1,0 +1,14 @@
+# Render blueprint: deploys Atrophy Armour Mk. 2 as a free Python web service.
+# Render sets $PORT; the server must listen on 0.0.0.0 to be reachable.
+services:
+  - type: web
+    name: atrophy-armour
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: python app.py --host 0.0.0.0 --port $PORT --no-browser
+    healthCheckPath: /api/health
+    autoDeploy: true
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.7
