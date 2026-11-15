@@ -1,5 +1,7 @@
 # Atrophy Armour Mk. 2
 
+_Atrophy armour mk. 2 - iterate phase of my space technologies focus project._
+
 Atrophy Armour Mk. 2 is an educational tool that organizes published evidence about
 skeletal-muscle changes in long-duration spaceflight. It shows published group
 results side by side, each traced to a page and table of its source. It is not a
